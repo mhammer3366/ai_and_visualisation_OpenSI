@@ -241,10 +241,10 @@ class OSV5MDataset:
     def test_locations(self):
         """All country ids that occur in the test set."""
         return sorted(self.usable()["country_id"].unique())
-
-    def build_pilot(self, n=None, seed=None, save=True):
+    
+    def draw_pilot(self, n=None, seed=None):
         """
-        Up to n images per country, drawn at random with a fixed seed.
+        Draw up to n images per country at random (fixed seed). Saves nothing.
         Countries with fewer images keep all of them (flagged as low_sample
         in country_counts).
         """
@@ -252,13 +252,23 @@ class OSV5MDataset:
         seed = self.cfg.seed if seed is None else seed
 
         shuffled = self.usable().sample(frac=1, random_state=seed)
-        pilot = shuffled.groupby("country_id").head(n)
-        pilot_ids = pilot["id"].tolist()
+        return shuffled.groupby("country_id").head(n)["id"].tolist()
 
-        if save:
-            out = Path(self.cfg.data_dir) / "pilot_ids.csv"
-            pd.DataFrame({"id": pilot_ids}).to_csv(out, index=False)
+    def build_pilot(self):
+        """
+        The shared pilot sample. Loaded from resources/pilot_ids.csv if that file
+        exists, so everyone uses the same images. Otherwise it is drawn once and
+        saved there (then commit the file). Delete the file to draw a new sample.
+        """
+        path = Path(self.cfg.resources_dir) / "pilot_ids.csv"
+        if path.exists():
+            return pd.read_csv(path, dtype={"id": str})["id"].tolist()
+
+        pilot_ids = self.draw_pilot()
+        pd.DataFrame({"id": pilot_ids}).to_csv(path, index=False)
+        print(f"New pilot sample saved to {path} - commit this file.")
         return pilot_ids
+
 
     def country_counts(self, ids=None):
         """Images per country (for the given ids, or the whole test set)."""
@@ -302,14 +312,19 @@ KOPPEN = {
 
 # FAO Global Land Cover SHARE classes (codes 1-11). OSV-5M names this source
 # and reports 11 classes, but not its numbering. Check against the data.
-GLC_SHARE = {
+GLC_SHARE = { 0: "no data",
     1: "artificial surfaces", 2: "cropland", 3: "grassland", 4: "tree covered",
     5: "shrubs", 6: "herbaceous, flooded", 7: "mangroves", 8: "sparse vegetation",
     9: "bare soil", 10: "snow and glaciers", 11: "water bodies",
 }
 
-# Countries that drive on the left; used to find out how drive_side is coded.
-LEFT_DRIVING_EXAMPLES = ["GB", "JP", "AU", "IN", "ZA", "NZ", "TH", "ID", "IE", "KE"]
+# drive_side is binary (OSV-5M: left- or right-hand traffic). Checked on the data:
+# all left-driving countries have 1, so 0 = right, 1 = left.
+DRIVE_SIDE = {0: "right", 1: "left"}
+
+# Left-driving places that OSV-5M wrongly marks as 0 (right) in every image.
+# Found by counting drive_side per country; corrected to "left" in decode().
+DRIVE_SIDE_FIXES = ["GB", "TZ", "BN", "FK", "VG", "VI", "CX", "NA"]
 
 
 class MetadataDecoder:
@@ -319,17 +334,6 @@ class MetadataDecoder:
     numbering in OSV-5M is not documented, so the notebook compares them with
     the values that actually occur.
     """
-
-    def __init__(self, meta):
-        self.drive_side_names = self._infer_drive_side(meta)
-
-    @staticmethod
-    def _infer_drive_side(meta):
-        """drive_side is binary; the value most common in left-driving countries means 'left'."""
-        left_rows = meta[meta["country_id"].isin(LEFT_DRIVING_EXAMPLES)]
-        left_value = left_rows["drive_side"].mode().iloc[0]
-        values = sorted(meta["drive_side"].dropna().unique())
-        return {v: ("left" if v == left_value else "right") for v in values}
 
     @staticmethod
     def _name(code, table):
@@ -344,7 +348,7 @@ class MetadataDecoder:
         return self._name(code, GLC_SHARE)
 
     def drive_side_name(self, code):
-        return self.drive_side_names.get(code)
+        return self._name(code, DRIVE_SIDE)
 
     def decode(self, df):
         """Copy of df with climate_name, land_cover_name and drive_side_name added."""
@@ -352,4 +356,5 @@ class MetadataDecoder:
         out["climate_name"] = out["climate"].map(self.climate_name)
         out["land_cover_name"] = out["land_cover"].map(self.land_cover_name)
         out["drive_side_name"] = out["drive_side"].map(self.drive_side_name)
+        out.loc[out["country_id"].isin(DRIVE_SIDE_FIXES), "drive_side_name"] = "left"
         return out
