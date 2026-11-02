@@ -1,0 +1,38 @@
+# AI interaction record – Phase I (AI-aided pair)
+
+Record interactions that influenced the analysis or show strengths and limits of AI assistance.
+Add a row right after it happens; it takes 30 seconds and becomes the reflection report later.
+
+**Decision:** accepted / modified / rejected
+
+## Log
+
+| # | Date | Topic / prompt (short) | AI suggestion | Decision | Why | Effect on the work |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2026-11-01 | "Give me an overview of Phase I and split it in two" | Two tracks: errors (A) and clues/masking (B), day plan to Sat 7.11 | Accepted | Clear split, fits deadline | Basis of our task division |
+| 2 | 2026-11-01 | "Can we just let AI do the work and watch?" | Direct and verify instead; log as you go | Accepted | Log is graded; we swap roles in Phase II | We review every AI output before using it |
+| 3 | 2026-11-01 | Main research questions | Main question + 4 sub-questions | Modified | We merged overconfidence and training coverage; added geographic patterns | Final Q1-Q4 |
+| 4 | 2026-11-01 | How to infer training countries | Compare StreetCLIP with original CLIP per country | Accepted after questioning | Accuracy alone mixes "easy" with "trained on" | Optional CLIP baseline in setup |
+| 5 | 2026-11-01 | Top up small countries with train images | Offered a train-split switch | Rejected | Train split is ~250 GB | Test split only |
+| 6 | 2026-11-01 | Setup structure | 18 files, config.yaml, pytest, analysis/viz stubs | Modified | Too complex; stubs would steer both pairs | 3 source files, settings in notebook, no stubs |
+| 7 | 2026-11-01 | Candidate countries | Default: countries in our sample | Rejected (by external review) | Candidate list would change with the sample | Fixed list v1 + sensitivity run |
+| 8 | 2026-11-01 | OCR settings | Filter text boxes by recognition confidence 0.3 | Rejected (by external review) | Would silently drop non-Latin text | Detection only |
+| 9 | 2026-11-01 | Paper country list | AI reported typos/duplicates in the paper's list | Rejected | They came from a broken PDF-to-text conversion, not the paper | List taken from the HTML version |
+| 10 | 2026-11-01 | Dataset size | AI estimated ~10 GB | Corrected | Repository lists 9.43 GB + 116 MB | Sizes in README |
+
+## Failure patterns observed
+
+- **Defaults that quietly bias results** (#7): a convenient default (candidates = sampled countries) made the
+  experiment depend on the sample. Only caught by an external review.
+- **Settings tuned for one case** (#8): an English OCR confidence filter looked reasonable but fails exactly on the
+  non-Latin scripts that matter for GeoGuessr.
+- **Trusting a faulty source extraction** (#9): the AI reported "errors" in the paper that were artifacts of its
+  own text extraction, and stated them confidently.
+- **Over-engineering** (#6): the AI's first setup had far more files, checks and abstractions than needed.
+
+## Best practices so far
+
+- Ask the AI to cite where a fact comes from, and check numbers against the original source.
+- Have a second reviewer (person or separate AI) look at the plan before building.
+- Ask "what would make this result depend on our own choices?" for every default.
+- Ask for the simplest version first; add structure only when it is needed.

@@ -1,0 +1,25 @@
+# PyTorch build with CUDA 12.8 - needed for RTX 50-series (Blackwell) GPUs
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch>=2.7
+torchvision>=0.22
+
+# Models and data
+transformers>=4.45
+huggingface_hub>=0.25
+easyocr>=1.7
+
+# Data handling and images
+numpy
+pandas>=2.0
+pyarrow
+pillow
+opencv-python-headless
+tqdm
+
+# Notebooks
+jupyterlab
+ipykernel
+matplotlib
+plotly>=5.0
+
+# Exact versions are pinned once the setup notebook runs cleanly on the RTX 5070 PC.

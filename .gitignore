@@ -1,0 +1,12 @@
+# Downloaded test set, pilot ids and cached masks (~10 GB)
+data/
+
+# Model outputs (logits and embeddings are hundreds of MB)
+results/
+
+# Python and Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
