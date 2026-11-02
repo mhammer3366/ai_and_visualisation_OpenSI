@@ -1,251 +1,251 @@
-iso2,iso3,prompt_name,sovereign_parent,in_candidates_v1,in_paper_training_list,note
-AF,AFG,Afghanistan,,1,0,
-AL,ALB,Albania,,1,1,
-DZ,DZA,Algeria,,1,0,
-AS,ASM,American Samoa,US,0,0,
-AD,AND,Andorra,,1,1,
-AO,AGO,Angola,,1,0,
-AI,AIA,Anguilla,GB,0,0,
-AQ,ATA,Antarctica,,0,0,
-AG,ATG,Antigua and Barbuda,,1,0,
-AR,ARG,Argentina,,1,1,
-AM,ARM,Armenia,,1,0,
-AW,ABW,Aruba,NL,1,0,
-AU,AUS,Australia,,1,1,
-AT,AUT,Austria,,1,1,
-AZ,AZE,Azerbaijan,,1,0,
-BS,BHS,Bahamas,,1,0,
-BH,BHR,Bahrain,,1,0,
-BD,BGD,Bangladesh,,1,1,
-BB,BRB,Barbados,,1,0,
-BY,BLR,Belarus,,1,0,
-BE,BEL,Belgium,,1,1,
-BZ,BLZ,Belize,,1,0,
-BJ,BEN,Benin,,1,0,
-BM,BMU,Bermuda,GB,1,1,In paper training list but not in the 193 probing list; added to v1
-BT,BTN,Bhutan,,1,1,
-BO,BOL,Bolivia,,1,1,
-BA,BIH,Bosnia and Herzegovina,,1,0,
-BW,BWA,Botswana,,1,1,
-BV,BVT,Bouvet Island,NO,0,0,
-BR,BRA,Brazil,,1,1,
-IO,IOT,British Indian Ocean Territory,GB,0,0,
-VG,VGB,British Virgin Islands,GB,0,0,
-BN,BRN,Brunei,,1,0,
-BG,BGR,Bulgaria,,1,1,
-BF,BFA,Burkina Faso,,1,0,
-BI,BDI,Burundi,,1,0,
-CV,CPV,Cabo Verde,,1,0,
-KH,KHM,Cambodia,,1,1,
-CM,CMR,Cameroon,,1,0,
-CA,CAN,Canada,,1,1,
-BQ,BES,Caribbean Netherlands,NL,0,0,
-KY,CYM,Cayman Islands,GB,0,0,
-CF,CAF,Central African Republic,,1,0,
-TD,TCD,Chad,,1,0,
-CL,CHL,Chile,,1,1,
-CN,CHN,China,,1,1,Model card says excluded from training; paper training list includes it
-CX,CXR,Christmas Island,AU,0,0,
-CC,CCK,Cocos Islands,AU,0,0,
-CO,COL,Colombia,,1,1,
-KM,COM,Comoros,,1,0,
-CK,COK,Cook Islands,NZ,0,0,
-CR,CRI,Costa Rica,,1,0,
-HR,HRV,Croatia,,1,1,
-CU,CUB,Cuba,,1,0,
-CW,CUW,Curaçao,NL,0,0,
-CY,CYP,Cyprus,,1,0,
-CZ,CZE,Czech Republic,,1,1,
-CI,CIV,Côte d’Ivoire,,1,0,
-CD,COD,Democratic Republic of the Congo,,1,0,
-DK,DNK,Denmark,,1,1,
-DJ,DJI,Djibouti,,1,0,
-DM,DMA,Dominica,,1,0,
-DO,DOM,Dominican Republic,,1,1,
-TL,TLS,East Timor,,1,0,
-EC,ECU,Ecuador,,1,1,
-EG,EGY,Egypt,,1,0,
-SV,SLV,El Salvador,,1,0,
-GQ,GNQ,Equatorial Guinea,,1,0,
-ER,ERI,Eritrea,,1,0,
-EE,EST,Estonia,,1,1,
-ET,ETH,Ethiopia,,1,0,
-FK,FLK,Falkland Islands,GB,0,0,
-FO,FRO,Faroe Islands,DK,0,0,
-FJ,FJI,Fiji,,1,0,
-FI,FIN,Finland,,1,1,
-FR,FRA,France,,1,1,
-GF,GUF,French Guiana,FR,0,0,
-PF,PYF,French Polynesia,FR,0,0,
-TF,ATF,French Southern Territories,FR,0,0,
-GA,GAB,Gabon,,1,0,
-GM,GMB,Gambia,,1,0,
-GE,GEO,Georgia,,1,0,
-DE,DEU,Germany,,1,1,
-GH,GHA,Ghana,,1,1,
-GI,GIB,Gibraltar,GB,0,0,
-GR,GRC,Greece,,1,1,
-GL,GRL,Greenland,DK,1,1,
-GD,GRD,Grenada,,1,0,
-GP,GLP,Guadeloupe,FR,0,0,
-GU,GUM,Guam,US,1,1,In paper training list but not in the 193 probing list; added to v1
-GT,GTM,Guatemala,,1,1,
-GG,GGY,Guernsey,GB,0,0,
-GN,GIN,Guinea,,1,0,
-GW,GNB,Guinea-Bissau,,1,0,
-GY,GUY,Guyana,,1,0,
-HT,HTI,Haiti,,1,0,
-HM,HMD,Heard Island and McDonald Islands,AU,0,0,
-HN,HND,Honduras,,1,0,
-HK,HKG,Hong Kong,CN,0,0,
-HU,HUN,Hungary,,1,1,
-IS,ISL,Iceland,,1,1,
-IN,IND,India,,1,1,Model card says excluded from training; paper training list includes it
-ID,IDN,Indonesia,,1,1,
-IR,IRN,Iran,,1,0,
-IQ,IRQ,Iraq,,1,0,
-IE,IRL,Ireland,,1,1,
-IM,IMN,Isle of Man,GB,0,0,
-IL,ISR,Israel,,1,1,
-IT,ITA,Italy,,1,1,
-JM,JAM,Jamaica,,1,0,
-JP,JPN,Japan,,1,1,
-JE,JEY,Jersey,GB,0,0,
-JO,JOR,Jordan,,1,1,
-KZ,KAZ,Kazakhstan,,1,0,
-KE,KEN,Kenya,,1,1,
-KI,KIR,Kiribati,,0,0,
-XK,XKX,Kosovo,,0,0,Not an ISO 3166-1 code (user-assigned); added in case OSV-5M uses it
-KW,KWT,Kuwait,,1,0,
-KG,KGZ,Kyrgyzstan,,1,1,
-LA,LAO,Laos,,1,1,
-LV,LVA,Latvia,,1,1,
-LB,LBN,Lebanon,,1,0,
-LS,LSO,Lesotho,,1,1,
-LR,LBR,Liberia,,1,0,
-LY,LBY,Libya,,1,0,
-LI,LIE,Liechtenstein,,1,0,
-LT,LTU,Lithuania,,1,1,
-LU,LUX,Luxembourg,,1,1,
-MO,MAC,Macau,CN,0,0,
-MG,MDG,Madagascar,,1,1,
-MW,MWI,Malawi,,1,0,
-MY,MYS,Malaysia,,1,1,
-MV,MDV,Maldives,,0,0,
-ML,MLI,Mali,,1,0,
-MT,MLT,Malta,,1,1,
-MH,MHL,Marshall Islands,,1,0,
-MQ,MTQ,Martinique,FR,0,0,
-MR,MRT,Mauritania,,1,0,
-MU,MUS,Mauritius,,1,0,
-YT,MYT,Mayotte,FR,0,0,
-MX,MEX,Mexico,,1,1,
-FM,FSM,Micronesia,,1,0,
-MD,MDA,Moldova,,1,0,
-MC,MCO,Monaco,,1,1,In paper training list but not in the 193 probing list; added to v1
-MN,MNG,Mongolia,,1,1,
-ME,MNE,Montenegro,,1,1,
-MS,MSR,Montserrat,GB,0,0,
-MA,MAR,Morocco,,1,0,
-MZ,MOZ,Mozambique,,1,0,
-MM,MMR,Myanmar,,1,0,
-NA,NAM,Namibia,,1,0,
-NR,NRU,Nauru,,1,0,
-NP,NPL,Nepal,,1,0,
-NL,NLD,Netherlands,,1,1,
-NC,NCL,New Caledonia,FR,0,0,
-NZ,NZL,New Zealand,,1,1,
-NI,NIC,Nicaragua,,1,0,
-NE,NER,Niger,,1,0,
-NG,NGA,Nigeria,,1,1,
-NU,NIU,Niue,NZ,0,0,
-NF,NFK,Norfolk Island,AU,0,0,
-KP,PRK,North Korea,,1,0,
-MK,MKD,North Macedonia,,1,1,"Training list says 'Macedonia', probing list 'North Macedonia'"
-MP,MNP,Northern Mariana Islands,US,0,0,
-NO,NOR,Norway,,1,1,
-OM,OMN,Oman,,1,0,
-PK,PAK,Pakistan,,1,1,
-PW,PLW,Palau,,1,0,
-PS,PSE,Palestine,,1,1,Listed as its own country in both paper lists
-PA,PAN,Panama,,1,0,
-PG,PNG,Papua New Guinea,,1,0,
-PY,PRY,Paraguay,,1,0,
-PE,PER,Peru,,1,1,
-PH,PHL,Philippines,,1,1,
-PN,PCN,Pitcairn,GB,0,0,
-PL,POL,Poland,,1,1,
-PT,PRT,Portugal,,1,1,
-PR,PRI,Puerto Rico,US,1,1,In paper training list but not in the 193 probing list; added to v1
-QA,QAT,Qatar,,1,0,
-CG,COG,Republic of the Congo,,1,0,
-RO,ROU,Romania,,1,1,
-RU,RUS,Russia,,1,1,
-RW,RWA,Rwanda,,1,1,
-RE,REU,Réunion,FR,0,0,
-BL,BLM,Saint Barthélemy,FR,0,0,
-SH,SHN,Saint Helena,GB,0,0,
-KN,KNA,Saint Kitts and Nevis,,1,0,
-LC,LCA,Saint Lucia,,1,0,
-MF,MAF,Saint Martin,FR,0,0,
-PM,SPM,Saint Pierre and Miquelon,FR,0,0,
-VC,VCT,Saint Vincent and the Grenadines,,1,0,
-WS,WSM,Samoa,,1,0,
-SM,SMR,San Marino,,1,0,
-ST,STP,Sao Tome and Principe,,0,0,
-SA,SAU,Saudi Arabia,,1,0,
-SN,SEN,Senegal,,1,1,
-RS,SRB,Serbia,,1,1,
-SC,SYC,Seychelles,,1,0,
-SL,SLE,Sierra Leone,,1,0,
-SG,SGP,Singapore,,1,1,
-SX,SXM,Sint Maarten,NL,0,0,
-SK,SVK,Slovakia,,1,1,
-SI,SVN,Slovenia,,1,1,
-SB,SLB,Solomon Islands,,1,0,
-SO,SOM,Somalia,,1,0,
-ZA,ZAF,South Africa,,1,1,
-GS,SGS,South Georgia and the South Sandwich Islands,GB,0,0,
-KR,KOR,South Korea,,1,1,
-SS,SSD,South Sudan,,1,0,
-ES,ESP,Spain,,1,1,
-LK,LKA,Sri Lanka,,1,1,
-SD,SDN,Sudan,,1,0,
-SR,SUR,Suriname,,1,0,
-SJ,SJM,Svalbard and Jan Mayen,NO,0,0,
-SZ,SWZ,Swaziland,,1,1,Paper uses the former name 'Swaziland' (now Eswatini); kept for the prompt
-SE,SWE,Sweden,,1,1,
-CH,CHE,Switzerland,,1,1,
-SY,SYR,Syria,,1,0,
-TW,TWN,Taiwan,,1,1,Listed as its own country in both paper lists
-TJ,TJK,Tajikistan,,1,0,
-TZ,TZA,Tanzania,,1,0,
-TH,THA,Thailand,,1,1,
-TG,TGO,Togo,,1,0,
-TK,TKL,Tokelau,NZ,0,0,
-TO,TON,Tonga,,1,0,
-TT,TTO,Trinidad and Tobago,,1,0,
-TN,TUN,Tunisia,,1,1,
-TR,TUR,Turkey,,1,1,
-TM,TKM,Turkmenistan,,1,0,
-TC,TCA,Turks and Caicos Islands,GB,0,0,
-TV,TUV,Tuvalu,,1,0,
-VI,VIR,U.S. Virgin Islands,US,0,0,
-UG,UGA,Uganda,,1,1,
-UA,UKR,Ukraine,,1,1,
-AE,ARE,United Arab Emirates,,1,1,
-GB,GBR,United Kingdom,,1,1,
-US,USA,United States,,1,1,
-UM,UMI,United States Minor Outlying Islands,US,0,0,
-UY,URY,Uruguay,,1,1,
-UZ,UZB,Uzbekistan,,1,0,
-VU,VUT,Vanuatu,,1,0,
-VA,VAT,Vatican City,,0,0,
-VE,VEN,Venezuela,,1,0,
-VN,VNM,Vietnam,,1,0,
-WF,WLF,Wallis and Futuna,FR,0,0,
-EH,ESH,Western Sahara,,0,0,Disputed territory; no sovereign parent assigned
-YE,YEM,Yemen,,1,0,
-ZM,ZMB,Zambia,,1,0,
-ZW,ZWE,Zimbabwe,,1,0,
-AX,ALA,Åland Islands,FI,0,0,
+iso2,iso3,prompt_name,sovereign_parent,in_candidates_v1,in_paper_training_list,note,world_region,world_subregion,center_lat,center_lng,landlocked,continent,neighbors,languages,main_language,driving_side
+AF,AFG,Afghanistan,,1,0,,Asia,Southern Asia,33.0,65.0,1,AS,CN;IR;PK;TJ;TM;UZ,fa;ps;uz;tk,fa,right
+AL,ALB,Albania,,1,1,,Europe,Southeast Europe,41.0,20.0,0,EU,GR;ME;MK;RS;XK,sq;el,sq,right
+DZ,DZA,Algeria,,1,0,,Africa,Northern Africa,28.0,3.0,0,AF,EH;LY;MA;ML;MR;NE;TN,ar,ar,right
+AS,ASM,American Samoa,US,0,0,,Oceania,Polynesia,-14.33333333,-170.0,0,OC,,en;sm;to,en,right
+AD,AND,Andorra,,1,1,,Europe,Southern Europe,42.5,1.5,1,EU,ES;FR,ca,ca,right
+AO,AGO,Angola,,1,0,,Africa,Middle Africa,-12.5,18.5,0,AF,CD;CG;NA;ZM,pt,pt,right
+AI,AIA,Anguilla,GB,0,0,,Americas,Caribbean,18.25,-63.16666666,0,NA,,en,en,left
+AQ,ATA,Antarctica,,0,0,,Antarctic,,-90.0,0.0,0,AN,,,,
+AG,ATG,Antigua and Barbuda,,1,0,,Americas,Caribbean,17.05,-61.8,0,NA,,en,en,left
+AR,ARG,Argentina,,1,1,,Americas,South America,-34.0,-64.0,0,SA,BO;BR;CL;PY;UY,es;en;it;de;fr;gn,es,right
+AM,ARM,Armenia,,1,0,,Asia,Western Asia,40.0,45.0,1,AS,AZ;GE;IR;TR,hy,hy,right
+AW,ABW,Aruba,NL,1,0,,Americas,Caribbean,12.5,-69.96666666,0,NA,,nl;pap;es;en,nl,right
+AU,AUS,Australia,,1,1,,Oceania,Australia and New Zealand,-27.0,133.0,0,OC,,en,en,left
+AT,AUT,Austria,,1,1,,Europe,Central Europe,47.33333333,13.33333333,1,EU,CH;CZ;DE;HU;IT;LI;SI;SK,de;hr;hu;sl,de,right
+AZ,AZE,Azerbaijan,,1,0,,Asia,Western Asia,40.5,47.5,1,AS,AM;GE;IR;RU;TR,az;ru;hy,az,right
+BS,BHS,Bahamas,,1,0,,Americas,Caribbean,24.25,-76.0,0,NA,,en,en,left
+BH,BHR,Bahrain,,1,0,,Asia,Western Asia,26.0,50.55,0,AS,,ar;en;fa;ur,ar,right
+BD,BGD,Bangladesh,,1,1,,Asia,Southern Asia,24.0,90.0,0,AS,IN;MM,bn;en,bn,left
+BB,BRB,Barbados,,1,0,,Americas,Caribbean,13.16666666,-59.53333333,0,NA,,en,en,left
+BY,BLR,Belarus,,1,0,,Europe,Eastern Europe,53.0,28.0,1,EU,LT;LV;PL;RU;UA,be;ru,be,right
+BE,BEL,Belgium,,1,1,,Europe,Western Europe,50.83333333,4.0,0,EU,DE;FR;LU;NL,nl;fr;de,nl,right
+BZ,BLZ,Belize,,1,0,,Americas,Central America,17.25,-88.75,0,NA,GT;MX,en;es,en,right
+BJ,BEN,Benin,,1,0,,Africa,Western Africa,9.5,2.25,0,AF,BF;NE;NG;TG,fr,fr,right
+BM,BMU,Bermuda,GB,1,1,In paper training list but not in the 193 probing list; added to v1,Americas,North America,32.33333333,-64.75,0,NA,,en;pt,en,left
+BT,BTN,Bhutan,,1,1,,Asia,Southern Asia,27.5,90.5,1,AS,CN;IN,dz,dz,left
+BO,BOL,Bolivia,,1,1,,Americas,South America,-17.0,-65.0,1,SA,AR;BR;CL;PE;PY,es;qu;ay,es,right
+BA,BIH,Bosnia and Herzegovina,,1,0,,Europe,Southeast Europe,44.0,18.0,0,EU,HR;ME;RS,bs;hr;sr,bs,right
+BW,BWA,Botswana,,1,1,,Africa,Southern Africa,-22.0,24.0,1,AF,NA;ZA;ZW,en;tn,en,left
+BV,BVT,Bouvet Island,NO,0,0,,Antarctic,,-54.43333333,3.4,0,AN,,,,
+BR,BRA,Brazil,,1,1,,Americas,South America,-10.0,-55.0,0,SA,AR;BO;CO;GF;GY;PE;PY;SR;UY;VE,pt;es;en;fr,pt,right
+IO,IOT,British Indian Ocean Territory,GB,0,0,,Africa,Eastern Africa,-6.0,71.5,0,AS,,en,en,right
+VG,VGB,British Virgin Islands,GB,0,0,,Americas,Caribbean,18.431383,-64.62305,0,NA,,en,en,left
+BN,BRN,Brunei,,1,0,,Asia,South-Eastern Asia,4.5,114.66666666,0,AS,MY,ms;en,ms,left
+BG,BGR,Bulgaria,,1,1,,Europe,Southeast Europe,43.0,25.0,0,EU,GR;MK;RO;RS;TR,bg;tr;rom,bg,right
+BF,BFA,Burkina Faso,,1,0,,Africa,Western Africa,13.0,-2.0,1,AF,BJ;CI;GH;ML;NE;TG,fr;mos,fr,right
+BI,BDI,Burundi,,1,0,,Africa,Eastern Africa,-3.5,30.0,1,AF,CD;RW;TZ,fr;rn,fr,right
+CV,CPV,Cabo Verde,,1,0,,Africa,Western Africa,16.0,-24.0,0,AF,,pt,pt,right
+KH,KHM,Cambodia,,1,1,,Asia,South-Eastern Asia,13.0,105.0,0,AS,LA;TH;VN,km;fr;en,km,right
+CM,CMR,Cameroon,,1,0,,Africa,Middle Africa,6.0,12.0,0,AF,CF;CG;GA;GQ;NG;TD,en;fr,en,right
+CA,CAN,Canada,,1,1,,Americas,North America,60.0,-95.0,0,NA,US,en;fr;iu,en,right
+BQ,BES,Caribbean Netherlands,NL,0,0,,Americas,Caribbean,12.18,-68.25,0,NA,,nl;pap;en,nl,right
+KY,CYM,Cayman Islands,GB,0,0,,Americas,Caribbean,19.5,-80.5,0,NA,,en,en,left
+CF,CAF,Central African Republic,,1,0,,Africa,Middle Africa,7.0,21.0,1,AF,CD;CG;CM;SD;SS;TD,fr;sg;ln;kg,fr,right
+TD,TCD,Chad,,1,0,,Africa,Middle Africa,15.0,19.0,1,AF,CF;CM;LY;NE;NG;SD,fr;ar;sre,fr,right
+CL,CHL,Chile,,1,1,,Americas,South America,-30.0,-71.0,0,SA,AR;BO;PE,es,es,right
+CN,CHN,China,,1,1,Model card says excluded from training; paper training list includes it,Asia,Eastern Asia,35.0,105.0,0,AS,AF;BT;IN;KG;KP;KZ;LA;MM;MN;NP;PK;RU;TJ;VN,zh;yue;wuu;dta;ug;za,zh,right
+CX,CXR,Christmas Island,AU,0,0,,Oceania,Australia and New Zealand,-10.5,105.66666666,0,OC,,en;zh;ms,en,left
+CC,CCK,Cocos Islands,AU,0,0,,Oceania,Australia and New Zealand,-12.5,96.83333333,0,AS,,ms;en,ms,left
+CO,COL,Colombia,,1,1,,Americas,South America,4.0,-72.0,0,SA,BR;EC;PA;PE;VE,es,es,right
+KM,COM,Comoros,,1,0,,Africa,Eastern Africa,-12.16666666,44.25,0,AF,,ar;fr,ar,right
+CK,COK,Cook Islands,NZ,0,0,,Oceania,Polynesia,-21.23333333,-159.76666666,0,OC,,en;mi,en,left
+CR,CRI,Costa Rica,,1,0,,Americas,Central America,10.0,-84.0,0,NA,NI;PA,es;en,es,right
+HR,HRV,Croatia,,1,1,,Europe,Southeast Europe,45.16666666,15.5,0,EU,BA;HU;ME;RS;SI,hr;sr,hr,right
+CU,CUB,Cuba,,1,0,,Americas,Caribbean,21.5,-80.0,0,NA,US,es;pap,es,right
+CW,CUW,Curaçao,NL,0,0,,Americas,Caribbean,12.116667,-68.933333,0,NA,,nl;pap,nl,right
+CY,CYP,Cyprus,,1,0,,Europe,Southern Europe,35.0,33.0,0,EU,,el;tr;en,el,left
+CZ,CZE,Czech Republic,,1,1,,Europe,Central Europe,49.75,15.5,1,EU,AT;DE;PL;SK,cs;sk,cs,right
+CI,CIV,Côte d’Ivoire,,1,0,,Africa,Western Africa,8.0,-5.0,0,AF,BF;GH;GN;LR;ML,fr,fr,right
+CD,COD,Democratic Republic of the Congo,,1,0,,Africa,Middle Africa,0.0,25.0,0,AF,AO;BI;CF;CG;RW;SS;TZ;UG;ZM,fr;ln;ktu;kg;sw;lua,fr,right
+DK,DNK,Denmark,,1,1,,Europe,Northern Europe,56.0,10.0,0,EU,DE,da;en;fo;de,da,right
+DJ,DJI,Djibouti,,1,0,,Africa,Eastern Africa,11.5,43.0,0,AF,ER;ET;SO,fr;ar;so;aa,fr,right
+DM,DMA,Dominica,,1,0,,Americas,Caribbean,15.41666666,-61.33333333,0,NA,,en,en,left
+DO,DOM,Dominican Republic,,1,1,,Americas,Caribbean,19.0,-70.66666666,0,NA,HT,es,es,right
+TL,TLS,East Timor,,1,0,,Asia,South-Eastern Asia,-8.83333333,125.91666666,0,OC,ID,tet;pt;id;en,tet,left
+EC,ECU,Ecuador,,1,1,,Americas,South America,-2.0,-77.5,0,SA,CO;PE,es,es,right
+EG,EGY,Egypt,,1,0,,Africa,Northern Africa,27.0,30.0,0,AF,IL;LY;PS;SD,ar;en;fr,ar,right
+SV,SLV,El Salvador,,1,0,,Americas,Central America,13.83333333,-88.91666666,0,NA,GT;HN,es,es,right
+GQ,GNQ,Equatorial Guinea,,1,0,,Africa,Middle Africa,2.0,10.0,0,AF,CM;GA,es;fr;pt,es,right
+ER,ERI,Eritrea,,1,0,,Africa,Eastern Africa,15.0,39.0,0,AF,DJ;ET;SD,aa;ar;tig;kun;ti,aa,right
+EE,EST,Estonia,,1,1,,Europe,Northern Europe,59.0,26.0,0,EU,LV;RU,et;ru,et,right
+ET,ETH,Ethiopia,,1,0,,Africa,Eastern Africa,8.0,38.0,1,AF,DJ;ER;KE;SD;SO;SS,am;en;om;ti;so;sid,am,right
+FK,FLK,Falkland Islands,GB,0,0,,Americas,South America,-51.75,-59.0,0,SA,,en,en,left
+FO,FRO,Faroe Islands,DK,0,0,,Europe,Northern Europe,62.0,-7.0,0,EU,,fo;da,fo,right
+FJ,FJI,Fiji,,1,0,,Oceania,Melanesia,-18.0,175.0,0,OC,,en;fj,en,left
+FI,FIN,Finland,,1,1,,Europe,Northern Europe,64.0,26.0,0,EU,NO;RU;SE,fi;sv;smn,fi,right
+FR,FRA,France,,1,1,,Europe,Western Europe,46.0,2.0,0,EU,AD;BE;CH;DE;ES;IT;LU;MC,fr;frp;br;co;ca;eu;oc,fr,right
+GF,GUF,French Guiana,FR,0,0,,Americas,South America,4.0,-53.0,0,SA,BR;SR,fr,fr,right
+PF,PYF,French Polynesia,FR,0,0,,Oceania,Polynesia,-15.0,-140.0,0,OC,,fr;ty,fr,right
+TF,ATF,French Southern Territories,FR,0,0,,Antarctic,,-49.25,69.167,0,AN,,fr,fr,right
+GA,GAB,Gabon,,1,0,,Africa,Middle Africa,-1.0,11.75,0,AF,CG;CM;GQ,fr,fr,right
+GM,GMB,Gambia,,1,0,,Africa,Western Africa,13.46666666,-16.56666666,0,AF,SN,en;mnk;wof;wo;ff,en,right
+GE,GEO,Georgia,,1,0,,Asia,Western Asia,42.0,43.5,0,AS,AM;AZ;RU;TR,ka;ru;hy;az,ka,right
+DE,DEU,Germany,,1,1,,Europe,Western Europe,51.0,9.0,0,EU,AT;BE;CH;CZ;DK;FR;LU;NL;PL,de,de,right
+GH,GHA,Ghana,,1,1,,Africa,Western Africa,8.0,-2.0,0,AF,BF;CI;TG,en;ak;ee;tw,en,right
+GI,GIB,Gibraltar,GB,0,0,,Europe,Southern Europe,36.13333333,-5.35,0,EU,ES,en;es;it;pt,en,right
+GR,GRC,Greece,,1,1,,Europe,Southern Europe,39.0,22.0,0,EU,AL;BG;MK;TR,el;en;fr,el,right
+GL,GRL,Greenland,DK,1,1,,Americas,North America,72.0,-40.0,0,NA,,kl;da;en,kl,right
+GD,GRD,Grenada,,1,0,,Americas,Caribbean,12.11666666,-61.66666666,0,NA,,en,en,left
+GP,GLP,Guadeloupe,FR,0,0,,Americas,Caribbean,16.25,-61.583333,0,NA,,fr,fr,right
+GU,GUM,Guam,US,1,1,In paper training list but not in the 193 probing list; added to v1,Oceania,Micronesia,13.46666666,144.78333333,0,OC,,en;ch,en,right
+GT,GTM,Guatemala,,1,1,,Americas,Central America,15.5,-90.25,0,NA,BZ;HN;MX;SV,es,es,right
+GG,GGY,Guernsey,GB,0,0,,Europe,Northern Europe,49.46666666,-2.58333333,0,EU,,en;nrf,en,left
+GN,GIN,Guinea,,1,0,,Africa,Western Africa,11.0,-10.0,0,AF,CI;GW;LR;ML;SL;SN,fr,fr,right
+GW,GNB,Guinea-Bissau,,1,0,,Africa,Western Africa,12.0,-15.0,0,AF,GN;SN,pt;pov,pt,right
+GY,GUY,Guyana,,1,0,,Americas,South America,5.0,-59.0,0,SA,BR;SR;VE,en,en,left
+HT,HTI,Haiti,,1,0,,Americas,Caribbean,19.0,-72.41666666,0,NA,DO,ht;fr,ht,right
+HM,HMD,Heard Island and McDonald Islands,AU,0,0,,Antarctic,,-53.1,72.51666666,0,AN,,,,
+HN,HND,Honduras,,1,0,,Americas,Central America,15.0,-86.5,0,NA,GT;NI;SV,es;cab;miq,es,right
+HK,HKG,Hong Kong,CN,0,0,,Asia,Eastern Asia,22.267,114.188,0,AS,,zh;yue;en,zh,left
+HU,HUN,Hungary,,1,1,,Europe,Central Europe,47.0,20.0,1,EU,AT;HR;RO;RS;SI;SK;UA,hu,hu,right
+IS,ISL,Iceland,,1,1,,Europe,Northern Europe,65.0,-18.0,0,EU,,is;en;de;da;sv;no,is,right
+IN,IND,India,,1,1,Model card says excluded from training; paper training list includes it,Asia,Southern Asia,20.0,77.0,0,AS,BD;BT;CN;MM;NP;PK,en;hi;bn;te;mr;ta;ur;gu;kn;ml;or;pa;as;bh;sat;ks;ne;sd;kok;doi;mni;sit;sa;fr;lus;inc,en,left
+ID,IDN,Indonesia,,1,1,,Asia,South-Eastern Asia,-5.0,120.0,0,AS,MY;PG;TL,id;en;nl;jv,id,left
+IR,IRN,Iran,,1,0,,Asia,Southern Asia,32.0,53.0,0,AS,AF;AM;AZ;IQ;PK;TM;TR,fa;ku,fa,right
+IQ,IRQ,Iraq,,1,0,,Asia,Western Asia,33.0,44.0,0,AS,IR;JO;KW;SA;SY;TR,ar;ku;hy,ar,right
+IE,IRL,Ireland,,1,1,,Europe,Northern Europe,53.0,-8.0,0,EU,GB,en;ga,en,left
+IM,IMN,Isle of Man,GB,0,0,,Europe,Northern Europe,54.25,-4.5,0,EU,,en;gv,en,left
+IL,ISR,Israel,,1,1,,Asia,Western Asia,31.47,35.13,0,AS,EG;JO;LB;PS;SY,he;ar;en,he,right
+IT,ITA,Italy,,1,1,,Europe,Southern Europe,42.83333333,12.83333333,0,EU,AT;CH;FR;SI;SM;VA,it;de;fr;sc;ca;co;sl,it,right
+JM,JAM,Jamaica,,1,0,,Americas,Caribbean,18.25,-77.5,0,NA,,en,en,left
+JP,JPN,Japan,,1,1,,Asia,Eastern Asia,36.0,138.0,0,AS,,ja,ja,left
+JE,JEY,Jersey,GB,0,0,,Europe,Northern Europe,49.25,-2.16666666,0,EU,,en;fr;nrf,en,left
+JO,JOR,Jordan,,1,1,,Asia,Western Asia,31.0,36.0,0,AS,IL;IQ;PS;SA;SY,ar;en,ar,right
+KZ,KAZ,Kazakhstan,,1,0,,Asia,Central Asia,48.0,68.0,1,AS,CN;KG;RU;TM;UZ,kk;ru,kk,right
+KE,KEN,Kenya,,1,1,,Africa,Eastern Africa,1.0,38.0,0,AF,ET;SO;SS;TZ;UG,en;sw,en,left
+KI,KIR,Kiribati,,0,0,,Oceania,Micronesia,1.41666666,173.0,0,OC,,en;gil,en,left
+XK,XKX,Kosovo,,0,0,Not an ISO 3166-1 code (user-assigned); added in case OSV-5M uses it,Europe,Southeast Europe,42.666667,21.166667,1,EU,AL;ME;MK;RS,sq;sr,sq,right
+KW,KWT,Kuwait,,1,0,,Asia,Western Asia,29.5,45.75,0,AS,IQ;SA,ar;en,ar,right
+KG,KGZ,Kyrgyzstan,,1,1,,Asia,Central Asia,41.0,75.0,1,AS,CN;KZ;TJ;UZ,ky;uz;ru,ky,right
+LA,LAO,Laos,,1,1,,Asia,South-Eastern Asia,18.0,105.0,1,AS,CN;KH;MM;TH;VN,lo;fr;en,lo,right
+LV,LVA,Latvia,,1,1,,Europe,Northern Europe,57.0,25.0,0,EU,BY;EE;LT;RU,lv;ru;lt,lv,right
+LB,LBN,Lebanon,,1,0,,Asia,Western Asia,33.83333333,35.83333333,0,AS,IL;SY,ar;fr;en;hy,ar,right
+LS,LSO,Lesotho,,1,1,,Africa,Southern Africa,-29.5,28.5,1,AF,ZA,en;st;zu;xh,en,left
+LR,LBR,Liberia,,1,0,,Africa,Western Africa,6.5,-9.5,0,AF,CI;GN;SL,en,en,right
+LY,LBY,Libya,,1,0,,Africa,Northern Africa,25.0,17.0,0,AF,DZ;EG;NE;SD;TD;TN,ar;it;en,ar,right
+LI,LIE,Liechtenstein,,1,0,,Europe,Western Europe,47.26666666,9.53333333,1,EU,AT;CH,de,de,right
+LT,LTU,Lithuania,,1,1,,Europe,Northern Europe,56.0,24.0,0,EU,BY;LV;PL;RU,lt;ru;pl,lt,right
+LU,LUX,Luxembourg,,1,1,,Europe,Western Europe,49.75,6.16666666,1,EU,BE;DE;FR,lb;de;fr,lb,right
+MO,MAC,Macau,CN,0,0,,Asia,Eastern Asia,22.16666666,113.55,0,AS,,zh;pt,zh,left
+MG,MDG,Madagascar,,1,1,,Africa,Eastern Africa,-20.0,47.0,0,AF,,fr;mg,fr,right
+MW,MWI,Malawi,,1,0,,Africa,Eastern Africa,-13.5,34.0,1,AF,MZ;TZ;ZM,ny;yao;tum;swk,ny,left
+MY,MYS,Malaysia,,1,1,,Asia,South-Eastern Asia,2.5,112.5,0,AS,BN;ID;TH,ms;en;zh;ta;te;ml;pa;th,ms,left
+MV,MDV,Maldives,,0,0,,Asia,Southern Asia,3.25,73.0,0,AS,,dv;en,dv,left
+ML,MLI,Mali,,1,0,,Africa,Western Africa,17.0,-4.0,1,AF,BF;CI;DZ;GN;MR;NE;SN,fr;bm,fr,right
+MT,MLT,Malta,,1,1,,Europe,Southern Europe,35.83333333,14.58333333,0,EU,,mt;en,mt,left
+MH,MHL,Marshall Islands,,1,0,,Oceania,Micronesia,9.0,168.0,0,OC,,mh;en,mh,right
+MQ,MTQ,Martinique,FR,0,0,,Americas,Caribbean,14.666667,-61.0,0,NA,,fr,fr,right
+MR,MRT,Mauritania,,1,0,,Africa,Western Africa,20.0,-12.0,0,AF,DZ;EH;ML;SN,ar;fuc;snk;fr;mey;wo,ar,right
+MU,MUS,Mauritius,,1,0,,Africa,Eastern Africa,-20.28333333,57.55,0,AF,,en;bho;fr,en,left
+YT,MYT,Mayotte,FR,0,0,,Africa,Eastern Africa,-12.83333333,45.16666666,0,AF,,fr,fr,right
+MX,MEX,Mexico,,1,1,,Americas,North America,23.0,-102.0,0,NA,BZ;GT;US,es,es,right
+FM,FSM,Micronesia,,1,0,,Oceania,Micronesia,6.91666666,158.25,0,OC,,en;chk;pon;yap;kos;uli;woe;nkr;kpg,en,right
+MD,MDA,Moldova,,1,0,,Europe,Eastern Europe,47.0,29.0,1,EU,RO;UA,ro;ru;gag;tr,ro,right
+MC,MCO,Monaco,,1,1,In paper training list but not in the 193 probing list; added to v1,Europe,Western Europe,43.73333333,7.4,0,EU,FR,fr;en;it,fr,right
+MN,MNG,Mongolia,,1,1,,Asia,Eastern Asia,46.0,105.0,1,AS,CN;RU,mn;ru,mn,right
+ME,MNE,Montenegro,,1,1,,Europe,Southeast Europe,42.5,19.3,0,EU,AL;BA;HR;RS;XK,sr;hu;bs;sq;hr;rom,sr,right
+MS,MSR,Montserrat,GB,0,0,,Americas,Caribbean,16.75,-62.2,0,NA,,en,en,left
+MA,MAR,Morocco,,1,0,,Africa,Northern Africa,32.0,-5.0,0,AF,DZ;EH;ES,ar;ber;fr,ar,right
+MZ,MOZ,Mozambique,,1,0,,Africa,Eastern Africa,-18.25,35.0,0,AF,MW;SZ;TZ;ZA;ZM;ZW,pt;vmw,pt,left
+MM,MMR,Myanmar,,1,0,,Asia,South-Eastern Asia,22.0,98.0,0,AS,BD;CN;IN;LA;TH,my,my,right
+NA,NAM,Namibia,,1,0,,Africa,Southern Africa,-22.0,17.0,0,AF,AO;BW;ZA;ZM,en;af;de;hz;naq,en,left
+NR,NRU,Nauru,,1,0,,Oceania,Micronesia,-0.53333333,166.91666666,0,OC,,na;en,na,left
+NP,NPL,Nepal,,1,0,,Asia,Southern Asia,28.0,84.0,1,AS,CN;IN,ne;en,ne,left
+NL,NLD,Netherlands,,1,1,,Europe,Western Europe,52.5,5.75,0,EU,BE;DE,nl;fy,nl,right
+NC,NCL,New Caledonia,FR,0,0,,Oceania,Melanesia,-21.5,165.5,0,OC,,fr,fr,right
+NZ,NZL,New Zealand,,1,1,,Oceania,Australia and New Zealand,-41.0,174.0,0,OC,,en;mi,en,left
+NI,NIC,Nicaragua,,1,0,,Americas,Central America,13.0,-85.0,0,NA,CR;HN,es;en,es,right
+NE,NER,Niger,,1,0,,Africa,Western Africa,16.0,8.0,1,AF,BF;BJ;DZ;LY;ML;NG;TD,fr;ha;kr;dje,fr,right
+NG,NGA,Nigeria,,1,1,,Africa,Western Africa,10.0,8.0,0,AF,BJ;CM;NE;TD,en;ha;yo;ig;ff,en,right
+NU,NIU,Niue,NZ,0,0,,Oceania,Polynesia,-19.03333333,-169.86666666,0,OC,,niu;en,niu,left
+NF,NFK,Norfolk Island,AU,0,0,,Oceania,Australia and New Zealand,-29.03333333,167.95,0,OC,,en,en,left
+KP,PRK,North Korea,,1,0,,Asia,Eastern Asia,40.0,127.0,0,AS,CN;KR;RU,ko,ko,right
+MK,MKD,North Macedonia,,1,1,"Training list says 'Macedonia', probing list 'North Macedonia'",Europe,Southeast Europe,41.83333333,22.0,1,EU,AL;BG;GR;RS;XK,mk;sq;tr;rmm;sr,mk,right
+MP,MNP,Northern Mariana Islands,US,0,0,,Oceania,Micronesia,15.2,145.75,0,OC,,fil;tl;zh;ch;en,fil,right
+NO,NOR,Norway,,1,1,,Europe,Northern Europe,62.0,10.0,0,EU,FI;RU;SE,no;nb;nn;se;fi,no,right
+OM,OMN,Oman,,1,0,,Asia,Western Asia,21.0,57.0,0,AS,AE;SA;YE,ar;en;bal;ur,ar,right
+PK,PAK,Pakistan,,1,1,,Asia,Southern Asia,30.0,70.0,0,AS,AF;CN;IN;IR,ur;en;pa;sd;ps;brh,ur,left
+PW,PLW,Palau,,1,0,,Oceania,Micronesia,7.5,134.5,0,OC,,pau;sov;en;tox;ja;fil;zh,pau,right
+PS,PSE,Palestine,,1,1,Listed as its own country in both paper lists,Asia,Western Asia,31.9,35.2,0,AS,EG;IL;JO,ar,ar,right
+PA,PAN,Panama,,1,0,,Americas,Central America,9.0,-80.0,0,NA,CO;CR,es;en,es,right
+PG,PNG,Papua New Guinea,,1,0,,Oceania,Melanesia,-6.0,147.0,0,OC,ID,en;ho;meu;tpi,en,left
+PY,PRY,Paraguay,,1,0,,Americas,South America,-23.0,-58.0,1,SA,AR;BO;BR,es;gn,es,right
+PE,PER,Peru,,1,1,,Americas,South America,-10.0,-76.0,0,SA,BO;BR;CL;CO;EC,es;qu;ay,es,right
+PH,PHL,Philippines,,1,1,,Asia,South-Eastern Asia,13.0,122.0,0,AS,,tl;en;fil;ceb;ilo;hil;war;pam;bik;bcl;pag;mrw;tsg;mdh;cbk;krj;sgd;msb;akl;ibg;yka;mta;abx,tl,right
+PN,PCN,Pitcairn,GB,0,0,,Oceania,Polynesia,-25.06666666,-130.1,0,OC,,en,en,left
+PL,POL,Poland,,1,1,,Europe,Central Europe,52.0,20.0,0,EU,BY;CZ;DE;LT;RU;SK;UA,pl,pl,right
+PT,PRT,Portugal,,1,1,,Europe,Southern Europe,39.5,-8.0,0,EU,ES,pt;mwl,pt,right
+PR,PRI,Puerto Rico,US,1,1,In paper training list but not in the 193 probing list; added to v1,Americas,Caribbean,18.25,-66.5,0,NA,,en;es,en,right
+QA,QAT,Qatar,,1,0,,Asia,Western Asia,25.5,51.25,0,AS,SA,ar;es,ar,right
+CG,COG,Republic of the Congo,,1,0,,Africa,Middle Africa,-1.0,15.0,0,AF,AO;CD;CF;CM;GA,fr;kg;ln,fr,right
+RO,ROU,Romania,,1,1,,Europe,Southeast Europe,46.0,25.0,0,EU,BG;HU;MD;RS;UA,ro;hu;rom,ro,right
+RU,RUS,Russia,,1,1,,Europe,Eastern Europe,60.0,100.0,0,EU,AZ;BY;CN;EE;FI;GE;KP;KZ;LT;LV;MN;NO;PL;UA,ru;tt;xal;cau;ady;kv;ce;tyv;cv;udm;tut;mns;bua;myv;mdf;chm;ba;inh;kbd;krc;av;sah;nog,ru,right
+RW,RWA,Rwanda,,1,1,,Africa,Eastern Africa,-2.0,30.0,1,AF,BI;CD;TZ;UG,rw;en;fr;sw,rw,right
+RE,REU,Réunion,FR,0,0,,Africa,Eastern Africa,-21.15,55.5,0,AF,,fr,fr,right
+BL,BLM,Saint Barthélemy,FR,0,0,,Americas,Caribbean,18.5,-63.41666666,0,NA,,fr,fr,right
+SH,SHN,Saint Helena,GB,0,0,,Africa,Western Africa,-15.95,-5.72,0,AF,,en,en,left
+KN,KNA,Saint Kitts and Nevis,,1,0,,Americas,Caribbean,17.33333333,-62.75,0,NA,,en,en,left
+LC,LCA,Saint Lucia,,1,0,,Americas,Caribbean,13.88333333,-60.96666666,0,NA,,en,en,left
+MF,MAF,Saint Martin,FR,0,0,,Americas,Caribbean,18.08333333,-63.95,0,NA,SX,fr,fr,right
+PM,SPM,Saint Pierre and Miquelon,FR,0,0,,Americas,North America,46.83333333,-56.33333333,0,NA,,fr,fr,right
+VC,VCT,Saint Vincent and the Grenadines,,1,0,,Americas,Caribbean,13.25,-61.2,0,NA,,en;fr,en,left
+WS,WSM,Samoa,,1,0,,Oceania,Polynesia,-13.58333333,-172.33333333,0,OC,,sm;en,sm,left
+SM,SMR,San Marino,,1,0,,Europe,Southern Europe,43.76666666,12.41666666,1,EU,IT,it,it,right
+ST,STP,Sao Tome and Principe,,0,0,,Africa,Middle Africa,1.0,7.0,0,AF,,pt,pt,right
+SA,SAU,Saudi Arabia,,1,0,,Asia,Western Asia,25.0,45.0,0,AS,AE;IQ;JO;KW;OM;QA;YE,ar,ar,right
+SN,SEN,Senegal,,1,1,,Africa,Western Africa,14.0,-14.0,0,AF,GM;GN;GW;ML;MR,fr;wo;fuc;mnk,fr,right
+RS,SRB,Serbia,,1,1,,Europe,Southeast Europe,44.0,21.0,1,EU,AL;BA;BG;HR;HU;ME;MK;RO;XK,sr;hu;bs;rom,sr,right
+SC,SYC,Seychelles,,1,0,,Africa,Eastern Africa,-4.58333333,55.66666666,0,AF,,en;fr,en,left
+SL,SLE,Sierra Leone,,1,0,,Africa,Western Africa,8.5,-11.5,0,AF,GN;LR,en;men;tem,en,right
+SG,SGP,Singapore,,1,1,,Asia,South-Eastern Asia,1.36666666,103.8,0,AS,,cmn;en;ms;ta;zh,cmn,left
+SX,SXM,Sint Maarten,NL,0,0,,Americas,Caribbean,18.033333,-63.05,0,NA,MF,nl;en,nl,right
+SK,SVK,Slovakia,,1,1,,Europe,Central Europe,48.66666666,19.5,1,EU,AT;CZ;HU;PL;UA,sk;hu,sk,right
+SI,SVN,Slovenia,,1,1,,Europe,Central Europe,46.11666666,14.81666666,0,EU,AT;HR;HU;IT,sl;sh,sl,right
+SB,SLB,Solomon Islands,,1,0,,Oceania,Melanesia,-8.0,159.0,0,OC,,en;tpi,en,left
+SO,SOM,Somalia,,1,0,,Africa,Eastern Africa,10.0,49.0,0,AF,DJ;ET;KE,so;ar;it;en,so,right
+ZA,ZAF,South Africa,,1,1,,Africa,Southern Africa,-29.0,24.0,0,AF,BW;LS;MZ;NA;SZ;ZW,zu;xh;af;nso;en;tn;st;ts;ss;ve;nr,zu,left
+GS,SGS,South Georgia and the South Sandwich Islands,GB,0,0,,Antarctic,,-54.5,-37.0,0,AN,,en,en,left
+KR,KOR,South Korea,,1,1,,Asia,Eastern Asia,37.0,127.5,0,AS,KP,ko;en,ko,right
+SS,SSD,South Sudan,,1,0,,Africa,Middle Africa,7.0,30.0,1,AF,CD;CF;ET;KE;SD;UG,en,en,right
+ES,ESP,Spain,,1,1,,Europe,Southern Europe,40.0,-4.0,0,EU,AD;FR;GI;MA;PT,es;ca;gl;eu;oc,es,right
+LK,LKA,Sri Lanka,,1,1,,Asia,Southern Asia,7.0,81.0,0,AS,,si;ta;en,si,left
+SD,SDN,Sudan,,1,0,,Africa,Northern Africa,15.0,30.0,0,AF,CF;EG;ER;ET;LY;SS;TD,ar;en;fia,ar,right
+SR,SUR,Suriname,,1,0,,Americas,South America,4.0,-56.0,0,SA,BR;GF;GY,nl;en;srn;hns;jv,nl,left
+SJ,SJM,Svalbard and Jan Mayen,NO,0,0,,Europe,Northern Europe,78.0,20.0,0,EU,,no;ru,no,right
+SZ,SWZ,Swaziland,,1,1,Paper uses the former name 'Swaziland' (now Eswatini); kept for the prompt,Africa,Southern Africa,-26.5,31.5,1,AF,MZ;ZA,en;ss,en,left
+SE,SWE,Sweden,,1,1,,Europe,Northern Europe,62.0,15.0,0,EU,FI;NO,sv;se;sma;fi,sv,right
+CH,CHE,Switzerland,,1,1,,Europe,Western Europe,47.0,8.0,1,EU,AT;DE;FR;IT;LI,de;fr;it;rm,de,right
+SY,SYR,Syria,,1,0,,Asia,Western Asia,35.0,38.0,0,AS,IL;IQ;JO;LB;TR,ar;ku;hy;arc;fr;en,ar,right
+TW,TWN,Taiwan,,1,1,Listed as its own country in both paper lists,Asia,Eastern Asia,23.5,121.0,0,AS,,zh;nan;hak,zh,right
+TJ,TJK,Tajikistan,,1,0,,Asia,Central Asia,39.0,71.0,1,AS,AF;CN;KG;UZ,tg;ru,tg,right
+TZ,TZA,Tanzania,,1,0,,Africa,Eastern Africa,-6.0,35.0,0,AF,BI;CD;KE;MW;MZ;RW;UG;ZM,sw;en;ar,sw,left
+TH,THA,Thailand,,1,1,,Asia,South-Eastern Asia,15.0,100.0,0,AS,KH;LA;MM;MY,th;en,th,left
+TG,TGO,Togo,,1,0,,Africa,Western Africa,8.0,1.16666666,0,AF,BF;BJ;GH,fr;ee;hna;kbp;dag;ha,fr,right
+TK,TKL,Tokelau,NZ,0,0,,Oceania,Polynesia,-9.0,-172.0,0,OC,,tkl;en,tkl,left
+TO,TON,Tonga,,1,0,,Oceania,Polynesia,-20.0,-175.0,0,OC,,to;en,to,left
+TT,TTO,Trinidad and Tobago,,1,0,,Americas,Caribbean,11.0,-61.0,0,NA,,en;hns;fr;es;zh,en,left
+TN,TUN,Tunisia,,1,1,,Africa,Northern Africa,34.0,9.0,0,AF,DZ;LY,ar;fr,ar,right
+TR,TUR,Turkey,,1,1,,Asia,Western Asia,39.0,35.0,0,AS,AM;AZ;BG;GE;GR;IQ;IR;SY,tr;ku;diq;az;av,tr,right
+TM,TKM,Turkmenistan,,1,0,,Asia,Central Asia,40.0,60.0,1,AS,AF;IR;KZ;UZ,tk;ru;uz,tk,right
+TC,TCA,Turks and Caicos Islands,GB,0,0,,Americas,Caribbean,21.75,-71.58333333,0,NA,,en,en,left
+TV,TUV,Tuvalu,,1,0,,Oceania,Polynesia,-8.0,178.0,0,OC,,tvl;en;sm;gil,tvl,left
+VI,VIR,U.S. Virgin Islands,US,0,0,,Americas,Caribbean,18.35,-64.933333,0,NA,,en,en,left
+UG,UGA,Uganda,,1,1,,Africa,Eastern Africa,1.0,32.0,1,AF,CD;KE;RW;SS;TZ,en;lg;sw;ar,en,left
+UA,UKR,Ukraine,,1,1,,Europe,Eastern Europe,49.0,32.0,0,EU,BY;HU;MD;PL;RO;RU;SK,uk;ru;rom;pl;hu,uk,right
+AE,ARE,United Arab Emirates,,1,1,,Asia,Western Asia,24.0,54.0,0,AS,OM;SA,ar;fa;en;hi;ur,ar,right
+GB,GBR,United Kingdom,,1,1,,Europe,Northern Europe,54.0,-2.0,0,EU,IE,en;cy;gd,en,left
+US,USA,United States,,1,1,,Americas,North America,38.0,-97.0,0,NA,CA;CU;MX,en;es;haw;fr,en,right
+UM,UMI,United States Minor Outlying Islands,US,0,0,,Americas,North America,19.3,166.633333,0,OC,,en,en,right
+UY,URY,Uruguay,,1,1,,Americas,South America,-33.0,-56.0,0,SA,AR;BR,es,es,right
+UZ,UZB,Uzbekistan,,1,0,,Asia,Central Asia,41.0,64.0,1,AS,AF;KG;KZ;TJ;TM,uz;ru;tg,uz,right
+VU,VUT,Vanuatu,,1,0,,Oceania,Melanesia,-16.0,167.0,0,OC,,bi;en;fr,bi,right
+VA,VAT,Vatican City,,0,0,,Europe,Southern Europe,41.9,12.45,1,EU,IT,la;it;fr,la,right
+VE,VEN,Venezuela,,1,0,,Americas,South America,8.0,-66.0,0,SA,BR;CO;GY,es,es,right
+VN,VNM,Vietnam,,1,0,,Asia,South-Eastern Asia,16.16666666,107.83333333,0,AS,CN;KH;LA,vi;en;fr;zh;km,vi,right
+WF,WLF,Wallis and Futuna,FR,0,0,,Oceania,Polynesia,-13.3,-176.2,0,OC,,wls;fud;fr,wls,right
+EH,ESH,Western Sahara,,0,0,Disputed territory; no sovereign parent assigned,Africa,Northern Africa,24.5,-13.0,0,AF,DZ;MA;MR,ar;mey,ar,right
+YE,YEM,Yemen,,1,0,,Asia,Western Asia,15.0,48.0,0,AS,OM;SA,ar,ar,right
+ZM,ZMB,Zambia,,1,0,,Africa,Eastern Africa,-15.0,30.0,1,AF,AO;CD;MW;MZ;NA;TZ;ZW,en;bem;loz;lun;lue;ny;toi,en,left
+ZW,ZWE,Zimbabwe,,1,0,,Africa,Eastern Africa,-20.0,30.0,1,AF,BW;MZ;ZA;ZM,en;sn;nr;nd,en,left
+AX,ALA,Åland Islands,FI,0,0,,Europe,Northern Europe,60.116667,19.9,0,EU,,sv,sv,right

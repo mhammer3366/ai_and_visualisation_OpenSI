@@ -1,11 +1,25 @@
 {
-    "team_name": "Team Name",
+    "team_name": "OpenSI",
     "students": [
         {
-            "first_name": "First",
-            "last_name": "Last",
+            "first_name": "Maximilian",
+            "last_name": "Hammer",
             "workload": 0.25
         },
-        // ...add a record for each student
+        {
+            "first_name": "Manuel",
+            "last_name": "Lisa",
+            "workload": 0.25
+        },
+        {
+            "first_name": "Umut",
+            "last_name": "Tanriverdi",
+            "workload": 0.25
+        },
+        {
+            "first_name": "Florian",
+            "last_name": "Weigelt",
+            "workload": 0.25
+        }
     ]
 } 

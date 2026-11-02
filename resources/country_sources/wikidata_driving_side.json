@@ -1,0 +1,3550 @@
+{
+  "head" : {
+    "vars" : [ "item", "iso2", "sideLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "FI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q117"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q191"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "EE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "UA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q217"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q221"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q223"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q224"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "HR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q227"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q229"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q235"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q265"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "UZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q424"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q683"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "WS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q712"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "FJ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q733"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q734"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q766"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "JM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q774"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q790"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "HT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q801"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q805"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "YE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q810"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "JO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q819"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q826"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MV"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q833"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q836"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "OM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q846"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "QA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q854"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q869"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q874"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q881"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q929"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q945"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ZW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q965"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q983"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GQ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1246"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "XK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3769"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4628"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "FO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5689"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AX"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9648"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "FK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16635"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17054"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MQ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21203"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25305"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30971"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31063"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CX"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33788"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126125"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184851"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q644636"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842829"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SJ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3405693"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CQ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "JP"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ES"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "US"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "EG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q96"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MX"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ET"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q142"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "FR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q145"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GB"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q148"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q155"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q211"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LV"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q213"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q215"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q222"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q228"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q232"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q236"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ME"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q237"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q244"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BB"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q252"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ID"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q258"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ZA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q298"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q334"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q347"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q398"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q399"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q403"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "RS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q408"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q414"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q414"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q574"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q668"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q686"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q702"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "FM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q710"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q711"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q717"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "EC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q750"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q754"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q769"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q781"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q783"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "HN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q784"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q785"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "JE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q794"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q800"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q804"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q813"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q817"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q878"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q912"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ML"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q916"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q948"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q958"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q970"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q971"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q977"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DJ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q986"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ER"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1007"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1011"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CV"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1013"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1028"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1030"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1037"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "RW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1041"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1045"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1049"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1183"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5785"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6250"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "EH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11703"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13353"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16641"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17012"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GP"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17063"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "YT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23635"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25228"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25279"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25362"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26273"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SX"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26988"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29999"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34020"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34617"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36004"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36823"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q129003"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219060"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "HU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q32"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q77"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "UY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "RU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q218"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "RO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q225"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q230"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q233"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q238"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q241"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q262"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q419"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q423"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KP"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q657"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q664"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q672"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TV"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q678"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q685"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SB"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q691"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q695"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q697"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q709"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q730"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q739"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q757"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "VC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q760"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q763"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q778"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q786"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "DO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q792"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SV"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q796"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IQ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q811"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q822"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LB"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q837"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NP"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q851"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q858"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q863"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TJ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q865"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q884"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "KR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q889"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q902"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q917"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BT"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q921"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q924"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q928"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q953"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ZM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q962"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BJ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q963"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q967"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q974"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CD"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1000"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1005"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1006"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1008"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1009"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "CM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1014"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1016"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "LY"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1019"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1020"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MW"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1025"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MR"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1027"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MU"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1029"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1032"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1033"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1036"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "UG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1039"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "ST"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1042"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1044"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SL"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1050"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SZ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1410"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GI"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8646"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "HK"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9676"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14773"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16644"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "MP"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16645"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "UM"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17070"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "RE"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18221"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25230"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GG"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27561"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "BQ"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31057"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "NF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35086"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "GS"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35555"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "WF"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35672"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "PN"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43448"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "IO"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "right"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q192184"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "SH"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31890709"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "AC"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34625512"
+      },
+      "iso2" : {
+        "type" : "literal",
+        "value" : "TA"
+      },
+      "sideLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "left"
+      }
+    } ]
+  }
+}

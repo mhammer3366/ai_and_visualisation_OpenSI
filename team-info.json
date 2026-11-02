@@ -1,13 +1,34 @@
 {
-    "team_name": "Team Name",
+    "team_name": "OpenSI",
     "students": [
         {
-            "student_id": "k00000000",
-            "first_name": "First",
-            "last_name": "Last",
-            "email": "first.last@mail.com",
-            "github_user": "mygitusername"
+            "student_id": "k12222785",
+            "first_name": "Maximilian",
+            "last_name": "Hammer",
+            "email": "k12222785@students.jku.at",
+            "github_user": "mhammer3366"
         },
-        // ...add a record for each student
+        {
+            "student_id": "k12205828",
+            "first_name": "Manuel",
+            "last_name": "Lisa",
+            "email": "k12205828@students.jku.at",
+            "github_user": "ManuL001"
+        },
+        {
+            "student_id": "k12105807",
+            "first_name": "Umut",
+            "last_name": "Tanriverdi",
+            "email": "k12105807@students.jku.at",
+            "github_user": "karakartal190360"
+        },
+        {
+            "student_id": "k12210011",
+            "first_name": "Florian",
+            "last_name": "Weigelt",
+            "email": "k12210011@students.jku.at",
+            "github_user": "Flo-Wei"
+        }
+        
     ]
 }

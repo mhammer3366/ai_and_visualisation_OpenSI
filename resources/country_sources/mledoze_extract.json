@@ -1,0 +1,2752 @@
+[
+ {
+  "cca2": "AW",
+  "cca3": "ABW",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   12.5,
+   -69.96666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AF",
+  "cca3": "AFG",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   33,
+   65
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "AO",
+  "cca3": "AGO",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   -12.5,
+   18.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AI",
+  "cca3": "AIA",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.25,
+   -63.16666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AX",
+  "cca3": "ALA",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   60.116667,
+   19.9
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AL",
+  "cca3": "ALB",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   41,
+   20
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AD",
+  "cca3": "AND",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   42.5,
+   1.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "AE",
+  "cca3": "ARE",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   24,
+   54
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AR",
+  "cca3": "ARG",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -34,
+   -64
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AM",
+  "cca3": "ARM",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   40,
+   45
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "AS",
+  "cca3": "ASM",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -14.33333333,
+   -170
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AQ",
+  "cca3": "ATA",
+  "region": "Antarctic",
+  "subregion": "",
+  "latlng": [
+   -90,
+   0
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TF",
+  "cca3": "ATF",
+  "region": "Antarctic",
+  "subregion": "",
+  "latlng": [
+   -49.25,
+   69.167
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AG",
+  "cca3": "ATG",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   17.05,
+   -61.8
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AU",
+  "cca3": "AUS",
+  "region": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "latlng": [
+   -27,
+   133
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "AT",
+  "cca3": "AUT",
+  "region": "Europe",
+  "subregion": "Central Europe",
+  "latlng": [
+   47.33333333,
+   13.33333333
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "AZ",
+  "cca3": "AZE",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   40.5,
+   47.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "BI",
+  "cca3": "BDI",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -3.5,
+   30
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "BE",
+  "cca3": "BEL",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   50.83333333,
+   4
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BJ",
+  "cca3": "BEN",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   9.5,
+   2.25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BF",
+  "cca3": "BFA",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   13,
+   -2
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "BD",
+  "cca3": "BGD",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   24,
+   90
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BG",
+  "cca3": "BGR",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   43,
+   25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BH",
+  "cca3": "BHR",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   26,
+   50.55
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BS",
+  "cca3": "BHS",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   24.25,
+   -76
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BA",
+  "cca3": "BIH",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   44,
+   18
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BL",
+  "cca3": "BLM",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.5,
+   -63.41666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SH",
+  "cca3": "SHN",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   -15.95,
+   -5.72
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BY",
+  "cca3": "BLR",
+  "region": "Europe",
+  "subregion": "Eastern Europe",
+  "latlng": [
+   53,
+   28
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "BZ",
+  "cca3": "BLZ",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   17.25,
+   -88.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BM",
+  "cca3": "BMU",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   32.33333333,
+   -64.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BO",
+  "cca3": "BOL",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -17,
+   -65
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "BQ",
+  "cca3": "BES",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   12.18,
+   -68.25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BR",
+  "cca3": "BRA",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -10,
+   -55
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BB",
+  "cca3": "BRB",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   13.16666666,
+   -59.53333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BN",
+  "cca3": "BRN",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   4.5,
+   114.66666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BT",
+  "cca3": "BTN",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   27.5,
+   90.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "BV",
+  "cca3": "BVT",
+  "region": "Antarctic",
+  "subregion": "",
+  "latlng": [
+   -54.43333333,
+   3.4
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "BW",
+  "cca3": "BWA",
+  "region": "Africa",
+  "subregion": "Southern Africa",
+  "latlng": [
+   -22,
+   24
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "CF",
+  "cca3": "CAF",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   7,
+   21
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "CA",
+  "cca3": "CAN",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   60,
+   -95
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CC",
+  "cca3": "CCK",
+  "region": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "latlng": [
+   -12.5,
+   96.83333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CH",
+  "cca3": "CHE",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   47,
+   8
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "CL",
+  "cca3": "CHL",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -30,
+   -71
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CN",
+  "cca3": "CHN",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   35,
+   105
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CI",
+  "cca3": "CIV",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   8,
+   -5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CM",
+  "cca3": "CMR",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   6,
+   12
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CD",
+  "cca3": "COD",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   0,
+   25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CG",
+  "cca3": "COG",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   -1,
+   15
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CK",
+  "cca3": "COK",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -21.23333333,
+   -159.76666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CO",
+  "cca3": "COL",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   4,
+   -72
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KM",
+  "cca3": "COM",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -12.16666666,
+   44.25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CV",
+  "cca3": "CPV",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   16,
+   -24
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CR",
+  "cca3": "CRI",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   10,
+   -84
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CU",
+  "cca3": "CUB",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   21.5,
+   -80
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CW",
+  "cca3": "CUW",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   12.116667,
+   -68.933333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CX",
+  "cca3": "CXR",
+  "region": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "latlng": [
+   -10.5,
+   105.66666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KY",
+  "cca3": "CYM",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   19.5,
+   -80.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CY",
+  "cca3": "CYP",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   35,
+   33
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "CZ",
+  "cca3": "CZE",
+  "region": "Europe",
+  "subregion": "Central Europe",
+  "latlng": [
+   49.75,
+   15.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "DE",
+  "cca3": "DEU",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   51,
+   9
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "DJ",
+  "cca3": "DJI",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   11.5,
+   43
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "DM",
+  "cca3": "DMA",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   15.41666666,
+   -61.33333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "DK",
+  "cca3": "DNK",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   56,
+   10
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "DO",
+  "cca3": "DOM",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   19,
+   -70.66666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "DZ",
+  "cca3": "DZA",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   28,
+   3
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "EC",
+  "cca3": "ECU",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -2,
+   -77.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "EG",
+  "cca3": "EGY",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   27,
+   30
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "ER",
+  "cca3": "ERI",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   15,
+   39
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "EH",
+  "cca3": "ESH",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   24.5,
+   -13
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "ES",
+  "cca3": "ESP",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   40,
+   -4
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "EE",
+  "cca3": "EST",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   59,
+   26
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "ET",
+  "cca3": "ETH",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   8,
+   38
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "FI",
+  "cca3": "FIN",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   64,
+   26
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "FJ",
+  "cca3": "FJI",
+  "region": "Oceania",
+  "subregion": "Melanesia",
+  "latlng": [
+   -18,
+   175
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "FK",
+  "cca3": "FLK",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -51.75,
+   -59
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "FR",
+  "cca3": "FRA",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   46,
+   2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "FO",
+  "cca3": "FRO",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   62,
+   -7
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "FM",
+  "cca3": "FSM",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   6.91666666,
+   158.25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GA",
+  "cca3": "GAB",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   -1,
+   11.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GB",
+  "cca3": "GBR",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   54,
+   -2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GE",
+  "cca3": "GEO",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   42,
+   43.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GG",
+  "cca3": "GGY",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   49.46666666,
+   -2.58333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GH",
+  "cca3": "GHA",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   8,
+   -2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GI",
+  "cca3": "GIB",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   36.13333333,
+   -5.35
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GN",
+  "cca3": "GIN",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   11,
+   -10
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GP",
+  "cca3": "GLP",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   16.25,
+   -61.583333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GM",
+  "cca3": "GMB",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   13.46666666,
+   -16.56666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GW",
+  "cca3": "GNB",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   12,
+   -15
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GQ",
+  "cca3": "GNQ",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   2,
+   10
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GR",
+  "cca3": "GRC",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   39,
+   22
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GD",
+  "cca3": "GRD",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   12.11666666,
+   -61.66666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GL",
+  "cca3": "GRL",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   72,
+   -40
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GT",
+  "cca3": "GTM",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   15.5,
+   -90.25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GF",
+  "cca3": "GUF",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   4,
+   -53
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GU",
+  "cca3": "GUM",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   13.46666666,
+   144.78333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GY",
+  "cca3": "GUY",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   5,
+   -59
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "HK",
+  "cca3": "HKG",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   22.267,
+   114.188
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "HM",
+  "cca3": "HMD",
+  "region": "Antarctic",
+  "subregion": "",
+  "latlng": [
+   -53.1,
+   72.51666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "HN",
+  "cca3": "HND",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   15,
+   -86.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "HR",
+  "cca3": "HRV",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   45.16666666,
+   15.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "HT",
+  "cca3": "HTI",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   19,
+   -72.41666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "HU",
+  "cca3": "HUN",
+  "region": "Europe",
+  "subregion": "Central Europe",
+  "latlng": [
+   47,
+   20
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "ID",
+  "cca3": "IDN",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   -5,
+   120
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IM",
+  "cca3": "IMN",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   54.25,
+   -4.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IN",
+  "cca3": "IND",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   20,
+   77
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IO",
+  "cca3": "IOT",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -6,
+   71.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IE",
+  "cca3": "IRL",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   53,
+   -8
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IR",
+  "cca3": "IRN",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   32,
+   53
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IQ",
+  "cca3": "IRQ",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   33,
+   44
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IS",
+  "cca3": "ISL",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   65,
+   -18
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IL",
+  "cca3": "ISR",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   31.47,
+   35.13
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "IT",
+  "cca3": "ITA",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   42.83333333,
+   12.83333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "JM",
+  "cca3": "JAM",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.25,
+   -77.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "JE",
+  "cca3": "JEY",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   49.25,
+   -2.16666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "JO",
+  "cca3": "JOR",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   31,
+   36
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "JP",
+  "cca3": "JPN",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   36,
+   138
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KZ",
+  "cca3": "KAZ",
+  "region": "Asia",
+  "subregion": "Central Asia",
+  "latlng": [
+   48,
+   68
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "KE",
+  "cca3": "KEN",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   1,
+   38
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KG",
+  "cca3": "KGZ",
+  "region": "Asia",
+  "subregion": "Central Asia",
+  "latlng": [
+   41,
+   75
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "KH",
+  "cca3": "KHM",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   13,
+   105
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KI",
+  "cca3": "KIR",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   1.41666666,
+   173
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KN",
+  "cca3": "KNA",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   17.33333333,
+   -62.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KR",
+  "cca3": "KOR",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   37,
+   127.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "XK",
+  "cca3": "UNK",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   42.666667,
+   21.166667
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "KW",
+  "cca3": "KWT",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   29.5,
+   45.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LA",
+  "cca3": "LAO",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   18,
+   105
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "LB",
+  "cca3": "LBN",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   33.83333333,
+   35.83333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LR",
+  "cca3": "LBR",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   6.5,
+   -9.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LY",
+  "cca3": "LBY",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   25,
+   17
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LC",
+  "cca3": "LCA",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   13.88333333,
+   -60.96666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LI",
+  "cca3": "LIE",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   47.26666666,
+   9.53333333
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "LK",
+  "cca3": "LKA",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   7,
+   81
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LS",
+  "cca3": "LSO",
+  "region": "Africa",
+  "subregion": "Southern Africa",
+  "latlng": [
+   -29.5,
+   28.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "LT",
+  "cca3": "LTU",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   56,
+   24
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "LU",
+  "cca3": "LUX",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   49.75,
+   6.16666666
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "LV",
+  "cca3": "LVA",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   57,
+   25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MO",
+  "cca3": "MAC",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   22.16666666,
+   113.55
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MF",
+  "cca3": "MAF",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.08333333,
+   -63.95
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MA",
+  "cca3": "MAR",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   32,
+   -5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MC",
+  "cca3": "MCO",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   43.73333333,
+   7.4
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MD",
+  "cca3": "MDA",
+  "region": "Europe",
+  "subregion": "Eastern Europe",
+  "latlng": [
+   47,
+   29
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "MG",
+  "cca3": "MDG",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -20,
+   47
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MV",
+  "cca3": "MDV",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   3.25,
+   73
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MX",
+  "cca3": "MEX",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   23,
+   -102
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MH",
+  "cca3": "MHL",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   9,
+   168
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MK",
+  "cca3": "MKD",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   41.83333333,
+   22
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "ML",
+  "cca3": "MLI",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   17,
+   -4
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "MT",
+  "cca3": "MLT",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   35.83333333,
+   14.58333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MM",
+  "cca3": "MMR",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   22,
+   98
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "ME",
+  "cca3": "MNE",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   42.5,
+   19.3
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MN",
+  "cca3": "MNG",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   46,
+   105
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "MP",
+  "cca3": "MNP",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   15.2,
+   145.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MZ",
+  "cca3": "MOZ",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -18.25,
+   35
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MR",
+  "cca3": "MRT",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   20,
+   -12
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MS",
+  "cca3": "MSR",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   16.75,
+   -62.2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MQ",
+  "cca3": "MTQ",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   14.666667,
+   -61
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MU",
+  "cca3": "MUS",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -20.28333333,
+   57.55
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "MW",
+  "cca3": "MWI",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -13.5,
+   34
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "MY",
+  "cca3": "MYS",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   2.5,
+   112.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "YT",
+  "cca3": "MYT",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -12.83333333,
+   45.16666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NA",
+  "cca3": "NAM",
+  "region": "Africa",
+  "subregion": "Southern Africa",
+  "latlng": [
+   -22,
+   17
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NC",
+  "cca3": "NCL",
+  "region": "Oceania",
+  "subregion": "Melanesia",
+  "latlng": [
+   -21.5,
+   165.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NE",
+  "cca3": "NER",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   16,
+   8
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "NF",
+  "cca3": "NFK",
+  "region": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "latlng": [
+   -29.03333333,
+   167.95
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NG",
+  "cca3": "NGA",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   10,
+   8
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NI",
+  "cca3": "NIC",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   13,
+   -85
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NU",
+  "cca3": "NIU",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -19.03333333,
+   -169.86666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NL",
+  "cca3": "NLD",
+  "region": "Europe",
+  "subregion": "Western Europe",
+  "latlng": [
+   52.5,
+   5.75
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NO",
+  "cca3": "NOR",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   62,
+   10
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NP",
+  "cca3": "NPL",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   28,
+   84
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "NR",
+  "cca3": "NRU",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   -0.53333333,
+   166.91666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "NZ",
+  "cca3": "NZL",
+  "region": "Oceania",
+  "subregion": "Australia and New Zealand",
+  "latlng": [
+   -41,
+   174
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "OM",
+  "cca3": "OMN",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   21,
+   57
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PK",
+  "cca3": "PAK",
+  "region": "Asia",
+  "subregion": "Southern Asia",
+  "latlng": [
+   30,
+   70
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PA",
+  "cca3": "PAN",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   9,
+   -80
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PN",
+  "cca3": "PCN",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -25.06666666,
+   -130.1
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PE",
+  "cca3": "PER",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -10,
+   -76
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PH",
+  "cca3": "PHL",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   13,
+   122
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PW",
+  "cca3": "PLW",
+  "region": "Oceania",
+  "subregion": "Micronesia",
+  "latlng": [
+   7.5,
+   134.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PG",
+  "cca3": "PNG",
+  "region": "Oceania",
+  "subregion": "Melanesia",
+  "latlng": [
+   -6,
+   147
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PL",
+  "cca3": "POL",
+  "region": "Europe",
+  "subregion": "Central Europe",
+  "latlng": [
+   52,
+   20
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PR",
+  "cca3": "PRI",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.25,
+   -66.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "KP",
+  "cca3": "PRK",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   40,
+   127
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PT",
+  "cca3": "PRT",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   39.5,
+   -8
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PY",
+  "cca3": "PRY",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -23,
+   -58
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "PS",
+  "cca3": "PSE",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   31.9,
+   35.2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PF",
+  "cca3": "PYF",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -15,
+   -140
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "QA",
+  "cca3": "QAT",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   25.5,
+   51.25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "RE",
+  "cca3": "REU",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -21.15,
+   55.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "RO",
+  "cca3": "ROU",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   46,
+   25
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "RU",
+  "cca3": "RUS",
+  "region": "Europe",
+  "subregion": "Eastern Europe",
+  "latlng": [
+   60,
+   100
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "RW",
+  "cca3": "RWA",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -2,
+   30
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "SA",
+  "cca3": "SAU",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   25,
+   45
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SD",
+  "cca3": "SDN",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   15,
+   30
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SN",
+  "cca3": "SEN",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   14,
+   -14
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SG",
+  "cca3": "SGP",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   1.36666666,
+   103.8
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "GS",
+  "cca3": "SGS",
+  "region": "Antarctic",
+  "subregion": "",
+  "latlng": [
+   -54.5,
+   -37
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SJ",
+  "cca3": "SJM",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   78,
+   20
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SB",
+  "cca3": "SLB",
+  "region": "Oceania",
+  "subregion": "Melanesia",
+  "latlng": [
+   -8,
+   159
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SL",
+  "cca3": "SLE",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   8.5,
+   -11.5
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SV",
+  "cca3": "SLV",
+  "region": "Americas",
+  "subregion": "Central America",
+  "latlng": [
+   13.83333333,
+   -88.91666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SM",
+  "cca3": "SMR",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   43.76666666,
+   12.41666666
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "SO",
+  "cca3": "SOM",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   10,
+   49
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "PM",
+  "cca3": "SPM",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   46.83333333,
+   -56.33333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "RS",
+  "cca3": "SRB",
+  "region": "Europe",
+  "subregion": "Southeast Europe",
+  "latlng": [
+   44,
+   21
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "SS",
+  "cca3": "SSD",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   7,
+   30
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "ST",
+  "cca3": "STP",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   1,
+   7
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SR",
+  "cca3": "SUR",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   4,
+   -56
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SK",
+  "cca3": "SVK",
+  "region": "Europe",
+  "subregion": "Central Europe",
+  "latlng": [
+   48.66666666,
+   19.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "SI",
+  "cca3": "SVN",
+  "region": "Europe",
+  "subregion": "Central Europe",
+  "latlng": [
+   46.11666666,
+   14.81666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SE",
+  "cca3": "SWE",
+  "region": "Europe",
+  "subregion": "Northern Europe",
+  "latlng": [
+   62,
+   15
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SZ",
+  "cca3": "SWZ",
+  "region": "Africa",
+  "subregion": "Southern Africa",
+  "latlng": [
+   -26.5,
+   31.5
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "SX",
+  "cca3": "SXM",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.033333,
+   -63.05
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SC",
+  "cca3": "SYC",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -4.58333333,
+   55.66666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "SY",
+  "cca3": "SYR",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   35,
+   38
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TC",
+  "cca3": "TCA",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   21.75,
+   -71.58333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TD",
+  "cca3": "TCD",
+  "region": "Africa",
+  "subregion": "Middle Africa",
+  "latlng": [
+   15,
+   19
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "TG",
+  "cca3": "TGO",
+  "region": "Africa",
+  "subregion": "Western Africa",
+  "latlng": [
+   8,
+   1.16666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TH",
+  "cca3": "THA",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   15,
+   100
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TJ",
+  "cca3": "TJK",
+  "region": "Asia",
+  "subregion": "Central Asia",
+  "latlng": [
+   39,
+   71
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "TK",
+  "cca3": "TKL",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -9,
+   -172
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TM",
+  "cca3": "TKM",
+  "region": "Asia",
+  "subregion": "Central Asia",
+  "latlng": [
+   40,
+   60
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "TL",
+  "cca3": "TLS",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   -8.83333333,
+   125.91666666
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TO",
+  "cca3": "TON",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -20,
+   -175
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TT",
+  "cca3": "TTO",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   11,
+   -61
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TN",
+  "cca3": "TUN",
+  "region": "Africa",
+  "subregion": "Northern Africa",
+  "latlng": [
+   34,
+   9
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TR",
+  "cca3": "TUR",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   39,
+   35
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TV",
+  "cca3": "TUV",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -8,
+   178
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TW",
+  "cca3": "TWN",
+  "region": "Asia",
+  "subregion": "Eastern Asia",
+  "latlng": [
+   23.5,
+   121
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "TZ",
+  "cca3": "TZA",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -6,
+   35
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "UG",
+  "cca3": "UGA",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   1,
+   32
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "UA",
+  "cca3": "UKR",
+  "region": "Europe",
+  "subregion": "Eastern Europe",
+  "latlng": [
+   49,
+   32
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "UM",
+  "cca3": "UMI",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   19.3,
+   166.633333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "UY",
+  "cca3": "URY",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   -33,
+   -56
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "US",
+  "cca3": "USA",
+  "region": "Americas",
+  "subregion": "North America",
+  "latlng": [
+   38,
+   -97
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "UZ",
+  "cca3": "UZB",
+  "region": "Asia",
+  "subregion": "Central Asia",
+  "latlng": [
+   41,
+   64
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "VA",
+  "cca3": "VAT",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "latlng": [
+   41.9,
+   12.45
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "VC",
+  "cca3": "VCT",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   13.25,
+   -61.2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "VE",
+  "cca3": "VEN",
+  "region": "Americas",
+  "subregion": "South America",
+  "latlng": [
+   8,
+   -66
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "VG",
+  "cca3": "VGB",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.431383,
+   -64.62305
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "VI",
+  "cca3": "VIR",
+  "region": "Americas",
+  "subregion": "Caribbean",
+  "latlng": [
+   18.35,
+   -64.933333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "VN",
+  "cca3": "VNM",
+  "region": "Asia",
+  "subregion": "South-Eastern Asia",
+  "latlng": [
+   16.16666666,
+   107.83333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "VU",
+  "cca3": "VUT",
+  "region": "Oceania",
+  "subregion": "Melanesia",
+  "latlng": [
+   -16,
+   167
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "WF",
+  "cca3": "WLF",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -13.3,
+   -176.2
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "WS",
+  "cca3": "WSM",
+  "region": "Oceania",
+  "subregion": "Polynesia",
+  "latlng": [
+   -13.58333333,
+   -172.33333333
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "YE",
+  "cca3": "YEM",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "latlng": [
+   15,
+   48
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "ZA",
+  "cca3": "ZAF",
+  "region": "Africa",
+  "subregion": "Southern Africa",
+  "latlng": [
+   -29,
+   24
+  ],
+  "landlocked": false
+ },
+ {
+  "cca2": "ZM",
+  "cca3": "ZMB",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -15,
+   30
+  ],
+  "landlocked": true
+ },
+ {
+  "cca2": "ZW",
+  "cca3": "ZWE",
+  "region": "Africa",
+  "subregion": "Eastern Africa",
+  "latlng": [
+   -20,
+   30
+  ],
+  "landlocked": true
+ }
+]

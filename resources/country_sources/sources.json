@@ -1,0 +1,40 @@
+{
+  "retrieved_at_utc": "2026-11-02T16:14:40+00:00",
+  "mledoze": {
+    "url": "https://raw.githubusercontent.com/mledoze/countries/6031f5df137c41c76d180c55a0782185ae3ed05b/countries.json",
+    "commit": "6031f5df137c41c76d180c55a0782185ae3ed05b",
+    "license": "ODbL-1.0",
+    "columns": [
+      "world_region",
+      "world_subregion",
+      "center_lat",
+      "center_lng",
+      "landlocked"
+    ]
+  },
+  "geonames": {
+    "url": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "license": "CC BY 4.0",
+    "columns": [
+      "continent",
+      "neighbors",
+      "languages",
+      "main_language"
+    ]
+  },
+  "wikidata": {
+    "url": "https://query.wikidata.org/sparql",
+    "license": "CC0",
+    "property": "P1622 (driving side)",
+    "query": "SELECT ?item ?iso2 ?sideLabel WHERE {\n  ?item wdt:P297 ?iso2 ;\n        wdt:P1622 ?side .\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\". }\n}",
+    "columns": [
+      "driving_side"
+    ]
+  },
+  "driving_side_overrides": {
+    "AR": {
+      "side": "right",
+      "source": "https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic"
+    }
+  }
+}

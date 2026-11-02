@@ -39,10 +39,12 @@ shared/                 used by both pairs; changed only by agreement
   data.py               Config (all settings), CountryMapper, OSV5MDataset, MetadataDecoder
   models.py             GeoCLIPModel, PredictionRunner, Segmenter, TextDetector, Inpainter
   masking.py            MaskApplier
+  add_country_attributes.py   adds region, neighbour, language and driving-side columns to country_aliases.csv
 pair_a/                 pair A's own .py files (analysis, visualization)
 pair_b/                 pair B's own .py files
 resources/
-  country_aliases.csv   country ids, prompt names, territories, candidate + training-list flags
+  country_aliases.csv   country ids, prompt names, territories, candidate + training-list flags, country attributes
+  country_sources/      saved source files for the country attributes (see "Country attributes")
 notebooks/
   setup_and_test.ipynb  loads everything and checks every part (PASS / WARN / FAIL)
   phase1_AI.ipynb       Phase I analysis of the AI-aided pair
@@ -138,12 +140,45 @@ Normalizations made:
 
 The country-label format of OSV-5M's `test.csv` is checked in the setup notebook; unknown labels are listed there.
 
+## Country attributes
+
+`country_aliases.csv` also holds country-level attributes for grouping and colouring results (e.g. by region,
+neighbours or driving side). **The CSV in git already contains these columns, so nobody needs to run the script.**
+`shared/add_country_attributes.py` records how they were made and can rebuild them.
+
+| Column | Source | Meaning |
+| --- | --- | --- |
+| `world_region`, `world_subregion` | mledoze/countries | Region and subregion, e.g. `Europe` / `Central Europe` |
+| `center_lat`, `center_lng` | mledoze/countries | Approximate centre point of the country (for maps) |
+| `landlocked` | mledoze/countries | 1 = no sea coast |
+| `continent` | GeoNames | `AF`, `AN`, `AS`, `EU`, `NA`, `OC`, `SA` (`NA` = North America) |
+| `neighbors` | GeoNames | Land neighbours as ids separated by `;` (empty for islands) |
+| `languages` | GeoNames | Language codes separated by `;`, regional variants merged (`en-IN` -> `en`) |
+| `main_language` | GeoNames | First entry of `languages`. GeoNames' order, **not necessarily the most spoken** (India -> `en`) |
+| `driving_side` | Wikidata (P1622) | `left` / `right` per country |
+
+- **Snapshot:** retrieved on 2 Nov 2026, mledoze pinned to commit `6031f5d`. The raw files are in
+  `resources/country_sources/`; `sources.json` lists URLs, retrieval time, licences and manual overrides.
+- **Manual fix:** Argentina (`AR`) is set to `right`. Wikidata lists both sides because Argentina switched in 1945.
+  Overrides live in `DRIVING_SIDE_OVERRIDES` in the script, each with a source.
+- **Empty values:** `driving_side` is empty for Antarctica, Bouvet Island and Heard and McDonald Islands
+  (uninhabited, not candidates).
+- **Cross-check:** every country in `DRIVE_SIDE_FIXES` (`shared/data.py`) is `left` in Wikidata.
+- **Not covered:** writing system (Latin, Cyrillic, ...); none of the sources provides it.
+- **Reading the CSV:** use `pd.read_csv(path, keep_default_na=False)` as `CountryMapper` does, otherwise pandas
+  turns `NA` (Namibia, North America) into a missing value.
+- **Rebuilding:** `python -m shared.add_country_attributes --offline` rebuilds from the saved files (same result).
+  Without `--offline` it downloads again; GeoNames and Wikidata change over time, so values may differ. The original
+  columns are never changed, and running it again is safe.
+- **Licences:** mledoze/countries ODbL 1.0, GeoNames CC BY 4.0, Wikidata CC0.
+
 ## Metadata codes
 
 `MetadataDecoder` uses the sources OSV-5M names: Köppen-Geiger climate classes (Beck et al. 2018, codes 0-30) and
 FAO GLC-SHARE land cover (11 classes). OSV-5M does not document its exact numbering, so the setup notebook compares
 the codes in the data with these tables. `drive_side` is decoded from the data itself (the value used by
-left-driving countries means "left"). `road_index` and `soil` are left numeric.
+left-driving countries means "left"). This is OSV-5M's per-image value; the country-level `driving_side` from
+Wikidata is in `country_aliases.csv` (see "Country attributes"). `road_index` and `soil` are left numeric.
 
 Note for Q2: OSV-5M already removed blurry, dark, badly exposed and rotated images, so image-quality categories
 (night, blur) are exploratory.
@@ -173,5 +208,7 @@ images. Neither pair analyses embeddings (similarity, clustering, projections) i
 ## AI use
 
 The AI-aided pair built the shared setup (`shared/`, country table, setup notebook) with AI assistance. It is
-infrastructure only and contains no analysis or visualization. This is recorded in `logs/phase1_ai_log.md`; its
+infrastructure only and contains no analysis or visualization. `shared/add_country_attributes.py` was written by
+pair B with AI assistance before its human-only analysis started; it only collects country attributes from public
+sources. This is recorded in `logs/phase1_ai_log.md`; its
 compatibility with the human-only condition is to be confirmed with the course staff.
