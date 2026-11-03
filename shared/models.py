@@ -41,8 +41,13 @@ METADATA_COLUMNS = ["latitude", "longitude", "country", "region", "sub-region", 
 # ---------------------------------------------------------------------------
 
 def get_device(preference="auto"):
+    """With "auto": NVIDIA GPU (cuda), else Apple GPU (mps), else CPU."""
     if preference == "auto":
-        return "cuda" if torch.cuda.is_available() else "cpu"
+        if torch.cuda.is_available():
+            return "cuda"
+        if torch.backends.mps.is_available():
+            return "mps"
+        return "cpu"
     return preference
 
 
@@ -51,6 +56,8 @@ def free_gpu_memory():
     gc.collect()
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
 
 
 def _fit(image, mode, size, resample, pad_value):
@@ -114,7 +121,9 @@ class GeoCLIPModel:
         self.name = model_name
         self.crop_mode = cfg.crop_mode
         self.device = get_device(cfg.device)
-        self.dtype = torch.float16 if (cfg.half_precision and self.device == "cuda") else torch.float32
+        # fp16 on NVIDIA (cuda) and Apple (mps) GPUs; CPU uses fp32
+        use_half = cfg.half_precision and self.device in ("cuda", "mps")
+        self.dtype = torch.float16 if use_half else torch.float32
 
         self.model = CLIPModel.from_pretrained(model_name, torch_dtype=self.dtype).to(self.device).eval()
         processor = CLIPProcessor.from_pretrained(model_name)
@@ -413,7 +422,8 @@ class TextDetector:
     def __init__(self, cfg):
         import easyocr
 
-        self.reader = easyocr.Reader(cfg.ocr_languages, gpu=get_device(cfg.device) == "cuda")
+        # gpu=True lets EasyOCR pick cuda or mps itself
+        self.reader = easyocr.Reader(cfg.ocr_languages, gpu=get_device(cfg.device) != "cpu")
         self.cache_dir = Path(cfg.data_dir) / "masks"
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 

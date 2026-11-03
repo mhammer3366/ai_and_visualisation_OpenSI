@@ -10,3 +10,6 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 venv/
+
+# Local notes, only for us
+assignment_brief.md

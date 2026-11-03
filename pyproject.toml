@@ -36,13 +36,14 @@ name = "pytorch-rocm"
 url = "https://download.pytorch.org/whl/rocm7.2"
 explicit = true
 
+# The CUDA index has no macOS builds: on a Mac, torch comes from PyPI (with Apple GPU / MPS support)
 [tool.uv.sources]
 torch = [
-    { index = "pytorch-cu128", group = "nvidia" },
+    { index = "pytorch-cu128", group = "nvidia", marker = "sys_platform != 'darwin'" },
     { index = "pytorch-rocm", group = "amd" },
 ]
 torchvision = [
-    { index = "pytorch-cu128", group = "nvidia" },
+    { index = "pytorch-cu128", group = "nvidia", marker = "sys_platform != 'darwin'" },
     { index = "pytorch-rocm", group = "amd" },
 ]
 triton-rocm = { index = "pytorch-rocm", group = "amd" }

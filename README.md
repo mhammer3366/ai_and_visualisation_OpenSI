@@ -67,9 +67,13 @@ so the two approaches can differ.
 2. **PyTorch first, matching your computer.** Run `nvidia-smi` and look at "CUDA Version" in the top right:
    - 12.8 or higher (e.g. RTX 50-series): nothing to do, `requirements.txt` installs the CUDA 12.8 build.
    - lower: update the NVIDIA driver, or install the matching build from [pytorch.org](https://pytorch.org/get-started/locally/) first.
+   - Mac with Apple Silicon: nothing to do. `uv sync` installs the macOS build from PyPI and the models run on the
+     Apple GPU (`mps`, fp16, chosen by `device = "auto"`). Measured on an M5 Pro: StreetCLIP ~15-20 images/s
+     (full test set ~3-4 h), Mask2Former ~0.3 s per image. Results match CPU up to tiny fp16 differences.
    - no NVIDIA GPU: install the CPU build from [pytorch.org](https://pytorch.org/get-started/locally/) first.
      Analysing the shared results works on CPU; segmentation and masking are very slow without a GPU.
-3. `pip install -r requirements.txt` (an already installed PyTorch is kept - see if the pytorch req. is compatible).
+3. `uv sync` (uses `uv.lock`, creates `.venv/`), or `pip install -r requirements.txt` (an already installed PyTorch
+   is kept - see if the pytorch req. is compatible).
    Check: `python -c "import torch; print(torch.__version__, torch.cuda.is_available())"`, where `True` means the GPU is used.
 4. Open `notebooks/setup_and_test.ipynb`, adjust the settings in the first code cell if needed, and run all cells.
    Every check should print PASS (WARN is a hint, FAIL needs fixing).
