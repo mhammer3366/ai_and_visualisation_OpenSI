@@ -24,6 +24,10 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 13 | 2026-11-04 | "Start Q2 (overconfidence, training coverage)" | Three parts: calibration of StreetCLIP vs original CLIP, per-country gap (mean confidence - accuracy), and accuracy gain CLIP -> StreetCLIP compared with the paper's training list | Accepted | Uses only the prediction tables (black box); CLIP is the same model before the Street View fine-tuning | Code in `pair_a/q2_confidence.py`, Q2 section in `phase1_AI.ipynb` |
 | 14 | 2026-11-04 | Q2 first results | AI noticed that "Georgia" is never right: 0 of 290 real Georgia images, but 2436 predictions. Most come from the US state Georgia and nearby southern states | Accepted after check | Region column: 401 of 451 US images from the state Georgia are predicted as Georgia. The prompt name means both a country and a US state | Biggest single source of confident errors (US -> Georgia: 1126 images with probability >= 0.8) |
 | 15 | 2026-11-04 | Precision per predicted country | Namibia had precision 0 with 909 predictions. AI first suspected the known "NA" read-as-missing bug | Rejected after check | The raw `test.csv` has no Namibia images at all | Added `n_true` column: countries without test images are never right by design |
+| 16 | 2026-11-04 | "Start Q4 (environment)" | AI showed that environment and country are mixed up (about half of "sparse vegetation" is Australia). Proposed to show every effect twice: raw, and within-country (category accuracy minus its own country's accuracy) | Accepted | A plain table per climate would mostly show which countries live in that climate | Climate effect almost gone inside countries; built-up areas +6.7 points |
+| 17 | 2026-11-04 | Urban vs. rural proxy | AI checked `road_index` as an urban measure | Rejected | It has only one value per country (no spread inside a country) | Urban proxy is land cover "artificial surfaces" (built-up) |
+| 18 | 2026-11-04 | Urban map | First map showed Libya (+68 points) and Afghanistan (+62) as the strongest urban effects. AI checked the camera sequences | Modified | Libya's 54 urban images come from only 7 sequences | Map only shows countries with >= 10 urban sequences; effect also checked with one vote per sequence (+8.3 points) |
+| 19 | 2026-11-04 | First Q4 plot | AI's own plot showed within-country values for mangroves (-24 points) and snow, based on one country and without error bar | Corrected | Found only by looking at the rendered plot, not the table | Within-country values need >= 5 countries |
 
 ## Failure patterns observed
 
@@ -34,6 +38,7 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - **Trusting a faulty source extraction** (#9): the AI reported "errors" in the paper that were artifacts of its
   own text extraction, and stated them confidently.
 - **Over-engineering** (#6): the AI's first setup had far more files, checks and abstractions than needed.
+- **Plots that hide weak evidence** (#19): the first Q4 plot showed a value based on one country, with no error bar. Only seen when we looked at the rendered plot.
 
 ## Best practices so far
 
@@ -43,3 +48,5 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - Ask for the simplest version first; add structure only when it is needed.
 - When the AI uses another download source, check the files against the lockfile hashes.
 - Before blaming a known bug, check the raw data first.
+- Look at every rendered plot, not only the numbers.
+- Count independent units (countries, camera sequences), not only images.
