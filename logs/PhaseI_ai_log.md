@@ -33,6 +33,11 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 22 | 2026-11-04 | Distance to the sea | AI's earlier Q4 finding was "no effect". The new expected-vs-actual plot showed the coast 4.4 points worse (US coast 38 % vs. US overall 63 %) | Corrected | The two measures weight countries differently: per image the coast is worse, per country the effect is small | Findings updated. The first plot also zoomed the axis to 47-55 %, now at least 20 points wide |
 | 23 | 2026-11-04 | Training coverage | AI checked the original CLIP per group: list countries 41.5 % vs. 28.1 % already before fine-tuning | Accepted | Shows that most of the accuracy gap (13 of 18 points) is not from the Street View training | Q2 finding: the gain does not clearly confirm the paper's list |
 | 24 | 2026-11-04 | "Is the Georgia error our problem or in the pretrained model?" | AI checked the prompt ("A Street View photo in Georgia.", from the paper) and compared with the original CLIP: it already sends 1,962 US images to Georgia, StreetCLIP 2,346 (634 vs. 1,126 with >= 80 % confidence) | Accepted | Same prompt for both models, so the error comes from pretraining and fine-tuning makes it stronger | New CLIP vs. StreetCLIP table in the Georgia part, Q2 finding updated |
+| 25 | 2026-11-04 | "Analyse my plan for Q1" (difficulty, confusions, shared attributes, attractors, geography) | Plan is sound. Added: Wilson CI and a minimum n per country, keep direction (A -> B is not B -> A), prediction ratio for attractors, a within-continent baseline, two meanings of "cluster" (errors land near the truth vs. hard countries border each other, Moran's I), km distance for islands | Modified | Additions handle small samples and confounding (continent also decides driving side and language). We kept km distance only if the data has coordinates | Final Q1 analysis plan |
+| 26 | 2026-11-04 | How to show confusions | Top-N pair table plus each country's top 3 confusions, one heatmap of the ~20-30 most confused countries instead of one matrix per continent. Top-k only as extra evidence, not repeated for every table | Accepted | A Europe matrix is still too big; top-k answers "what is plausible", not "what is predicted" | Confusion tables in Q1 |
+| 27 | 2026-11-04 | "Attractor = big training class?" | AI asked for training image counts per country | Not possible | StreetCLIP's training counts are not public | Listed as a Q1 limitation |
+| 28 | 2026-11-04 | Code structure for Q1 (our design: builder -> analyser -> reporter, keep the image-level table for GPS) | One data bundle from the builder, one config (min n, k values, seed, permutations), fixed seed, no printing in the analyser | Accepted | Same structure for all parts, results reproducible | `q1_errorstructure.py` with `Q1Config`, `Q1DataBuilder`, `Q1Analyser`, `Q1Reporter` |
+| 29 | 2026-11-05 | Q1 code | Baseline: replace the predicted country of each error by a random country (all countries, or same continent), report lift with bootstrap CI and permutation p-value. Tested on made-up data with broken rows; this found two bugs in its own code (one short top-k list switched off top-3/5 for all rows; p-value shown when there was no data) and AI fixed them | Accepted, not yet run on real data | Our column names were not known yet | Next: set column names, check the validation report (unmatched names, neighbour codes) |
 
 ## Failure patterns observed
 
@@ -45,6 +50,7 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - **Over-engineering** (#6): the AI's first setup had far more files, checks and abstractions than needed.
 - **Plots that hide weak evidence** (#19): the first Q4 plot showed a value based on one country, with no error bar. Only seen when we looked at the rendered plot.
 - **Titles that claim more than the plot shows** (#21, #22): short "finding" titles were wrong twice. A zoomed axis also made a 3 point effect look big.
+- **Edge cases in new code** (#29): one bad row was enough to switch off top-3/5 for the whole dataset. Only found by a test with deliberately broken rows.
 
 ## Best practices so far
 
@@ -58,3 +64,5 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - Count independent units (countries, camera sequences), not only images.
 - Write the finding in the plot title, then check it against the rendered plot and the numbers.
 - Use random example images, not hand-picked ones.
+- Compare every "shared attribute" against random pairs, and also within the same continent.
+- Test new code on small made-up data with broken rows (unknown country, short list) before the real run.
