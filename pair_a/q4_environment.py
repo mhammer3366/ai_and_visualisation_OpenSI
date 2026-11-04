@@ -4,22 +4,27 @@ Do accuracy and confidence vary with climate, land cover, distance to the sea, o
 urban vs. rural setting? Uses only the prediction tables in results/shared/ (black box).
 
 Main idea: environment and country are mixed up (e.g. half of "sparse vegetation" is
-Australia). So every effect is shown twice:
-    raw             pooled accuracy per category (what a simple table shows)
+Australia). So every category gets:
+    actual          pooled accuracy of the category (what a simple table shows)
+    expected        accuracy we would expect from its country mix alone:
+                    sum over countries (share of the country in the category * accuracy of the country)
     within-country  accuracy of the category minus the accuracy of its own country,
-                    averaged over countries (the country mix is removed)
+                    averaged over countries (every country counts once)
+If actual = expected, the country mix explains the difference, not the environment.
 """
 import numpy as np
 import pandas as pd
 import plotly.express as px
-from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 from .q2_confidence import wilson_ci
+from .viz import show_table
 
 MIN_N = 30      # categories / countries with fewer images: flagged as low_n
 MIN_CELL = 20   # a country needs this many images in a category for the within-country comparison
 MIN_COUNTRIES = 5   # within-country value only shown if at least this many countries support it
 MIN_SEQ = 10    # urban map: a country needs this many built-up camera sequences
+MIN_PLOT = 500  # plots: only categories with at least this many images (small ones stay in the tables)
 
 CLIMATE_GROUPS = {"A": "A tropical", "B": "B arid", "C": "C temperate",
                   "D": "D continental", "E": "E polar"}
@@ -48,8 +53,15 @@ def effect_table(env, var):
     t["gap"] = t["conf"] - t["acc"]   # > 0: overconfident (see Q2)
     t["low_n"] = t["n"] < MIN_N
 
-    # Within-country: compare each (country, category) cell with the country's own average
+    # Expected from the country mix: mean over the images of their country's accuracy
     country = p.groupby("country_id").agg(c_acc=("correct", "mean"), c_conf=("prob_1", "mean"))
+    t["expected"] = p["country_id"].map(country["c_acc"]).groupby(p[var]).mean()
+    t["effect"] = t["acc"] - t["expected"]   # > 0: better than its country mix predicts
+    by_cat = p.groupby(var)["country_id"]
+    t["top_country"] = by_cat.agg(lambda s: s.value_counts().index[0])   # biggest country in the category
+    t["top_share"] = by_cat.agg(lambda s: s.value_counts(normalize=True).iloc[0])
+
+    # Within-country: compare each (country, category) cell with the country's own average
     cells = p.groupby(["country_id", var]).agg(n=("correct", "size"), acc=("correct", "mean"),
                                                conf=("prob_1", "mean")).reset_index()
     cells = cells[cells["n"] >= MIN_CELL].join(country, on="country_id")
@@ -63,6 +75,15 @@ def effect_table(env, var):
     return t.join(w)
 
 
+def show_effects(table):
+    """Readable version of effect_table (grey rows: fewer than MIN_N images)."""
+    cols = {"n": "Images", "countries": "Countries", "acc": "Accuracy", "expected": "Expected from country mix",
+            "effect": "Actual - expected", "w_acc": "Within-country difference",
+            "share_better": "Countries above own average"}
+    return show_table(table, cols, pct=["acc", "expected", "share_better"], pts=["effect", "w_acc"],
+                      ci=("acc", "ci_low", "ci_high"), grey=table["low_n"])
+
+
 def per_sequence(env, var):
     """One row per (country, camera sequence, category): images of one drive count only once.
     Use as input for effect_table to check that a result is not driven by a few sequences."""
@@ -70,24 +91,62 @@ def per_sequence(env, var):
         correct=("correct", "mean"), prob_1=("prob_1", "mean")).reset_index()
 
 
-def plot_effects(table, title, order=None):
-    """Left: raw accuracy with CI. Right: within-country difference with CI. Hover shows n and countries."""
-    t = table[~table["low_n"]].reset_index()
-    name = t.columns[0]
-    t = t.set_index(name).loc[order or t.sort_values("acc")[name].tolist()].reset_index()
-    fig = make_subplots(rows=1, cols=2, shared_yaxes=True, horizontal_spacing=0.04,
-                        subplot_titles=("raw accuracy (pooled)",
-                                        f"within-country difference (countries with >= {MIN_CELL} images)"))
-    hover = "%{y}<br>n = %{customdata[0]:,}<br>countries = %{customdata[1]}<extra></extra>"
-    fig.add_scatter(x=t["acc"], y=t[name], mode="markers", row=1, col=1, name="raw",
+def plot_expected(table, title, order=None):
+    """Dumbbell: grey ring = expected from the country mix, blue dot = actual accuracy (with CI).
+    Short line: the country mix explains the category. Long line: the environment itself matters."""
+    t = table[table["n"] >= MIN_PLOT]
+    t = t.loc[order[::-1] if order else t.sort_values("acc").index]   # first row of order at the top
+    y = t.index.tolist()
+    lines_x, lines_y = [], []
+    for cat, r in t.iterrows():
+        lines_x += [r["expected"], r["acc"], None]
+        lines_y += [cat, cat, None]
+    hover = ("%{y}<br>actual %{customdata[0]:.1%} | expected %{customdata[1]:.1%}<br>"
+             "images %{customdata[2]:,} | countries %{customdata[3]}<br>"
+             "biggest country %{customdata[4]} (%{customdata[5]:.0%})<extra></extra>")
+    data = t[["acc", "expected", "n", "countries", "top_country", "top_share"]]
+    fig = go.Figure()
+    fig.add_scatter(x=lines_x, y=lines_y, mode="lines", line=dict(color="#bbb", width=3), hoverinfo="skip",
+                    showlegend=False)
+    fig.add_scatter(x=t["expected"], y=y, mode="markers", name="expected from country mix",
+                    marker=dict(size=11, color="white", line=dict(color="#777", width=2)),
+                    customdata=data, hovertemplate=hover)
+    fig.add_scatter(x=t["acc"], y=y, mode="markers", name="actual accuracy",
+                    marker=dict(size=11, color="#2171b5"),
                     error_x=dict(type="data", symmetric=False, array=t["ci_high"] - t["acc"],
-                                 arrayminus=t["acc"] - t["ci_low"]),
-                    customdata=t[["n", "countries"]], hovertemplate=hover)
-    fig.add_scatter(x=t["w_acc"], y=t[name], mode="markers", row=1, col=2, name="within-country",
-                    error_x=dict(type="data", array=t["w_acc_ci"]),
-                    customdata=t[["n", "w_countries"]], hovertemplate=hover)
-    fig.add_vline(x=0, line_dash="dash", line_color="gray", row=1, col=2)
-    fig.update_layout(title=title, showlegend=False, height=120 + 40 * len(t), width=950)
+                                 arrayminus=t["acc"] - t["ci_low"], color="#2171b5"),
+                    customdata=data, hovertemplate=hover)
+    # x axis spans at least 20 points, so small differences also look small
+    lo = min(t["ci_low"].min(), t["expected"].min())
+    hi = max(t["ci_high"].max(), t["expected"].max())
+    mid, half = (lo + hi) / 2, max(hi - lo, 0.2) / 2 + 0.01
+    fig.update_xaxes(range=[mid - half, mid + half])
+    fig.update_layout(title=title, xaxis_title=f"accuracy (categories with >= {MIN_PLOT} images)",
+                      xaxis_tickformat=".0%", width=900, height=170 + 38 * len(t),
+                      legend=dict(orientation="h", yanchor="bottom", y=1.0, xanchor="left", x=0))
+    return fig
+
+
+def plot_country_mix(env, var, title, order=None, top=3):
+    """Who is in each category? Share of the 3 biggest countries (names in the bars) and the rest."""
+    p = env[env[var].notna()]
+    counts = p[var].value_counts()
+    cats = order or counts[counts >= MIN_PLOT].index.tolist()
+    rows = []
+    for cat in cats:
+        shares = p.loc[p[var] == cat, "country_id"].value_counts(normalize=True)
+        for rank, (c, share) in enumerate(shares.head(top).items(), 1):
+            rows.append({var: cat, "part": f"country {rank}", "country": c, "share": share})
+        rows.append({var: cat, "part": "all other", "country": "", "share": 1 - shares.head(top).sum()})
+    m = pd.DataFrame(rows)
+    colors = {"country 1": "#08519c", "country 2": "#4292c6", "country 3": "#9ecae1", "all other": "#e5e5e5"}
+    fig = px.bar(m, x="share", y=var, color="part", orientation="h", text="country",
+                 color_discrete_map=colors, category_orders={var: cats},
+                 hover_data={"share": ":.0%", "part": False})
+    fig.update_traces(textposition="inside", insidetextanchor="middle")
+    fig.update_layout(title=title, xaxis_tickformat=".0%", xaxis_title="share of images", yaxis_title="",
+                      legend_title_text="", width=900, height=170 + 38 * len(cats),
+                      legend=dict(orientation="h", yanchor="bottom", y=1.0, xanchor="left", x=0))
     return fig
 
 
@@ -103,6 +162,13 @@ def urban_table(env, countries):
     return t.sort_values("diff")
 
 
+def urban_examples(env, country, n=4, seed=42):
+    """Random (not hand-picked) images of one country: n built-up, then n other."""
+    q = env[env["country_id"] == country]
+    return pd.concat([q[q["urban"] == u].sample(n, random_state=seed)
+                      for u in ["urban (built-up)", "rural / other"]])
+
+
 def plot_urban_map(table):
     """World map: accuracy in built-up areas minus accuracy elsewhere, per country.
     Countries with fewer than MIN_SEQ built-up sequences are left out (too few independent drives)."""
@@ -115,5 +181,5 @@ def plot_urban_map(table):
                         title=f"Urban minus rural accuracy (blue = better in built-up areas, "
                               f">= {MIN_SEQ} built-up sequences)")
     fig.update_geos(projection_rotation_lon=0)
-    fig.update_layout(width=950, height=520, margin=dict(l=10, r=10, t=60, b=10))
+    fig.update_layout(width=900, height=520, margin=dict(l=10, r=10, t=60, b=10))
     return fig

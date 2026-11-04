@@ -28,6 +28,11 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 17 | 2026-11-04 | Urban vs. rural proxy | AI checked `road_index` as an urban measure | Rejected | It has only one value per country (no spread inside a country) | Urban proxy is land cover "artificial surfaces" (built-up) |
 | 18 | 2026-11-04 | Urban map | First map showed Libya (+68 points) and Afghanistan (+62) as the strongest urban effects. AI checked the camera sequences | Modified | Libya's 54 urban images come from only 7 sequences | Map only shows countries with >= 10 urban sequences; effect also checked with one vote per sequence (+8.3 points) |
 | 19 | 2026-11-04 | First Q4 plot | AI's own plot showed within-country values for mangroves (-24 points) and snow, based on one country and without error bar | Corrected | Found only by looking at the rendered plot, not the table | Within-country values need >= 5 countries |
+| 20 | 2026-11-04 | "Be honest, can we make the explainability better?" | AI said the tables were raw data dumps and the plots did not state their message. Proposed: readable tables, an "expected from country mix vs. actual" plot, a "who is in each category" bar chart, titles that say the finding, random example images | Accepted | We have to present and defend the results | New `pair_a/viz.py`, Georgia map, gain box plot, Q2 and Q4 findings cells |
+| 21 | 2026-11-04 | Titles that state the finding | AI's first title said "One pair dominates: US -> Georgia" | Corrected | The rendered bar chart showed US -> Canada almost as big (995 vs. 1126) | Title now: two US pairs are 40 % of all confident errors |
+| 22 | 2026-11-04 | Distance to the sea | AI's earlier Q4 finding was "no effect". The new expected-vs-actual plot showed the coast 4.4 points worse (US coast 38 % vs. US overall 63 %) | Corrected | The two measures weight countries differently: per image the coast is worse, per country the effect is small | Findings updated. The first plot also zoomed the axis to 47-55 %, now at least 20 points wide |
+| 23 | 2026-11-04 | Training coverage | AI checked the original CLIP per group: list countries 41.5 % vs. 28.1 % already before fine-tuning | Accepted | Shows that most of the accuracy gap (13 of 18 points) is not from the Street View training | Q2 finding: the gain does not clearly confirm the paper's list |
+| 24 | 2026-11-04 | "Is the Georgia error our problem or in the pretrained model?" | AI checked the prompt ("A Street View photo in Georgia.", from the paper) and compared with the original CLIP: it already sends 1,962 US images to Georgia, StreetCLIP 2,346 (634 vs. 1,126 with >= 80 % confidence) | Accepted | Same prompt for both models, so the error comes from pretraining and fine-tuning makes it stronger | New CLIP vs. StreetCLIP table in the Georgia part, Q2 finding updated |
 
 ## Failure patterns observed
 
@@ -39,6 +44,7 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
   own text extraction, and stated them confidently.
 - **Over-engineering** (#6): the AI's first setup had far more files, checks and abstractions than needed.
 - **Plots that hide weak evidence** (#19): the first Q4 plot showed a value based on one country, with no error bar. Only seen when we looked at the rendered plot.
+- **Titles that claim more than the plot shows** (#21, #22): short "finding" titles were wrong twice. A zoomed axis also made a 3 point effect look big.
 
 ## Best practices so far
 
@@ -50,3 +56,5 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - Before blaming a known bug, check the raw data first.
 - Look at every rendered plot, not only the numbers.
 - Count independent units (countries, camera sequences), not only images.
+- Write the finding in the plot title, then check it against the rendered plot and the numbers.
+- Use random example images, not hand-picked ones.
