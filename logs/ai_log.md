@@ -1,4 +1,4 @@
-# AI interaction record – Phase I (AI-aided pair)
+# AI interaction record - Phase I (AI-aided pair)
 
 Record interactions that influenced the analysis or show strengths and limits of AI assistance.
 Add a row right after it happens; it takes 30 seconds and becomes the reflection report later.
@@ -19,6 +19,8 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 8 | 2026-11-01 | OCR settings | Filter text boxes by recognition confidence 0.3 | Rejected (by external review) | Would silently drop non-Latin text | Detection only |
 | 9 | 2026-11-01 | Paper country list | AI reported typos/duplicates in the paper's list | Rejected | They came from a broken PDF-to-text conversion, not the paper | List taken from the HTML version |
 | 10 | 2026-11-01 | Dataset size | AI estimated ~10 GB | Corrected | Repository lists 9.43 GB + 116 MB | Sizes in README |
+| 11 | 2026-11-03 | "Can we run the setup on my Mac?" | AI checked `uv.lock`: no macOS PyTorch builds, and `get_device` never used the Mac GPU. Proposed a Mac path (PyTorch from PyPI on macOS, `mps` device) | Accepted | Umut only has a Mac (no NVIDIA GPU) | Setup also runs on Mac. Tested: same top-1 as CPU, ~20 images/s with fp16 (full run ~3 h). Our own test script first crashed on macOS (missing `__main__` guard), AI found and fixed it. Kept on branch `mac-setup`, not merged: we later moved all work to the homeserver (row 12) |
+| 12 | 2026-11-04 | "Set up my homeserver (RTX 4070 Ti Super, WSL2) and run the baselines" | AI found that only PyPI downloads were slow on the server (0.2 MB/s, other sites 35+ MB/s). It took 9 CUDA packages from the PyTorch mirror and checked each file against the SHA-256 in `uv.lock` | Accepted | `uv sync` was stuck for 30 min | Server ready in about 1 h; StreetCLIP and CLIP runs take about 23 min each |
 
 ## Failure patterns observed
 
@@ -36,3 +38,4 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - Have a second reviewer (person or separate AI) look at the plan before building.
 - Ask "what would make this result depend on our own choices?" for every default.
 - Ask for the simplest version first; add structure only when it is needed.
+- When the AI uses another download source, check the files against the lockfile hashes.
