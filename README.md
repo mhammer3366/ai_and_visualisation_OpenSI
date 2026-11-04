@@ -28,7 +28,7 @@ The pairs swap roles after Phase I, so code folders are named after the pair, no
 | Pair | Members | Phase I | Phase II |
 | --- | --- | --- | --- |
 | `pair_a` | *Manuel Lisa - k12205828; Umut  - kxxx* | *AI-aided* | *the other role* |
-| `pair_b` | *Maximilian Hammer - kxxx; Florian Weigelt - kxxx* | *human-only* | *the other role* |
+| `pair_b` | *Maximilian Hammer - kxxx; Florian Weigelt - k12210011* | *human-only* | *the other role* |
 
 ## Repository
 
