@@ -38,6 +38,7 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 27 | 2026-11-04 | "Attractor = big training class?" | AI asked for training image counts per country | Not possible | StreetCLIP's training counts are not public | Listed as a Q1 limitation |
 | 28 | 2026-11-04 | Code structure for Q1 (our design: builder -> analyser -> reporter, keep the image-level table for GPS) | One data bundle from the builder, one config (min n, k values, seed, permutations), fixed seed, no printing in the analyser | Accepted | Same structure for all parts, results reproducible | `q1_errorstructure.py` with `Q1Config`, `Q1DataBuilder`, `Q1Analyser`, `Q1Reporter` |
 | 29 | 2026-11-05 | Q1 code | Baseline: replace the predicted country of each error by a random country (all countries, or same continent), report lift with bootstrap CI and permutation p-value. Tested on made-up data with broken rows; this found two bugs in its own code (one short top-k list switched off top-3/5 for all rows; p-value shown when there was no data) and AI fixed them | Accepted, not yet run on real data | Our column names were not known yet | Next: set column names, check the validation report (unmatched names, neighbour codes) |
+| 30 | 2026-11-05 | "What is still open in Q2 and Q4?" | AI found that the CLIP vs. StreetCLIP Georgia table was never run: the findings quoted its numbers, but the notebook had no output for it. It also saw that the low-precision table had no finding | Accepted | Every number in the findings must have a visible output we can show | Cell run, all numbers matched. New finding on labels that are never right, and an open questions line for Q2 |
 
 ## Failure patterns observed
 
@@ -66,3 +67,4 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - Use random example images, not hand-picked ones.
 - Compare every "shared attribute" against random pairs, and also within the same continent.
 - Test new code on small made-up data with broken rows (unknown country, short list) before the real run.
+- Before handing in, check that every number in the findings has a visible output in the notebook.
