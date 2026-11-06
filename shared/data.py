@@ -23,6 +23,10 @@ from PIL import Image
 # ---------------------------------------------------------------------------
 # Settings
 # ---------------------------------------------------------------------------
+CONTINENT_NAMES = {
+    "AF": "Africa", "AS": "Asia", "EU": "Europe", "NA": "North America",
+    "SA": "South America", "OC": "Oceania", "AN": "Antarctica",
+}
 
 @dataclass
 class Config:
@@ -42,7 +46,7 @@ class Config:
     streetclip_model: str = "geolocal/StreetCLIP"
     use_clip_baseline: bool = False      # True -> original CLIP is downloaded once (~1.7 GB)
     clip_model: str = "openai/clip-vit-large-patch14-336"
-    prompt_template: str = "A Street View photo in {country}."
+    prompt_template: str = "A Street View photo in {country}, {subregion}."
     candidate_list: str = "v1"           # "v1" or "all_test_locations"
     crop_mode: str = "center_crop"       # "center_crop", "pad" or "squash"
     batch_size: int = 32
@@ -161,8 +165,14 @@ class CountryMapper:
         raise ValueError(f"unknown candidate list {version!r}")
 
     def prompts(self, iso2_list, template):
-        """Prompt text for each candidate, e.g. 'A Street View photo in Germany.'"""
-        return [template.format(country=self.prompt_name(c)) for c in iso2_list]
+        """Prompt text for each candidate, e.g. 'A Street View photo in Germany, Western Europe.'"""
+        texts = []
+        for c in iso2_list:
+            continent = CONTINENT_NAMES[self.table.loc[c, "continent"]]
+            subregion = self.table.loc[c, "world_subregion"] or continent   # empty only for Antarctic territories
+            texts.append(template.format(country=self.prompt_name(c),
+                                        continent=continent, subregion=subregion))
+        return texts
 
 
 # ---------------------------------------------------------------------------

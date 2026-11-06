@@ -862,14 +862,32 @@ class Q1Reporter:
     def __init__(self, analyser: Q1Analyser):
         self.a = analyser
         self.d = analyser.data
+        self.country_names = self.d.meta["prompt_name"].to_dict()
 
     # ------------------------------------------------------------------ tables
-    @staticmethod
-    def show(obj, title: str | None = None, n: int | None = 15):
+    def show(self, obj, title: str | None = None, n: int | None = 15):
         if title:
             print(f"\n=== {title} ===")
-        if isinstance(obj, pd.DataFrame) and n:
-            obj = obj.head(n)
+
+        if isinstance(obj, pd.DataFrame):
+            obj = obj.copy()
+
+            # Convert country codes to readable names (display only)
+            country_cols = [
+                "country", "true_country", "pred_country",
+                "fp_top_source", "easiest_country", "hardest_country"
+            ]
+
+            for col in country_cols:
+                if col in obj.columns:
+                    obj[col] = obj[col].map(
+                        lambda c: f"{self.country_names.get(c, c)} ({c})"
+                        if pd.notna(c) else c
+                    )
+
+            if n:
+                obj = obj.head(n)
+
         try:
             from IPython.display import display
             display(obj)
@@ -901,7 +919,11 @@ class Q1Reporter:
         xerr = None
         if k == 1:
             xerr = [rate - df["ci_low_top1"], df["ci_high_top1"] - rate]
-        ax.barh([f"{c} (n={n})" for c, n in zip(df["country"], df["n"])], rate, xerr=xerr, capsize=2)
+        labels = [
+            f"{self.country_names.get(c, c)} ({c}, n={n})"
+            for c, n in zip(df["country"], df["n"])
+        ]
+        ax.barh(labels, rate, xerr=xerr, capsize=2)
         ax.set_xlabel(f"Top-{k} error rate")
         ax.set_title(f"Hardest countries (top-{k}, n >= {self.a._min_n(min_n)})")
         fig.tight_layout()
@@ -953,9 +975,931 @@ class Q1Reporter:
         import matplotlib.pyplot as plt
         df = self.a.attractors(min_n).head(top).iloc[::-1]
         fig, ax = plt.subplots(figsize=(7, 0.3 * len(df) + 1.5))
-        ax.barh(df["country"], df["prediction_ratio"])
+        labels = [f"{self.country_names.get(c, c)} ({c}, n={n})" for c, n in zip(df["country"], df["n"])]
+        ax.barh(labels, df["prediction_ratio"])
         ax.axvline(1, color="k", lw=1, ls="--")
         ax.set_xlabel("Prediction ratio (# predicted / # true)")
         ax.set_title("Attractor countries")
         fig.tight_layout()
         return fig
+
+
+# =============================================================================
+# 4) Interactive dashboard (Dash + Plotly)
+#    Needs: dash >= 2.11, plotly. Imported only when Q1Dashboard is used.
+# =============================================================================
+_CONTINENT_NAMES = {"AF": "Africa", "AN": "Antarctica", "AS": "Asia", "EU": "Europe",
+                    "NA": "North America", "OC": "Oceania", "SA": "South America"}
+
+_FEATURE_LABELS = {
+    "same_continent": "Same continent",
+    "same_subregion": "Same subregion",
+    "is_neighbor": "Neighbours (share a border)",
+    "hop_distance": "Border hops (mean, lower = closer)",
+    "km_distance": "Distance in km (mean, lower = closer)",
+    "same_driving_side": "Same driving side",
+    "same_landlocked": "Same landlocked status",
+    "shares_languages": "Share a language",
+}
+
+_COL_LABELS = {
+    "name": "Country", "true_name": "True country", "pred_name": "Predicted country",
+    "continent_name": "Continent", "n": "n images", "n_true": "n true images",
+    "count": "Count", "p_pred_given_true": "% of origin images",
+    "p_pred_given_true_error": "% of origin errors",
+    "p_true_given_pred_error": "% of incoming FPs", "reverse_count": "Reverse count",
+    "reverse_rate": "Reverse rate (% of B's images -> A)", "asymmetry": "Asymmetry",
+    "n_predicted": "n predicted", "fp": "FP", "tp": "TP", "precision": "Precision",
+    "prediction_ratio": "Prediction ratio", "fp_distinct_origins": "Distinct FP origins",
+    "fp_top_source_name": "Top FP source", "fp_top_source_share": "Top source share",
+    "fp_source_entropy_bits": "FP source entropy (bits)",
+}
+
+_GREY_SMALL = "#b3b3b3"     # n < min_n
+_GREY_NODATA = "#e8e8e8"    # no test images
+_PHANTOM = "#6a3d9a"        # predicted but never in the test set
+_ORIGIN = "#1b9e77"         # selected true country (confusion mode)
+_TARGET = "#d95f02"         # selected predicted country (attractor mode)
+_SEQ_ERR = "OrRd"           # error rates
+_SEQ_CONF = "Purples"       # confusion strength
+_SEQ_ATTR = "Blues"         # attractor / FP strength
+
+
+def _pct(x, d=1):
+    return "–" if _is_missing(x) else f"{x:.{d}%}"
+
+
+def _num(x, d=2):
+    return "–" if _is_missing(x) else f"{x:,.{d}f}"
+
+
+class Q1Dashboard:
+    """Interactive Q1 dashboard on top of Q1Analyser (no new statistics, only views).
+
+    Five modes: 1 country difficulty, 2 confusion pairs, 3 attractors,
+    4 shared characteristics, 5 geographic clustering.
+
+    Internal keys are the metadata country codes (e.g. ISO2), maps use ISO3,
+    the UI shows full names. Baselines are computed once and cached.
+
+    Usage (Jupyter):  Q1Dashboard(ana).run()            # inline under the cell
+                      Q1Dashboard(ana).run(mode="tab")  # new browser tab
+    """
+
+    MODES = [("difficulty", "1 · Country difficulty"),
+             ("confusion", "2 · Confusion pairs"),
+             ("attractors", "3 · Attractor countries"),
+             ("shared", "4 · Shared characteristics"),
+             ("geography", "5 · Geographic clustering")]
+
+    CONF_METRICS = {"count": ("Count (images)", False),
+                    "p_pred_given_true": ("% of origin images", True),
+                    "p_pred_given_true_error": ("% of origin errors", True)}
+    ATTR_OVERVIEW = {"ratio": "Prediction ratio (log scale)",
+                     "fp": "False positives (count)",
+                     "precision": "Precision"}
+    ATTR_SELECTED = {"count": ("FP count", False),
+                     "p_true_given_pred_error": ("% of incoming FPs", True),
+                     "p_pred_given_true": ("Origin confusion rate (% of origin images)", True)}
+
+    # ------------------------------------------------------------------ setup
+    def __init__(self, analyser: Q1Analyser, name_col: str = "prompt_name",
+                 iso3_col: str = "iso3", n_permutations: int | None = None,
+                 precompute: bool = True):
+        import plotly.graph_objects as go
+        from plotly.subplots import make_subplots
+        self.go, self.make_subplots = go, make_subplots
+
+        self.a, self.d = analyser, analyser.data
+        self.cfg = self.d.config
+        self.n_perm = n_permutations
+        meta = self.d.meta
+
+        def col_map(col):
+            if col not in meta.columns:
+                return {}
+            return {c: v for c, v in meta[col].items() if not _is_missing(v) and str(v).strip()}
+
+        names = col_map(name_col)
+        self.name = {c: str(names.get(c, c)) for c in meta.index}
+        self.iso3 = {c: str(v).strip() for c, v in col_map(iso3_col).items()}
+        if not self.iso3:   # fallback: keys already are ISO3
+            self.iso3 = {c: c for c in meta.index if isinstance(c, str) and len(c) == 3}
+        self.from_iso3 = {v: k for k, v in self.iso3.items()}
+
+        self.coords = {}
+        if self.cfg.meta_lat_col in meta.columns and self.cfg.meta_lon_col in meta.columns:
+            lat = pd.to_numeric(meta[self.cfg.meta_lat_col], errors="coerce")
+            lon = pd.to_numeric(meta[self.cfg.meta_lon_col], errors="coerce")
+            self.coords = {c: (lat[c], lon[c]) for c in meta.index
+                           if not (np.isnan(lat[c]) or np.isnan(lon[c]))}
+
+        self.continent = {c: v for c, v in meta["continent"].items()}
+
+        cs = self.d.country_stats.copy()
+        cs["name"] = cs["country"].map(self.name).fillna(cs["country"])
+        cs["continent_name"] = cs["continent"].map(self._cont_name)
+        cs["fp_top_source_name"] = cs["fp_top_source"].map(lambda c: self.name.get(c, c) if isinstance(c, str) else c)
+        self.cs = cs
+        self.cs_idx = cs.set_index("country")
+
+        p = self.d.confusion_pairs.copy()
+        p["true_name"] = p["true_country"].map(lambda c: self.name.get(c, c))
+        p["pred_name"] = p["pred_country"].map(lambda c: self.name.get(c, c))
+        n_by = self.cs_idx["n"]
+        p["reverse_rate"] = p["reverse_count"] / p["pred_country"].map(n_by).replace(0, np.nan)
+        self.pairs = p
+
+        missing_cont = int(cs.loc[cs["in_test"], "continent"].isna().sum())
+        if missing_cont:
+            warnings.warn(f"{missing_cont} test countries have no continent. If North America is "
+                          f"missing: the code 'NA' was probably read as NaN (use keep_default_na=False).")
+        no_iso3 = [c for c in cs.loc[cs["in_test"], "country"] if c not in self.iso3]
+        if no_iso3:
+            warnings.warn(f"No ISO3 code for {no_iso3}: these countries are not drawn on the map.")
+
+        self._cache: dict = {}
+        if precompute:
+            self.precompute()
+
+    def _cont_name(self, c):
+        return "Unknown" if _is_missing(c) else _CONTINENT_NAMES.get(c, c)
+
+    def label(self, code):
+        return self.name.get(code, code)
+
+    # ------------------------------------------------------------------ cached statistics
+    def _cached(self, key, fn):
+        if key not in self._cache:
+            self._cache[key] = fn()
+        return self._cache[key]
+
+    def _baseline(self, within, weighting):
+        return self._cached(("fb", within, weighting), lambda: self.a.feature_baseline(
+            within_continent=within, weighting=weighting, n_permutations=self.n_perm))
+
+    def _locality(self, weighting):
+        return self._cached(("loc", weighting), lambda: self.a.region_locality(weighting))
+
+    def _hops(self, weighting):
+        if "hop_distance" not in self.d.pair_matrices:
+            return None
+        return self._cached(("hop", weighting), lambda: self.a.hop_distribution(weighting=weighting))
+
+    def _moran(self, k, min_n):
+        if "is_neighbor" not in self.d.pair_matrices:
+            return None
+        return self._cached(("moran", k, min_n), lambda: self.a.morans_i(
+            k=k, min_n=min_n, n_permutations=self.n_perm))
+
+    def precompute(self):
+        """Run all permutation-based statistics once (dashboard callbacks then only filter)."""
+        for within in (False, True):
+            for w in ("error", "pair"):
+                self._baseline(within, w)
+        for w in ("error", "pair"):
+            self._locality(w)
+            self._hops(w)
+        for k in self.d.ks:
+            self._moran(k, self.cfg.min_n)
+
+    # ------------------------------------------------------------------ small helpers
+    def _filter_cont(self, df, conts, col="continent"):
+        return df[df[col].isin(conts)] if conts else df
+
+    def _nodata_layer(self, conts):
+        in_test = set(self.cs.loc[self.cs["in_test"], "country"])
+        codes = [c for c in self.d.meta.index if c not in in_test
+                 and (not conts or self.continent.get(c) in conts)]
+        return self._grey(codes, [f"<b>{self.label(c)}</b><br>No test images" for c in codes],
+                          _GREY_NODATA)
+
+    def _grey(self, codes, text, color):
+        return dict(kind="grey", codes=list(codes), text=list(text), color=color)
+
+    def _values(self, codes, z, text, colorscale, zmin, zmax, cbar, tickvals=None,
+                ticktext=None, tickformat=None):
+        return dict(kind="value", codes=list(codes), z=list(z), text=list(text),
+                    colorscale=colorscale, zmin=zmin, zmax=zmax,
+                    cbar=dict(title=cbar, tickvals=tickvals, ticktext=ticktext, tickformat=tickformat))
+
+    def _empty(self, msg, height=300):
+        fig = self.go.Figure()
+        fig.add_annotation(text=msg, showarrow=False, font=dict(size=14, color="#666"),
+                           x=0.5, y=0.5, xref="paper", yref="paper")
+        fig.update_layout(xaxis_visible=False, yaxis_visible=False, height=height,
+                          margin=dict(l=10, r=10, t=30, b=10), plot_bgcolor="white")
+        return fig
+
+    def _map(self, layers, title, selected=None, fill=None, dots=False, note=None):
+        """layers: value / grey layers. fill=(code, colour, label) colours one country.
+        selected: outlined + star at its centre."""
+        go = self.go
+        fig = go.Figure()
+        for L in layers:
+            keep = [i for i, c in enumerate(L["codes"]) if c in self.iso3]
+            if not keep:
+                continue
+            codes = [L["codes"][i] for i in keep]
+            locs = [self.iso3[c] for c in codes]
+            text = [L["text"][i] for i in keep]
+            common = dict(locations=locs, locationmode="ISO-3", text=text, customdata=codes,
+                          hovertemplate="%{text}<extra></extra>",
+                          marker_line_color="white", marker_line_width=0.4)
+            if L["kind"] == "grey":
+                fig.add_trace(go.Choropleth(z=[0] * len(locs), showscale=False,
+                                            colorscale=[[0, L["color"]], [1, L["color"]]], **common))
+                continue
+            z = [L["z"][i] for i in keep]
+            cb = {k: v for k, v in L["cbar"].items() if v is not None and k != "title"}
+            cb.update(title=dict(text=L["cbar"]["title"]), thickness=12, len=0.75)
+            fig.add_trace(go.Choropleth(z=z, zmin=L["zmin"], zmax=L["zmax"],
+                                        colorscale=L["colorscale"], colorbar=cb, **common))
+            if dots and self.coords:
+                d = [(c, t, v) for c, t, v in zip(codes, text, z) if c in self.coords]
+                if d:
+                    fig.add_trace(go.Scattergeo(
+                        lat=[self.coords[c][0] for c, _, _ in d], lon=[self.coords[c][1] for c, _, _ in d],
+                        mode="markers", text=[t for _, t, _ in d], customdata=[c for c, _, _ in d],
+                        hovertemplate="%{text}<extra></extra>", showlegend=False,
+                        marker=dict(size=7, color=[v for _, _, v in d], colorscale=L["colorscale"],
+                                    cmin=L["zmin"], cmax=L["zmax"], line=dict(width=0.6, color="#333"))))
+        if fill and fill[0] in self.iso3:
+            code, colour, lab = fill
+            fig.add_trace(go.Choropleth(
+                locations=[self.iso3[code]], locationmode="ISO-3", z=[0], showscale=False,
+                colorscale=[[0, colour], [1, colour]], text=[lab], customdata=[code],
+                hovertemplate="%{text}<extra></extra>", marker_line_color="white"))
+        if selected and selected in self.iso3:
+            fig.add_trace(go.Choropleth(
+                locations=[self.iso3[selected]], locationmode="ISO-3", z=[0], showscale=False,
+                colorscale=[[0, "rgba(0,0,0,0)"], [1, "rgba(0,0,0,0)"]],
+                marker_line_color="black", marker_line_width=2.5, hoverinfo="skip"))
+        if selected and selected in self.coords:
+            lat, lon = self.coords[selected]
+            fig.add_trace(go.Scattergeo(lat=[lat], lon=[lon], mode="markers", hoverinfo="skip",
+                                        showlegend=False,
+                                        marker=dict(symbol="star", size=14, color="black")))
+        fig.update_geos(projection_type="natural earth", showcountries=True, countrycolor="white",
+                        showland=True, landcolor="#f5f5f5", showframe=False, showcoastlines=False)
+        fig.update_layout(title=dict(text=title, x=0.01, font=dict(size=15)), height=470,
+                          margin=dict(l=0, r=0, t=45, b=0), showlegend=False)
+        if note:
+            fig.add_annotation(text=note, showarrow=False, x=0, y=-0.02, xref="paper", yref="paper",
+                               xanchor="left", font=dict(size=11, color="#555"))
+        return fig
+
+    def _hbar(self, labels, values, codes=None, title="", xtitle="", color="#555",
+              selected=None, err=None, pct=False, log=False, xrange=None, vline=None,
+              hover=None, height=300):
+        go = self.go
+        colors = [("#000000" if (codes is not None and c == selected) else color)
+                  for c in (codes if codes is not None else [None] * len(labels))]
+        bar = dict(x=list(values), y=list(labels), orientation="h", marker_color=colors,
+                   customdata=list(codes) if codes is not None else None)
+        if hover is not None:
+            bar.update(text=list(hover), hovertemplate="%{text}<extra></extra>", textposition="none")
+        if err is not None:
+            bar["error_x"] = dict(type="data", symmetric=False, array=list(err[1]),
+                                  arrayminus=list(err[0]), thickness=1, width=2)
+        fig = go.Figure(go.Bar(**bar))
+        fig.update_yaxes(autorange="reversed", automargin=True)
+        fig.update_xaxes(title=xtitle, type="log" if log else "linear",
+                         tickformat=".0%" if pct else None)
+        if xrange is not None:
+            fig.update_xaxes(range=xrange)
+        if vline is not None and len(labels):
+            self._ref_line(fig, vline, list(labels))
+        fig.update_layout(title=dict(text=title, x=0.01, font=dict(size=13)),
+                          height=max(height, 22 * len(labels) + 90),
+                          margin=dict(l=10, r=10, t=40, b=40), plot_bgcolor="white")
+        return fig
+
+    def _ref_line(self, fig, x, labels):
+        """Dashed vertical line at x across categorical y labels (safe on log axes)."""
+        fig.add_trace(self.go.Scatter(x=[x, x], y=[labels[0], labels[-1]], mode="lines", hoverinfo="skip",
+                                      showlegend=False, line=dict(color="black", dash="dash", width=1)))
+
+    def _obs_vs_base(self, df, title, label_col="category", pct=True, height=300):
+        go = self.go
+        fig = go.Figure([
+            go.Bar(name="Errors (observed)", x=df[label_col], y=df["observed_share"], marker_color="#d62728"),
+            go.Bar(name="Random pairs (baseline)", x=df[label_col], y=df["baseline_share"], marker_color="#9e9e9e"),
+        ])
+        fig.update_layout(barmode="group", title=dict(text=title, x=0.01, font=dict(size=13)),
+                          height=height, margin=dict(l=10, r=10, t=40, b=40), plot_bgcolor="white",
+                          legend=dict(orientation="h", y=1.12, x=1, xanchor="right"))
+        if pct:
+            fig.update_yaxes(tickformat=".0%")
+        return fig
+
+    def _table(self, df, pct=(), dec=()):
+        from dash.dash_table import FormatTemplate
+        from dash.dash_table.Format import Format, Scheme
+        df = df.replace([np.inf, -np.inf], np.nan)
+        cols = []
+        for c in df.columns:
+            col = {"name": _COL_LABELS.get(c, c.replace("_", " ")), "id": c}
+            if c in pct:
+                col.update(type="numeric", format=FormatTemplate.percentage(1))
+            elif c in dec:
+                col.update(type="numeric", format=Format(precision=2, scheme=Scheme.fixed))
+            elif pd.api.types.is_numeric_dtype(df[c]):
+                col["type"] = "numeric"
+            cols.append(col)
+        data = df.astype(object).where(df.notna(), None).to_dict("records")
+        return data, cols
+
+    # ================================================================== views
+    # each view returns: main fig, side1 fig, side2 fig or None, table df, (pct cols, dec cols), finding (markdown)
+
+    # ------------------------------------------------------------------ 1 difficulty
+    def view_difficulty(self, sel, k, conts, min_n, auto, dots):
+        rate = f"error_rate_top{k}"
+        cs = self._filter_cont(self.cs[self.cs["in_test"]], conts)
+        elig, small = cs[cs["n"] >= min_n], cs[cs["n"] < min_n]
+        level = int(round(self.cfg.ci_level * 100))
+
+        def hov(r, flag=""):
+            s = (f"<b>{r['name']}</b> ({r['country']})<br>{r['continent_name']}<br>"
+                 f"n = {r['n']:,}<br>Top-{k} error: {_pct(r[rate])}")
+            if k == 1:
+                s += f"<br>{level}% CI: {_pct(r['ci_low_top1'])} – {_pct(r['ci_high_top1'])}"
+            return s + flag
+
+        layers = [self._nodata_layer(conts),
+                  self._grey(small["country"], [hov(r, f"<br><i>n < {min_n}: not ranked</i>")
+                                                for _, r in small.iterrows()], _GREY_SMALL),
+                  self._values(elig["country"], elig[rate], [hov(r) for _, r in elig.iterrows()],
+                               _SEQ_ERR, None if auto else 0, None if auto else 1,
+                               f"Top-{k}<br>error rate", tickformat=".0%")]
+        main = self._map(layers, f"Top-{k} error rate per country", selected=sel, dots=dots,
+                         note=f"Dark grey: n < {min_n} (not ranked) · light grey: no test images")
+
+        top = elig.sort_values(rate, ascending=False).head(20)
+        err = None
+        if k == 1:
+            err = (top[rate] - top["ci_low_top1"], top["ci_high_top1"] - top[rate])
+        side1 = self._hbar([f"{n} (n={m})" for n, m in zip(top["name"], top["n"])], top[rate],
+                           top["country"], f"20 hardest countries (top-{k}, n ≥ {min_n})",
+                           f"Top-{k} error rate", "#d6604d", sel, err, pct=True,
+                           xrange=None if auto else [0, 1])
+
+        rc = self.a.region_comparison("continent", k, eligible_only=True, min_n=min_n)
+        rc.index = [self._cont_name(c) for c in rc.index]
+        go = self.go
+        side2 = go.Figure([
+            go.Bar(name="Macro (mean of countries)", x=rc.index, y=rc["macro_error_rate"],
+                   error_y=dict(type="data", array=rc["macro_std"].fillna(0)), marker_color="#d6604d"),
+            go.Bar(name="Micro (all images pooled)", x=rc.index, y=rc["micro_error_rate"], marker_color="#f4a582"),
+        ])
+        side2.update_layout(barmode="group", height=300, plot_bgcolor="white",
+                            title=dict(text=f"Continents (top-{k}, n ≥ {min_n})", x=0.01, font=dict(size=13)),
+                            margin=dict(l=10, r=10, t=40, b=40),
+                            legend=dict(orientation="h", y=1.15, x=1, xanchor="right"))
+        side2.update_yaxes(tickformat=".0%", range=None if auto else [0, 1])
+
+        tk = self.a.topk_comparison(min_n)
+        tk = tk[tk["country"].isin(elig["country"])]
+        ks = self.d.ks
+        tk = tk.merge(self.cs[["country", "name", "continent_name", "ci_low_top1", "ci_high_top1"]], on="country")
+        kmax = max(ks)
+        cols = ["name", "country", "continent_name", "n", "error_rate_top1", "ci_low_top1", "ci_high_top1"] + \
+               [f"error_rate_top{x}" for x in ks if x > 1] + \
+               ([f"recovered_in_top{kmax}"] if kmax > 1 else [])
+        table = tk[cols].sort_values(f"error_rate_top{k}", ascending=False)
+        pct_cols = [c for c in cols if c.startswith(("error_rate", "ci_", "recovered"))]
+
+        lines = []
+        if len(elig):
+            h, e = elig.loc[elig[rate].idxmax()], elig.loc[elig[rate].idxmin()]
+            lines.append(f"**Hardest:** {h['name']} – {_pct(h[rate])} top-{k} error (n = {h['n']:,}). "
+                         f"**Easiest:** {e['name']} – {_pct(e[rate])} (n = {e['n']:,}).")
+        if len(rc) > 1:
+            lines.append(f"**Continents (macro):** highest {rc['macro_error_rate'].idxmax()} "
+                         f"({_pct(rc['macro_error_rate'].max())}), lowest {rc['macro_error_rate'].idxmin()} "
+                         f"({_pct(rc['macro_error_rate'].min())}).")
+        rho = self.a.topk_comparison(min_n).attrs.get("spearman", {})
+        if rho:
+            lines.append("**Top-1 vs top-k ranking (Spearman ρ):** " +
+                         ", ".join(f"{key.replace('top1_vs_', '')} {v:.2f}" for key, v in rho.items()))
+        if len(small):
+            lines.append(f"{len(small)} {'country' if len(small) == 1 else 'countries'} with n < {min_n} "
+                         f"{'is' if len(small) == 1 else 'are'} dark grey and not ranked.")
+        if sel is not None and sel in self.cs_idx.index:
+            r = self.cs_idx.loc[sel]
+            if r["n"] >= min_n and sel in set(elig["country"]):
+                rank = int((elig[rate] > r[rate]).sum()) + 1
+                lines.append(f"**Selected {self.label(sel)}:** rank {rank} of {len(elig)}, "
+                             f"top-{k} error {_pct(r[rate])} (n = {int(r['n']):,}).")
+            elif r["n"] > 0:
+                lines.append(f"**Selected {self.label(sel)}:** only {int(r['n'])} images (< {min_n}), "
+                             f"top-{k} error {_pct(r[rate])} – not reliable.")
+        return main, side1, side2, table, (pct_cols, []), "  \n".join(lines)
+
+    # ------------------------------------------------------------------ 2 confusion pairs
+    def view_confusion(self, sel, conts, min_n, metric, dots):
+        mlabel, is_pct = self.CONF_METRICS[metric]
+        fmt = (lambda v: _pct(v)) if is_pct else (lambda v: f"{int(v):,}")
+        P = self.pairs
+        tcols = ["true_name", "pred_name", "true_country", "pred_country", "count", "n_true",
+                 "p_pred_given_true", "p_pred_given_true_error", "reverse_count", "reverse_rate",
+                 "asymmetry"] + [f for f in self.d.pair_matrices if f in P.columns]
+        pct_cols = ["p_pred_given_true", "p_pred_given_true_error", "p_true_given_pred_error", "reverse_rate"]
+        dec_cols = ["asymmetry", "hop_distance", "km_distance"]
+
+        if sel is None or sel not in set(P["true_country"]):
+            origins = self._filter_cont(self.cs[self.cs["in_test"]], conts)
+            p = P[P["true_country"].isin(origins["country"]) & (P["n_true"] >= min_n)]
+            top = p.sort_values("count", ascending=False).drop_duplicates("true_country")
+            small = origins[origins["n"] < min_n]
+            text = [f"<b>{r.true_name}</b><br>Strongest confusion: {r.pred_name}<br>"
+                    f"{int(r.count):,} images · {_pct(r.p_pred_given_true)} of its images · "
+                    f"{_pct(r.p_pred_given_true_error)} of its errors" for r in top.itertuples()]
+            layers = [self._nodata_layer(conts),
+                      self._grey(small["country"], [f"<b>{n}</b><br>n = {m} < {min_n}" for n, m in
+                                                    zip(small["name"], small["n"])], _GREY_SMALL),
+                      self._values(top["true_country"], top[metric], text, _SEQ_CONF, 0, None,
+                                   f"Strongest<br>destination<br>({mlabel})",
+                                   tickformat=".0%" if is_pct else None)]
+            main = self._map(layers, f"Strongest confusion per origin country – {mlabel}",
+                             dots=dots, note="Click a country (or search above) to see where its images go")
+            rk = p.sort_values(metric, ascending=False).head(15)
+            side1 = self._hbar([f"{a} → {b}" for a, b in zip(rk["true_name"], rk["pred_name"])], rk[metric],
+                               rk["true_country"], f"Strongest directional pairs ({mlabel})", mlabel,
+                               "#756bb1", pct=is_pct,
+                               hover=[f"{a} → {b}<br>{int(c):,} images · {_pct(x)} of {a}'s images · "
+                                      f"reverse {int(r):,}" for a, b, c, x, r in
+                                      zip(rk["true_name"], rk["pred_name"], rk["count"],
+                                          rk["p_pred_given_true"], rk["reverse_count"])])
+            table = p.sort_values(metric, ascending=False)[tcols].head(500)
+            lines = []
+            if len(p):
+                s = p.iloc[0]
+                lines.append(f"**Strongest pair (count):** {s['true_name']} → {s['pred_name']}: "
+                             f"{int(s['count']):,} images ({_pct(s['p_pred_given_true'])} of all "
+                             f"{s['true_name']} images, {_pct(s['p_pred_given_true_error'])} of its errors).")
+                s2 = p.loc[p["p_pred_given_true"].idxmax()]
+                lines.append(f"**Strongest pair (% of origin images):** {s2['true_name']} → {s2['pred_name']}: "
+                             f"{_pct(s2['p_pred_given_true'])}.")
+            if sel is not None:
+                lines.append(f"{self.label(sel)} has no top-1 errors or no test images.")
+            lines.append("Top-1 predictions only. Raw counts and percentages are separate metrics (switch above).")
+            return main, side1, None, table, (pct_cols, dec_cols), "  \n".join(lines)
+
+        p = P[P["true_country"] == sel].sort_values(metric, ascending=False)
+        r0 = self.cs_idx.loc[sel]
+        text = [f"<b>{self.label(sel)} → {r.pred_name}</b><br>{int(r.count):,} images<br>"
+                f"{_pct(r.p_pred_given_true)} of {self.label(sel)}'s images<br>"
+                f"{_pct(r.p_pred_given_true_error)} of its errors<br>"
+                f"Reverse ({r.pred_name} → {self.label(sel)}): {int(r.reverse_count):,}"
+                f" ({_pct(r.reverse_rate)} of {r.pred_name}'s images)" for r in p.itertuples()]
+        layers = [self._values(p["pred_country"], p[metric], text, _SEQ_CONF, 0, None,
+                               mlabel.replace(" ", "<br>", 1), tickformat=".0%" if is_pct else None)]
+        main = self._map(layers, f"Where {self.label(sel)}'s images are wrongly predicted – {mlabel}",
+                         selected=sel, dots=dots,
+                         fill=(sel, _ORIGIN, f"<b>{self.label(sel)}</b> (origin)<br>n = {int(r0['n']):,}, "
+                                             f"top-1 error {_pct(r0['error_rate_top1'])}"),
+                         note="Green = selected true country · predictions outside its region are always shown")
+        top = p.head(12)
+        side1 = self._hbar(top["pred_name"], top[metric], top["pred_country"],
+                           f"Top destinations of {self.label(sel)} ({mlabel})", mlabel, "#756bb1",
+                           pct=is_pct, hover=[f"{b}: {fmt(v)}" for b, v in zip(top["pred_name"], top[metric])])
+        go = self.go
+        side2 = go.Figure([
+            go.Bar(name=f"{self.label(sel)} → B", y=top["pred_name"], x=top["p_pred_given_true"],
+                   orientation="h", marker_color="#756bb1"),
+            go.Bar(name=f"B → {self.label(sel)}", y=top["pred_name"], x=top["reverse_rate"],
+                   orientation="h", marker_color="#bcbddc"),
+        ])
+        side2.update_layout(barmode="group", height=max(300, 30 * len(top) + 90), plot_bgcolor="white",
+                            title=dict(text="Both directions (% of the origin's images)", x=0.01, font=dict(size=13)),
+                            margin=dict(l=10, r=10, t=40, b=40),
+                            legend=dict(orientation="h", y=1.1, x=1, xanchor="right"))
+        side2.update_yaxes(autorange="reversed", automargin=True)
+        side2.update_xaxes(tickformat=".0%")
+
+        lines = [f"**{self.label(sel)}:** {int(r0['n']):,} images, {int(r0['errors_top1']):,} top-1 errors "
+                 f"({_pct(r0['error_rate_top1'])}), spread over {len(p)} predicted countries."]
+        if r0["n"] < min_n:
+            lines.append(f"⚠ Only {int(r0['n'])} images (< {min_n}): treat with caution.")
+        if len(p):
+            t = p.sort_values("count", ascending=False).iloc[0]
+            lines.append(f"**Top destination:** {t['pred_name']} – {int(t['count']):,} images "
+                         f"({_pct(t['p_pred_given_true'])} of all images, {_pct(t['p_pred_given_true_error'])} "
+                         f"of errors). Reverse: {int(t['reverse_count']):,} ({_pct(t['reverse_rate'])} of "
+                         f"{t['pred_name']}'s images).")
+            top3 = p.sort_values("count", ascending=False).head(3)["p_pred_given_true_error"].sum()
+            lines.append(f"Top 3 destinations take {_pct(top3)} of its errors.")
+        return main, side1, side2, p[tcols], (pct_cols, dec_cols), "  \n".join(lines)
+
+    # ------------------------------------------------------------------ 3 attractors
+    def view_attractors(self, sel, conts, min_n, overview, selm, dots):
+        cs, P = self.cs, self.pairs
+        pct_cols = ["precision", "fp_top_source_share", "p_true_given_pred_error", "p_pred_given_true"]
+        dec_cols = ["prediction_ratio", "fp_source_entropy_bits"]
+
+        def hov(r):
+            return (f"<b>{r['name']}</b> ({r['country']})<br>True images: {int(r['n']):,} · "
+                    f"predicted: {int(r['n_predicted']):,}<br>FP: {int(r['fp']):,} · precision "
+                    f"{_pct(r['precision'])}<br>Prediction ratio: {_num(r['prediction_ratio'])}<br>"
+                    f"FP origins: {int(r['fp_distinct_origins'])} · top source "
+                    f"{r['fp_top_source_name'] if isinstance(r['fp_top_source_name'], str) else '–'} "
+                    f"({_pct(r['fp_top_source_share'])})")
+
+        if sel is None or sel not in set(P["pred_country"]):
+            pred = cs[cs["n_predicted"] > 0]
+            elig = pred[pred["n"] >= min_n]
+            small = pred[(pred["n"] > 0) & (pred["n"] < min_n)]
+            phantom = pred[pred["n"] == 0]
+            if overview == "ratio":
+                z = np.log2(np.clip(elig["prediction_ratio"].astype(float), 1 / 8, 8))
+                vl = self._values(elig["country"], z, [hov(r) for _, r in elig.iterrows()], "RdBu_r", -3, 3,
+                                  "Prediction<br>ratio", tickvals=[-3, -2, -1, 0, 1, 2, 3],
+                                  ticktext=["≤1/8", "1/4", "1/2", "1", "2", "4", "≥8"])
+            elif overview == "fp":
+                vl = self._values(elig["country"], elig["fp"], [hov(r) for _, r in elig.iterrows()],
+                                  _SEQ_ATTR, 0, None, "False<br>positives")
+            else:
+                vl = self._values(elig["country"], elig["precision"], [hov(r) for _, r in elig.iterrows()],
+                                  _SEQ_ATTR, 0, 1, "Precision", tickformat=".0%")
+            layers = [self._grey(small["country"], [hov(r) + f"<br><i>n < {min_n}</i>" for _, r in small.iterrows()],
+                                 _GREY_SMALL),
+                      self._grey(phantom["country"], [hov(r) + "<br><i>No test images: never correct by design</i>"
+                                                      for _, r in phantom.iterrows()], _PHANTOM),
+                      vl]
+            main = self._map(layers, f"Attractor strength – {self.ATTR_OVERVIEW[overview]}", selected=sel,
+                             dots=dots, note="Ratio > 1 = predicted more often than it occurs · purple = predicted "
+                                             "but no test images · click a country to see its FP sources")
+            top = elig.sort_values("prediction_ratio", ascending=False).head(15)
+            side1 = self._hbar(top["name"], top["prediction_ratio"], top["country"],
+                               f"Strongest attractors (prediction ratio, n ≥ {min_n})", "Prediction ratio (log)",
+                               "#3182bd", sel, log=True, vline=1, hover=[hov(r) for _, r in top.iterrows()])
+            side2 = None
+            if len(phantom):
+                ph = phantom.sort_values("n_predicted", ascending=False).head(10)
+                side2 = self._hbar(ph["name"], ph["n_predicted"], ph["country"],
+                                   "Predicted but no test images", "Predictions (all FP)", _PHANTOM, sel,
+                                   hover=[hov(r) for _, r in ph.iterrows()])
+            table = self.a.attractors(min_n).merge(cs[["country", "name", "fp_top_source_name"]], on="country")
+            table = table[["name", "country", "continent", "n", "n_predicted", "tp", "fp", "precision",
+                           "prediction_ratio", "fp_distinct_origins", "fp_top_source_name",
+                           "fp_top_source_share", "fp_source_entropy_bits"]]
+            lines = []
+            if len(elig):
+                s = elig.loc[elig["prediction_ratio"].idxmax()]
+                lines.append(f"**Strongest attractor:** {s['name']} – predicted {_num(s['prediction_ratio'])}× as "
+                             f"often as it occurs (precision {_pct(s['precision'])}, {int(s['fp']):,} FP from "
+                             f"{int(s['fp_distinct_origins'])} countries; top source {s['fp_top_source_name']} "
+                             f"{_pct(s['fp_top_source_share'])}).")
+                f = elig.loc[elig["fp"].idxmax()]
+                lines.append(f"**Most false positives:** {f['name']} – {int(f['fp']):,}.")
+            if len(phantom):
+                lines.append(f"**{len(phantom)} {'country is' if len(phantom) == 1 else 'countries are'} predicted "
+                         f"but {'has' if len(phantom) == 1 else 'have'} no test images** "
+                             f"({int(phantom['n_predicted'].sum()):,} predictions, all wrong by design).")
+            lines.append("Top-1 predictions only.")
+            return main, side1, side2, table, (pct_cols, dec_cols), "  \n".join(lines)
+
+        mlabel, is_pct = self.ATTR_SELECTED[selm]
+        src = P[P["pred_country"] == sel]
+        src = self._filter_cont(src, conts, "true_continent").sort_values(selm, ascending=False)
+        r0 = self.cs_idx.loc[sel]
+        text = [f"<b>{r.true_name} → {self.label(sel)}</b><br>{int(r.count):,} images<br>"
+                f"{_pct(r.p_true_given_pred_error)} of {self.label(sel)}'s FPs<br>"
+                f"{_pct(r.p_pred_given_true)} of {r.true_name}'s images" for r in src.itertuples()]
+        layers = [self._values(src["true_country"], src[selm], text, _SEQ_ATTR, 0, None,
+                               mlabel.split(" (")[0].replace(" ", "<br>", 1),
+                               tickformat=".0%" if is_pct else None)]
+        fill_txt = (f"<b>{self.label(sel)}</b> (predicted)<br>predicted {int(r0['n_predicted']):,}× · "
+                    f"FP {int(r0['fp']):,} · precision {_pct(r0['precision'])}")
+        main = self._map(layers, f"Where the false positives of {self.label(sel)} come from – {mlabel}",
+                         selected=sel, fill=(sel, _TARGET, fill_txt), dots=dots,
+                         note="Orange = selected predicted country" +
+                              (" · origins filtered by continent" if conts else ""))
+        top = src.head(12)
+        side1 = self._hbar(top["true_name"], top[selm], top["true_country"],
+                           f"Top FP sources of {self.label(sel)} ({mlabel})", mlabel, "#3182bd", pct=is_pct)
+        by_c = src.groupby("true_continent")["count"].sum().sort_values(ascending=False)
+        side2 = self._hbar([self._cont_name(c) for c in by_c.index], by_c / max(by_c.sum(), 1), None,
+                           "FP sources by continent (% of shown FPs)", "% of FPs", "#9ecae1", pct=True)
+        tcols = ["true_name", "true_country", "true_continent", "count", "p_true_given_pred_error",
+                 "p_pred_given_true", "n_true", "reverse_count"]
+        lines = [f"**{self.label(sel)}:** predicted {int(r0['n_predicted']):,}× for {int(r0['n']):,} true images "
+                 f"(ratio {_num(r0['prediction_ratio'])}), precision {_pct(r0['precision'])}, "
+                 f"{int(r0['fp']):,} FP from {int(r0['fp_distinct_origins'])} countries."]
+        if r0["n"] == 0:
+            lines.append("No test images: every prediction is wrong by design.")
+        elif r0["n"] < min_n:
+            lines.append(f"⚠ Only {int(r0['n'])} true images (< {min_n}): ratio and precision are unreliable.")
+        if len(src):
+            t3 = src.sort_values("count", ascending=False).head(3)
+            lines.append("**Top sources:** " + ", ".join(
+                f"{a} {int(c):,} ({_pct(s)})" for a, c, s in
+                zip(t3["true_name"], t3["count"], t3["p_true_given_pred_error"])) + ".")
+        return main, side1, side2, src[tcols], (pct_cols, dec_cols), "  \n".join(lines)
+
+    # ------------------------------------------------------------------ 4 shared characteristics
+    def view_shared(self, scope, weighting):
+        within = scope == "within"
+        fb = self._baseline(within, weighting)
+        name = f"{'within-continent' if within else 'global'} baseline, {weighting}-weighted"
+        if fb is None or fb.empty:
+            e = self._empty("No errors available for this baseline")
+            return e, e, None, pd.DataFrame(), ([], []), "No data."
+        fb = fb.copy()
+        fb["label"] = fb["feature"].map(lambda f: _FEATURE_LABELS.get(f, f.replace("_", " ")))
+        fb["significant"] = fb["p_value"] < 0.05
+        go = self.go
+        hover = [f"<b>{r.label}</b><br>Observed: {_pct(r.observed) if r.kind == 'share' else _num(r.observed, 1)}"
+                 f"<br>Random pairs: {_pct(r.baseline) if r.kind == 'share' else _num(r.baseline, 1)}"
+                 f"<br>Lift {_num(r.lift)} ({_num(r.lift_ci_low)} – {_num(r.lift_ci_high)})"
+                 f"<br>p = {r.p_value:.3f} · n known = {int(r.n_known):,}" for r in fb.itertuples()]
+        main = go.Figure(go.Scatter(
+            x=fb["lift"], y=fb["label"], mode="markers", text=hover, hovertemplate="%{text}<extra></extra>",
+            error_x=dict(type="data", symmetric=False, array=fb["lift_ci_high"] - fb["lift"],
+                         arrayminus=fb["lift"] - fb["lift_ci_low"], thickness=1.5, width=4),
+            marker=dict(size=12, color=np.where(fb["significant"], "#d62728", "#9e9e9e"),
+                        symbol=np.where(fb["significant"], "circle", "circle-open"), line=dict(width=2))))
+        self._ref_line(main, 1, list(fb["label"]))
+        main.update_xaxes(type="log", title="Lift = observed / random pairs (log scale)")
+        main.update_yaxes(autorange="reversed", automargin=True)
+        main.update_layout(title=dict(text=f"Do confused pairs share these characteristics? ({name})",
+                                      x=0.01, font=dict(size=15)),
+                           height=470, plot_bgcolor="white", margin=dict(l=10, r=10, t=45, b=60))
+        main.add_annotation(text="Filled red = p < 0.05 · > 1: shared more often than by random pairs · "
+                                 "for distances < 1 = closer than random",
+                            showarrow=False, x=0, y=-0.16, xref="paper", yref="paper", xanchor="left",
+                            font=dict(size=11, color="#555"))
+        sh = fb[fb["kind"] == "share"].rename(columns={"observed": "observed_share", "baseline": "baseline_share"})
+        side1 = self._obs_vs_base(sh, "Share of pairs with the characteristic", label_col="label")
+        dist = fb[fb["kind"] != "share"]
+        side2 = None
+        if len(dist):
+            side2 = self.make_subplots(rows=1, cols=len(dist), subplot_titles=list(dist["label"]))
+            for i, r in enumerate(dist.itertuples(), start=1):
+                side2.add_trace(go.Bar(x=["Errors", "Random"], y=[r.observed, r.baseline],
+                                       marker_color=["#d62728", "#9e9e9e"], showlegend=False), row=1, col=i)
+            side2.update_layout(height=280, plot_bgcolor="white", margin=dict(l=10, r=10, t=50, b=30),
+                                title=dict(text="Mean distance: errors vs random pairs", x=0.01, font=dict(size=13)))
+        table = fb[["label", "kind", "n_errors", "n_known", "observed", "observed_ci_low", "observed_ci_high",
+                    "baseline", "lift", "lift_ci_low", "lift_ci_high", "p_value"]]
+        sig = fb[fb["significant"]].sort_values("lift", ascending=False)
+        lines = [f"**{name.capitalize()}**, {int(fb['n_errors'].iloc[0]):,} "
+                 f"{'errors' if weighting == 'error' else 'distinct pairs'}"
+                 + (" (only errors within the same continent)." if within else ".")]
+        for r in sig.itertuples():
+            if r.kind == "share":
+                lines.append(f"**{r.label}:** {_pct(r.observed)} vs {_pct(r.baseline)} for random pairs "
+                             f"(lift {_num(r.lift)}, p = {r.p_value:.3f}).")
+            else:
+                lines.append(f"**{r.label}:** {_num(r.observed, 1)} vs {_num(r.baseline, 1)} for random pairs "
+                             f"(p = {r.p_value:.3f}).")
+        if not len(sig):
+            lines.append("No characteristic differs significantly from random pairs.")
+        lines.append("Shared ≠ cause: these are associations. Compare global vs within-continent to separate "
+                     "continent effects from the characteristic itself.")
+        return main, side1, side2, table, (["observed", "observed_ci_low", "observed_ci_high", "baseline"],
+                                           ["lift", "lift_ci_low", "lift_ci_high"]), "  \n".join(lines)
+
+    # ------------------------------------------------------------------ 5 geography
+    def view_geography(self, sel, k, min_n, weighting, auto, dots):
+        rate = f"error_rate_top{k}"
+        rc = self.a.region_comparison("subregion", k, eligible_only=True, min_n=min_n)
+        cs = self.cs[self.cs["in_test"]]
+        has = cs[cs["subregion"].isin(rc.index)]
+        rest = cs[~cs["subregion"].isin(rc.index)]
+        text = [f"<b>{r['name']}</b><br>Subregion: {r['subregion']}<br>"
+                f"Subregion macro error: {_pct(rc.at[r['subregion'], 'macro_error_rate'])} "
+                f"({int(rc.at[r['subregion'], 'n_countries'])} countries)<br>"
+                f"Own top-{k} error: {_pct(r[rate])} (n = {int(r['n']):,})" +
+                ("" if r["n"] >= min_n else f"<br><i>n < {min_n}: not in the average</i>")
+                for _, r in has.iterrows()]
+        layers = [self._nodata_layer(None),
+                  self._grey(rest["country"], [f"<b>{n}</b><br>No subregion average (too few countries)"
+                                               for n in rest["name"]], _GREY_SMALL),
+                  self._values(has["country"], has["subregion"].map(rc["macro_error_rate"]), text, _SEQ_ERR,
+                               None if auto else 0, None if auto else 1, f"Subregion<br>top-{k} error",
+                               tickformat=".0%")]
+        main = self._map(layers, f"Top-{k} error rate per subregion (mean of countries with n ≥ {min_n})",
+                         selected=sel, dots=dots)
+        loc = self._locality(weighting)
+        side1 = self._obs_vs_base(loc, "Where do wrong predictions land?")
+        hops = self._hops(weighting)
+        side2 = self._obs_vs_base(hops, "Border hops between true and predicted country") if hops is not None else None
+        table = rc.reset_index().rename(columns={"index": "subregion"})
+        lines = []
+        mi = self._moran(k, min_n)
+        if mi and not _is_missing(mi.get("morans_i")):
+            clustered = mi["p_value"] < 0.05 and mi["morans_i"] > mi["expected_i"]
+            lines.append(f"**Moran's I (top-{k} error, neighbour graph):** {mi['morans_i']:.2f} "
+                         f"(random ≈ {mi['expected_i']:.2f}, p = {mi['p_value']:.3f}, {mi['n_countries']} countries). "
+                         + ("Hard countries tend to border hard countries." if clustered
+                            else "No evidence that hard countries cluster."))
+        elif mi is not None:
+            lines.append("Moran's I: too few connected countries.")
+        if len(loc):
+            r = loc.iloc[0]
+            lines.append(f"**{r['category'].capitalize()}:** {_pct(r['observed_share'])} of errors vs "
+                         f"{_pct(r['baseline_share'])} for random pairs ({_num(r['ratio'])}×).")
+        if hops is not None and len(hops):
+            h = hops.iloc[0]
+            lines.append(f"**Direct neighbour predicted:** {_pct(h['observed_share'])} of errors vs "
+                         f"{_pct(h['baseline_share'])} for random pairs.")
+        lines.append(f"Locality and hops use top-1 errors ({weighting}-weighted). Islands count as 'no land path'.")
+        return main, side1, side2, table, (["macro_error_rate", "macro_std", "micro_error_rate",
+                                            "min_error_rate", "max_error_rate"], []), "  \n".join(lines)
+
+    # ------------------------------------------------------------------ dispatcher
+    def render(self, mode="difficulty", selected=None, k=1, continents=None, min_n=None,
+               conf_metric="count", attr_overview="ratio", attr_selected="count",
+               scope="global", weighting="error", options=()):
+        min_n = self.cfg.min_n if min_n in (None, "") else max(1, int(min_n))
+        conts = list(continents or [])
+        auto, dots = "auto" in (options or []), "dots" in (options or [])
+        if mode == "difficulty":
+            return self.view_difficulty(selected, k, conts, min_n, auto, dots)
+        if mode == "confusion":
+            return self.view_confusion(selected, conts, min_n, conf_metric, dots)
+        if mode == "attractors":
+            return self.view_attractors(selected, conts, min_n, attr_overview, attr_selected, dots)
+        if mode == "shared":
+            return self.view_shared(scope, weighting)
+        return self.view_geography(selected, k, min_n, weighting, auto, dots)
+
+    # ================================================================== Dash app
+    def _code_from_click(self, click):
+        if not click or not click.get("points"):
+            return None
+        pt = click["points"][0]
+        cd = pt.get("customdata")
+        if isinstance(cd, list):
+            cd = cd[0] if cd else None
+        if isinstance(cd, str) and cd in self.name:
+            return cd
+        loc = pt.get("location")
+        return self.from_iso3.get(loc)
+
+    def build_app(self):
+        from dash import Dash, Input, Output, State, ctx, dash_table, dcc, html, no_update
+
+        cfg = self.cfg
+        countries = self.cs[(self.cs["n"] > 0) | (self.cs["n_predicted"] > 0)]
+        country_opts = [{"label": f"{n} ({c})", "value": c}
+                        for n, c in sorted(zip(countries["name"], countries["country"]))]
+        cont_codes = sorted({c for c in self.cs.loc[self.cs["in_test"], "continent"] if not _is_missing(c)},
+                            key=self._cont_name)
+        cont_opts = [{"label": self._cont_name(c), "value": c} for c in cont_codes]
+        graph_cfg = {"displaylogo": False, "toImageButtonOptions": {"format": "png", "scale": 3}}
+        box = {"display": "inline-block", "marginRight": "22px", "verticalAlign": "top"}
+        lab = {"fontSize": "12px", "color": "#555", "fontWeight": "600", "marginBottom": "2px"}
+
+        base_style = {}
+
+        def ctrl(cid, label, comp, width=None, label_id=None):
+            style = dict(box, **({"width": width} if width else {}))
+            base_style[cid] = style
+            return html.Div([html.Div(label, id=label_id, style=lab) if label_id else html.Div(label, style=lab),
+                             comp], id=cid, style=style)
+
+        controls = [
+            ctrl("c-k", "Top-k", dcc.RadioItems(id="k", value=1, inline=True,
+                                                options=[{"label": f" Top-{x} ", "value": x} for x in self.d.ks])),
+            ctrl("c-cont", "Continent", dcc.Dropdown(id="continents", options=cont_opts, value=[], multi=True,
+                                                     placeholder="All continents"), "250px", "cont-label"),
+            ctrl("c-minn", "Min. images per country", dcc.Input(id="min-n", type="number", min=1, step=1,
+                                                               value=cfg.min_n, debounce=True,
+                                                               style={"width": "80px"})),
+            ctrl("c-country", "Country", dcc.Dropdown(id="country", options=country_opts, value=None,
+                                                      placeholder="Search a country…", clearable=True),
+                 "240px", "country-label"),
+            ctrl("c-conf", "Colour / rank by", dcc.RadioItems(
+                id="conf-metric", value="count", inline=True,
+                options=[{"label": f" {v[0]} ", "value": k} for k, v in self.CONF_METRICS.items()])),
+            ctrl("c-attr-o", "Map colour (overview)", dcc.RadioItems(
+                id="attr-over", value="ratio", inline=True,
+                options=[{"label": f" {v} ", "value": k} for k, v in self.ATTR_OVERVIEW.items()])),
+            ctrl("c-attr-s", "Map colour (selected country)", dcc.RadioItems(
+                id="attr-sel", value="count", inline=True,
+                options=[{"label": f" {v[0].split(' (')[0]} ", "value": k} for k, v in self.ATTR_SELECTED.items()])),
+            ctrl("c-scope", "Baseline", dcc.RadioItems(
+                id="scope", value="global", inline=True,
+                options=[{"label": " Global ", "value": "global"},
+                         {"label": " Within continent ", "value": "within"}])),
+            ctrl("c-weight", "Weighting", dcc.RadioItems(
+                id="weight", value="error", inline=True,
+                options=[{"label": " Every error ", "value": "error"},
+                         {"label": " Every distinct pair ", "value": "pair"}])),
+            ctrl("c-opts", "Display", dcc.Checklist(
+                id="options", value=[], inline=True,
+                options=[{"label": " Auto colour range ", "value": "auto"},
+                         {"label": " Dots for small countries ", "value": "dots"}])),
+        ]
+        ctrl_ids = ["c-k", "c-cont", "c-minn", "c-country", "c-conf", "c-attr-o", "c-attr-s",
+                    "c-scope", "c-weight", "c-opts"]
+        visible = {"difficulty": {"c-k", "c-cont", "c-minn", "c-country", "c-opts"},
+                   "confusion": {"c-cont", "c-minn", "c-country", "c-conf", "c-opts"},
+                   "attractors": {"c-cont", "c-minn", "c-country", "c-attr-o", "c-attr-s", "c-opts"},
+                   "shared": {"c-scope", "c-weight"},
+                   "geography": {"c-k", "c-minn", "c-weight", "c-opts"}}
+        help_text = {
+            "difficulty": "How often is each country wrong? Hover for n and CI, click a country to select it.",
+            "confusion": "Where do a country's images go when they are wrong? Select an origin country.",
+            "attractors": "Which countries does the model over-predict, and where do their false positives come from?",
+            "shared": "Do confused pairs share characteristics more often than random country pairs?",
+            "geography": "Do errors stay nearby, and do hard countries border each other?",
+        }
+
+        app = Dash(__name__)
+        app.title = "Q1 – Error structure and geography"
+        app.layout = html.Div(style={"fontFamily": "system-ui, sans-serif", "padding": "8px 14px",
+                                     "background": "white"}, children=[
+            dcc.Store(id="selected"),
+            dcc.Tabs(id="mode", value="difficulty",
+                     children=[dcc.Tab(label=lab_, value=val) for val, lab_ in self.MODES]),
+            html.Div(id="help", style={"margin": "8px 0", "color": "#444", "fontSize": "14px"}),
+            html.Div(controls, style={"padding": "6px 0"}),
+            html.Div([html.Span(id="chip", style={"marginRight": "10px"}),
+                      html.Button("Clear selection", id="clear", n_clicks=0,
+                                  style={"fontSize": "12px"})],
+                     style={"margin": "4px 0 6px 0", "fontSize": "14px"}),
+            dcc.Markdown(id="finding", style={"background": "#f6f6f6", "padding": "8px 12px",
+                                              "borderLeft": "4px solid #444", "fontSize": "14px"}),
+            html.Div(style={"display": "flex", "gap": "12px", "flexWrap": "wrap"}, children=[
+                html.Div(dcc.Graph(id="main", config=graph_cfg), style={"flex": "3 1 620px", "minWidth": "0"}),
+                html.Div([dcc.Graph(id="side1", config=graph_cfg), dcc.Graph(id="side2", config=graph_cfg)],
+                         style={"flex": "2 1 380px", "minWidth": "0"}),
+            ]),
+            html.H4("Details", style={"margin": "10px 0 4px 0"}),
+            dash_table.DataTable(id="table", sort_action="native", filter_action="native", page_size=15,
+                                 export_format="csv", style_table={"overflowX": "auto"},
+                                 style_cell={"fontSize": "12px", "padding": "4px",
+                                             "fontFamily": "system-ui, sans-serif", "maxWidth": "220px",
+                                             "overflow": "hidden", "textOverflow": "ellipsis"},
+                                 style_header={"fontWeight": "600", "background": "#f0f0f0"}),
+        ])
+
+        @app.callback([Output(i, "style") for i in ctrl_ids] +
+                      [Output("country-label", "children"), Output("cont-label", "children"),
+                       Output("help", "children")],
+                      Input("mode", "value"))
+        def show_controls(mode):
+            styles = [base_style[i] if i in visible[mode] else {"display": "none"} for i in ctrl_ids]
+            country_lab = "Predicted country" if mode == "attractors" else \
+                          "True country (origin)" if mode == "confusion" else "Country"
+            cont_lab = "Origin (true-country) continent" if mode in ("confusion", "attractors") else "Continent"
+            return styles + [country_lab, cont_lab, help_text[mode]]
+
+        @app.callback(Output("selected", "data"), Output("country", "value"),
+                      Input("main", "clickData"), Input("side1", "clickData"), Input("side2", "clickData"),
+                      Input("country", "value"), Input("clear", "n_clicks"),
+                      prevent_initial_call=True)
+        def select(main_click, side1_click, side2_click, dd, _clear):
+            trig = ctx.triggered_id
+            if trig == "clear":
+                return None, None
+            if trig == "country":
+                return dd, no_update
+            click = {"main": main_click, "side1": side1_click, "side2": side2_click}.get(trig)
+            code = self._code_from_click(click)
+            if code is None:
+                return no_update, no_update
+            return code, code
+
+        @app.callback(Output("main", "figure"), Output("side1", "figure"), Output("side2", "figure"),
+                      Output("side2", "style"), Output("table", "data"), Output("table", "columns"),
+                      Output("finding", "children"), Output("chip", "children"),
+                      Input("mode", "value"), Input("selected", "data"), Input("k", "value"),
+                      Input("continents", "value"), Input("min-n", "value"), Input("conf-metric", "value"),
+                      Input("attr-over", "value"), Input("attr-sel", "value"), Input("scope", "value"),
+                      Input("weight", "value"), Input("options", "value"))
+        def update(mode, sel, k, conts, min_n, conf_m, attr_o, attr_s, scope, weight, opts):
+            try:
+                main, s1, s2, table, (pct, dec), finding = self.render(
+                    mode, sel, k, conts, min_n, conf_m, attr_o, attr_s, scope, weight, opts)
+            except Exception as exc:   # show the error in the dashboard instead of failing silently
+                e = self._empty(f"Error: {exc}")
+                return e, e, e, {"display": "none"}, [], [], f"**Error:** `{exc!r}`", ""
+            data, cols = self._table(table, pct, dec) if len(table) else ([], [])
+            chip = (f"Selected: **{self.label(sel)}** ({sel})" if sel else
+                    "No country selected – click the map / a bar, or search above.")
+            return (main, s1, s2 if s2 is not None else self._empty(""),
+                    {} if s2 is not None else {"display": "none"},
+                    data, cols, finding, dcc.Markdown(chip, style={"display": "inline-block"}))
+
+        return app
+
+    def run(self, mode: str | None = "inline", port: int = 8050, height: int = 1250,
+            host: str = "127.0.0.1", proxy: bool = False, debug: bool = False):
+        """mode: 'inline' (under the cell), 'tab' (new browser tab), 'external' (prints a URL),
+        None (plain server outside Jupyter). proxy=True: route through the Jupyter server
+        (use if the inline view stays blank on a remote JupyterLab)."""
+        app = self.build_app()
+        if proxy:
+            from dash import jupyter_dash
+            jupyter_dash.infer_jupyter_proxy_config()
+        if mode is None:
+            app.run(host=host, port=port, debug=debug)
+        else:
+            app.run(jupyter_mode=mode, jupyter_height=height, host=host, port=port, debug=debug)
+        return app
