@@ -15,7 +15,7 @@ pyarrow
 pillow
 opencv-python-headless
 tqdm
-dash 
+scipy
 
 # Notebooks
 jupyterlab
