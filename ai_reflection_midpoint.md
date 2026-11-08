@@ -59,6 +59,14 @@ random masks, within-country), not because the AI agrees.
 - **Visualizations:** they used fewer, static plots. We used interactive Plotly charts and a dashboard.
 - **Breadth vs. depth:** with AI we covered more topics and used more controls. The human pair went deeper into
   single causes.
+- **Time and size:** our first Q2 and Q4 versions took one afternoon (4 Nov). The human pair finished Q1 and Q4 on
+  4 Nov, Q2 on 6 Nov and Q3 on 7 Nov (dates from git). We wrote about five times more code (about 4,500 vs. 840
+  lines) and made more plots (34 vs. 19).
+- **Checking cost:** 14 of our 37 log rows are AI suggestions that we rejected, changed or corrected. The human pair
+  had no such step, because they wrote and understood every line themselves.
+- **More data, same main result:** their Q3 used 3,660 images (20 per country), ours 12,154. Both found the same
+  order of cues (vegetation, then buildings, sky less than a random area). More data and code gave us more detail
+  (parts of cues, cues hidden together), not a different main result.
 - **Confidence:** both pairs checked results against a control. They compared confident errors with correct images
   from the same countries and named their limits (0.8 threshold, 50 pilot images per country). We used random
   baselines, random masks and within-country checks.
