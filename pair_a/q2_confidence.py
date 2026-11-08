@@ -184,6 +184,9 @@ def predicted_table(preds, countries):
                                 conf=("prob_1", "mean"))
     t["n_true"] = p["country_id"].value_counts().reindex(t.index, fill_value=0)   # 0: never right by design
     t["name"] = countries.loc[t.index, "prompt_name"]
+    wrong = p[~p["correct"].astype(bool)].groupby("pred_1")["country_id"]   # where the wrong guesses come from
+    t["top_source"] = wrong.agg(lambda s: s.value_counts().index[0]).reindex(t.index).map(countries["prompt_name"])
+    t["top_source_n"] = wrong.agg(lambda s: s.value_counts().iloc[0]).reindex(t.index)
     return t.sort_values("n_pred", ascending=False)
 
 

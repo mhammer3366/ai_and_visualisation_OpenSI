@@ -27,8 +27,8 @@ The pairs swap roles after Phase I, so code folders are named after the pair, no
 
 | Pair | Members | Phase I | Phase II |
 | --- | --- | --- | --- |
-| `pair_a` | *Manuel Lisa - k12205828; Umut  - kxxx* | *AI-aided* | *the other role* |
-| `pair_b` | *Maximilian Hammer - kxxx; Florian Weigelt - k12210011* | *human-only* | *the other role* |
+| `pair_a` | Manuel Lisa (k12205828), Umut Tanriverdi (k12105807) | AI-aided | human-only |
+| `pair_b` | Maximilian Hammer (k12222785), Florian Weigelt (k12210011) | human-only | AI-aided |
 
 ## Repository
 
@@ -48,9 +48,10 @@ resources/
 notebooks/
   setup_and_test.ipynb  loads everything and checks every part (PASS / WARN / FAIL)
   phase1_AI.ipynb       Phase I analysis of the AI-aided pair
-  phase1_Human.ipynb    Phase I analysis of the human-only pair
-logs/
+  phase1_Human_florian.ipynb, phase1_Human_max.ipynb   Phase I analysis of the human-only pair
+ai-interactions/
   phase1_ai_log.md      AI interaction record for Phase I (required deliverable)
+ai_reflection_midpoint.md   reflection on GenAI use in Phase I (required deliverable)
 data/                   created by the setup notebook, not in git
 results/                created by the notebooks, not in git
   shared/               shared baseline runs - read-only once written
@@ -69,7 +70,7 @@ so the two approaches can differ.
    - lower: update the NVIDIA driver, or install the matching build from [pytorch.org](https://pytorch.org/get-started/locally/) first.
    - no NVIDIA GPU: install the CPU build from [pytorch.org](https://pytorch.org/get-started/locally/) first.
      Analysing the shared results works on CPU; segmentation and masking are very slow without a GPU.
-3. `pip install -r requirements.txt` (an already installed PyTorch is kept - see if the pytorch req. is compatible).
+3. `pip install -r requirements.txt`. An installed PyTorch is kept, so check that its version fits (`torch>=2.7`).
    Check: `python -c "import torch; print(torch.__version__, torch.cuda.is_available())"`, where `True` means the GPU is used.
 4. Open `notebooks/setup_and_test.ipynb`, adjust the settings in the first code cell if needed, and run all cells.
    Every check should print PASS (WARN is a hint, FAIL needs fixing).
@@ -88,11 +89,11 @@ Every run saves the settings it used (`run_info.json` and columns in `prediction
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
-| `images_per_country` | 50 | Pilot sample size per country (Q3, quick checks) |
+| `images_per_country` | 50 | Pilot sample size per country (pair B's Q2 and Q3, quick checks) |
 | `use_clip_baseline` | False | Original CLIP as baseline for Q2; downloaded on first use |
 | `crop_mode` | `center_crop` | `center_crop` (CLIP standard) / `pad` (robustness check) / `squash` |
 | `candidate_list` | `v1` | `v1` / `all_test_locations` (sensitivity run) |
-| `prompt_template` | `A Street View photo in {country}.` | Template from the StreetCLIP paper |
+| `prompt_template` | `A Street View photo in {country}, {subregion}.` | Paper template plus the subregion (since 6 Nov, fixes "Georgia" = US state); old runs kept as `*_oldprompt` |
 | `fill_mode` | `gray` | `gray` / `blur` / `inpaint` (LaMa) |
 | `mask_dilation_px` | 5 | Mask grown by a few pixels |
 | `min_mask_area` | 2 %, text and signs 0.1 % | Share of the visible model input an element must cover |
@@ -102,7 +103,9 @@ Every run saves the settings it used (`run_info.json` and columns in `prediction
 
 - **Data:** OSV-5M test split only (~210k Mapillary images). The train split (~250 GB) is not used.
 - **Main run:** StreetCLIP on the full test set, all candidate scores (logits) and image embeddings saved.
-  The 50-per-country pilot is used for Q3 and the `pad` robustness check.
+  The 50-per-country pilot (`resources/pilot_ids.csv`) is used by pair B: for the CLIP comparison in Q2 and,
+  with 20 images per country, for Q3. Pair A's Q3 uses its own sample: at most 60 images per country and 150 for
+  the 20 most confused countries (12,154 images, `results/pair_a/q3/sample.csv`).
 - **Country ids:** one canonical id per country or territory, its ISO alpha-2 code. Predictions, accuracy and maps
   all use it; the prompt name is only the text given to the model.
 - **United States:** one label (no state-level split).
@@ -210,5 +213,4 @@ images. Neither pair analyses embeddings (similarity, clustering, projections) i
 The AI-aided pair built the shared setup (`shared/`, country table, setup notebook) with AI assistance. It is
 infrastructure only and contains no analysis or visualization. `shared/add_country_attributes.py` was written by
 pair B with AI assistance before its human-only analysis started; it only collects country attributes from public
-sources. This is recorded in `logs/phase1_ai_log.md`; its
-compatibility with the human-only condition is to be confirmed with the course staff.
+sources. This is recorded in `ai-interactions/phase1_ai_log.md` (row #38).

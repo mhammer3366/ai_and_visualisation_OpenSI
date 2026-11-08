@@ -1,9 +1,11 @@
 # AI interaction record - Phase I (AI-aided pair)
 
-Record interactions that influenced the analysis or show strengths and limits of AI assistance.
-Add a row right after it happens; it takes 30 seconds and becomes the reflection report later.
+Each row is one AI interaction that changed our analysis or shows a strength or limit of AI assistance.
 
 **Decision:** accepted / modified / rejected
+
+**Prompt:** rows #1 to #30 (before 6 Nov) use the paper's prompt ("A Street View photo in {country}."). Their
+numbers can differ from the notebook, which uses the new prompt with the subregion (#33).
 
 ## Log
 
@@ -22,7 +24,7 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 11 | 2026-11-03 | "Can we run the setup on my Mac?" | AI checked `uv.lock`: no macOS PyTorch builds, and `get_device` never used the Mac GPU. Proposed a Mac path (PyTorch from PyPI on macOS, `mps` device) | Accepted | Umut only has a Mac (no NVIDIA GPU) | Setup also runs on Mac. Tested: same top-1 as CPU, ~20 images/s with fp16 (full run ~3 h). Our own test script first crashed on macOS (missing `__main__` guard), AI found and fixed it. Kept on branch `mac-setup`, not merged: we later moved all work to the homeserver (row 12) |
 | 12 | 2026-11-04 | "Set up my homeserver (RTX 4070 Ti Super, WSL2) and run the baselines" | AI found that only PyPI downloads were slow on the server (0.2 MB/s, other sites 35+ MB/s). It took 9 CUDA packages from the PyTorch mirror and checked each file against the SHA-256 in `uv.lock` | Accepted | `uv sync` was stuck for 30 min | Server ready in about 1 h; StreetCLIP and CLIP runs take about 23 min each |
 | 13 | 2026-11-04 | "Start Q2 (overconfidence, training coverage)" | Three parts: calibration of StreetCLIP vs original CLIP, per-country gap (mean confidence - accuracy), and accuracy gain CLIP -> StreetCLIP compared with the paper's training list | Accepted | Uses only the prediction tables (black box); CLIP is the same model before the Street View fine-tuning | Code in `pair_a/q2_confidence.py`, Q2 section in `phase1_AI.ipynb` |
-| 14 | 2026-11-04 | Q2 first results | AI noticed that "Georgia" is never right: 0 of 290 real Georgia images, but 2436 predictions. Most come from the US state Georgia and nearby southern states | Accepted after check | Region column: 401 of 451 US images from the state Georgia are predicted as Georgia. The prompt name means both a country and a US state | Biggest single source of confident errors (US -> Georgia: 1126 images with probability >= 0.8) |
+| 14 | 2026-11-04 | Q2 first results | AI noticed that "Georgia" is never right: 0 of 290 real Georgia images, but 2,436 predictions. Most come from the US state Georgia and nearby southern states | Accepted after check | Region column: 401 of 451 US images from the state Georgia are predicted as Georgia. The prompt name means both a country and a US state | Biggest single source of confident errors (US -> Georgia: 1126 images with probability >= 0.8) |
 | 15 | 2026-11-04 | Precision per predicted country | Namibia had precision 0 with 909 predictions. AI first suspected the known "NA" read-as-missing bug | Rejected after check | The raw `test.csv` has no Namibia images at all | Added `n_true` column: countries without test images are never right by design |
 | 16 | 2026-11-04 | "Start Q4 (environment)" | AI showed that environment and country are mixed up (about half of "sparse vegetation" is Australia). Proposed to show every effect twice: raw, and within-country (category accuracy minus its own country's accuracy) | Accepted | A plain table per climate would mostly show which countries live in that climate | Climate effect almost gone inside countries; built-up areas +6.7 points |
 | 17 | 2026-11-04 | Urban vs. rural proxy | AI checked `road_index` as an urban measure | Rejected | It has only one value per country (no spread inside a country) | Urban proxy is land cover "artificial surfaces" (built-up) |
@@ -37,8 +39,16 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 | 26 | 2026-11-04 | How to show confusions | Top-N pair table plus each country's top 3 confusions, one heatmap of the ~20-30 most confused countries instead of one matrix per continent. Top-k only as extra evidence, not repeated for every table | Accepted | A Europe matrix is still too big; top-k answers "what is plausible", not "what is predicted" | Confusion tables in Q1 |
 | 27 | 2026-11-04 | "Attractor = big training class?" | AI asked for training image counts per country | Not possible | StreetCLIP's training counts are not public | Listed as a Q1 limitation |
 | 28 | 2026-11-04 | Code structure for Q1 (our design: builder -> analyser -> reporter, keep the image-level table for GPS) | One data bundle from the builder, one config (min n, k values, seed, permutations), fixed seed, no printing in the analyser | Accepted | Same structure for all parts, results reproducible | `q1_errorstructure.py` with `Q1Config`, `Q1DataBuilder`, `Q1Analyser`, `Q1Reporter` |
-| 29 | 2026-11-05 | Q1 code | Baseline: replace the predicted country of each error by a random country (all countries, or same continent), report lift with bootstrap CI and permutation p-value. Tested on made-up data with broken rows; this found two bugs in its own code (one short top-k list switched off top-3/5 for all rows; p-value shown when there was no data) and AI fixed them | Accepted, not yet run on real data | Our column names were not known yet | Next: set column names, check the validation report (unmatched names, neighbour codes) |
+| 29 | 2026-11-05 | Q1 code | Baseline: replace the predicted country of each error by a random country (all countries, or same continent), report lift with bootstrap CI and permutation p-value. Tested on made-up data with broken rows; this found two bugs in its own code (one short top-k list switched off top-3/5 for all rows; p-value shown when there was no data) and AI fixed them | Accepted | Our column names were not known yet | Later run on the full test set (208,314 images, 1,000 permutations), see row 31 |
 | 30 | 2026-11-05 | "What is still open in Q2 and Q4?" | AI found that the CLIP vs. StreetCLIP Georgia table was never run: the findings quoted its numbers, but the notebook had no output for it. It also saw that the low-precision table had no finding | Accepted | Every number in the findings must have a visible output we can show | Cell run, all numbers matched. New finding on labels that are never right, and an open questions line for Q2 |
+| 31 | 2026-11-06 | "Run the Q1 analysis on our real predictions and tell us what stands out" | Errors go to neighbours 13× more often than random; language 1.9×, driving side 1.3× | Accepted | Random baseline shows what is more than chance | Q1 finding: mostly geography |
+| 32 | 2026-11-06 | "Build an interactive view so we can explore Q1 by country" | Dash dashboard with 5 views and world maps | Accepted | 175 countries do not fit in static plots | `Q1Dashboard`. Does not show on GitHub, so the findings cell is the main result |
+| 33 | 2026-11-06 | "Georgia is read as the US state. How can we fix the prompt?" | Add the subregion: "A Street View photo in Georgia, Western Asia." | Accepted, agreed with pair B | US to Georgia errors drop from 2,346 to 62 | Shared prompt changed for both pairs. Cost: 1.7 points accuracy. Real Georgia still not recognised |
+| 34 | 2026-11-06 | "How can we measure if hiding an element really matters, and not just that less image is left?" | Compare each mask with random masks of the same size | Accepted | Any large mask lowers accuracy, just because less image is left | All Q3 effects are control-corrected |
+| 35 | 2026-11-06 | "Masking the full test set takes too long. How should we choose the images?" | Max 60 images per country, 150 for the 20 most confused; cache masks instead of saving images | Accepted | Full test set too slow; saved images ~20 GB | Q3 runs in hours, not days |
+| 36 | 2026-11-06 | "Road and vegetation are very big masks. Can we see which part of them matters?" | Road into surface and lane markings, etc.; test two cues hidden together | Accepted | A whole element can hide which part matters | Lane markings matter more than road surface |
+| 37 | 2026-11-08 | "Is the AI-aided part finished?" (with task description) | Missing: Q1 findings, reflection, log rows for Q3, `ai-interactions/` folder, README IDs | Accepted | Missing parts lose points | AI drafted these; we checked and rewrote them |
+| 38 | 2026-11-02 | Pair B (before its human-only work): country attributes for the shared country table. Prompt not saved; added here later | Script `shared/add_country_attributes.py` that collects region, neighbours, languages and driving side from mledoze/countries, GeoNames and Wikidata, and keeps the raw files | Accepted | Shared infrastructure only, no analysis or visualization | Attribute columns in `country_aliases.csv`, used by both pairs. Argentina's driving side set by hand (Wikidata lists both sides) |
 
 ## Failure patterns observed
 
@@ -52,6 +62,8 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - **Plots that hide weak evidence** (#19): the first Q4 plot showed a value based on one country, with no error bar. Only seen when we looked at the rendered plot.
 - **Titles that claim more than the plot shows** (#21, #22): short "finding" titles were wrong twice. A zoomed axis also made a 3 point effect look big.
 - **Edge cases in new code** (#29): one bad row was enough to switch off top-3/5 for the whole dataset. Only found by a test with deliberately broken rows.
+- **Building more than you can show** (#32): the dashboard only works with a running kernel, and the written Q1 finding was missing.
+- **Log falls behind** (#37): when the work got faster, we stopped logging and had to rebuild rows later.
 
 ## Best practices so far
 
@@ -68,3 +80,6 @@ Add a row right after it happens; it takes 30 seconds and becomes the reflection
 - Compare every "shared attribute" against random pairs, and also within the same continent.
 - Test new code on small made-up data with broken rows (unknown country, short list) before the real run.
 - Before handing in, check that every number in the findings has a visible output in the notebook.
+- Every masking test needs a random mask of the same size as control.
+- Every interactive view also needs a static plot and a written finding.
+- Let the AI check the repo against the task description before the deadline.

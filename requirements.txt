@@ -22,5 +22,7 @@ jupyterlab
 ipykernel
 matplotlib
 plotly>=5.0
+kaleido>=1.0              # static PNG copies of Plotly figures (shown on GitHub)
+dash>=2.11                 # Q1 dashboard (inline jupyter_mode needs >= 2.11)
 
-# Exact versions are pinned once the setup notebook runs cleanly on the RTX 5070 PC.
+# Exact versions: uv.lock (with pyproject.toml)
