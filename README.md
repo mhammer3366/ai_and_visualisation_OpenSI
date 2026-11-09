@@ -10,6 +10,8 @@ using the [OpenStreetView-5M](https://huggingface.co/datasets/osv5m/osv5m) (OSV-
 
 **This README describes Phase I.** Everything below (questions, setup, rules) applies to Phase I unless stated otherwise.
 
+## Link to Phase 1 Presentation can be found [here](https://drive.google.com/file/d/1ZOneTfTiHEHJhox5lmwiccnPlwCOUIjy/view?usp=sharing).
+
 ## Phase I questions
 
 **Main question:** What makes StreetCLIP succeed or fail at guessing the country, and which visual clues does it rely on?

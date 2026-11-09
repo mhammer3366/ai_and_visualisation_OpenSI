@@ -60,7 +60,7 @@ random masks, within-country), not because the AI agrees.
 - **Breadth vs. depth:** with AI we covered more topics and used more controls. The human pair went deeper into
   single causes.
 - **Time and size:** our first Q2 and Q4 versions took one afternoon (4 Nov). The human pair finished Q1 and Q4 on
-  4 Nov, Q2 on 6 Nov and Q3 on 7 Nov (dates from git). We wrote about five times more code (about 4,500 vs. 840
+  4 Nov, Q2 on 6 Nov and Q3 on 7 Nov. We wrote about five times more code (about 4,500 vs. 840
   lines) and made more plots (34 vs. 19).
 - **Checking cost:** 14 of our 37 log rows are AI suggestions that we rejected, changed or corrected. The human pair
   had no such step, because they wrote and understood every line themselves.
