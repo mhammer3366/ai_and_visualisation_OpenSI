@@ -9,11 +9,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import torch
 from scipy.stats import mannwhitneyu
+from sklearn.decomposition import PCA
 from pytorch_grad_cam import GradCAM
 from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 
 from .q2_confidence import wilson_ci, CONF_HIGH, MIN_N
-from shared.models import fit_mask
+from shared.models import fit_image, fit_mask
 
 K = 10
 SEARCH = 5000
@@ -58,6 +59,26 @@ def neighbours(emb, ref, queries, k=K, min_km=0, chunk=500):
     return result
 
 
+def usable_refs(ref, queries, min_km=50):
+    """For each query: how many references of its own country the kNN is allowed to use."""
+    out = pd.Series(0, index=queries.index)
+    for c, q in queries.groupby("country_id"):
+        r = ref[ref["country_id"] == c]
+        for i, row in q.iterrows():
+            km = km_between(row["latitude"], row["longitude"], r["latitude"].to_numpy(), r["longitude"].to_numpy())
+            out[i] = ((km >= min_km) & (r["sequence"].to_numpy() != row["sequence"])).sum()
+    return out
+
+
+def keep_reachable(ref, queries, min_km=50, k=K):
+    """Drop queries with fewer than k usable references of their own country (e.g. small islands)."""
+    refs = usable_refs(ref, queries, min_km)
+    kept = queries[refs >= k]
+    print(f"kept {len(kept):,} of {len(queries):,} queries, "
+          f"{queries['country_id'].nunique() - kept['country_id'].nunique()} countries dropped completely")
+    return kept
+
+
 def knn_columns(queries, neigh):
     q = queries.copy()
     q["n_neigh"] = [len(n) for n in neigh]
@@ -90,6 +111,26 @@ def plot_groups(t):
     plt.ylabel(f"share of the {K} nearest neighbours")
     plt.title("Wrong images: whose neighbours are they?")
     plt.legend()
+    plt.show()
+
+
+def plot_pca_pair(emb, p, a="US", b="CA", n=2000, seed=42):
+    """PCA of correctly guessed images of two countries, with the confident a -> b errors on top."""
+    base = p[p["country_id"].isin([a, b]) & (p["correct"] == 1)]
+    base = base.sample(frac=1, random_state=seed).groupby("country_id").head(n)
+    err = p[(p["country_id"] == a) & (p["pred_1"] == b) & (p["prob_1"] >= CONF_HIGH)]
+    pca = PCA(n_components=2).fit(emb[base.index])
+    xb = pca.transform(emb[base.index])
+    xe = pca.transform(emb[err.index])
+    plt.figure(figsize=(6, 6))
+    for c, color in [(a, "tab:blue"), (b, "tab:red")]:
+        m = (base["country_id"] == c).to_numpy()
+        plt.scatter(xb[m, 0], xb[m, 1], s=5, alpha=0.3, color=color, label=f"{c} correct")
+    plt.scatter(xe[:, 0], xe[:, 1], s=10, color="black", label=f"{a} -> {b}, conf. >= {CONF_HIGH} (n = {len(err)})")
+    plt.xlabel(f"PC 1 ({pca.explained_variance_ratio_[0]:.0%} of variance)")
+    plt.ylabel(f"PC 2 ({pca.explained_variance_ratio_[1]:.0%} of variance)")
+    plt.title(f"{a} and {b} in the embedding space")
+    plt.legend(markerscale=2)
     plt.show()
 
 
@@ -133,6 +174,23 @@ def plot_gain(t):
     plt.show()
 
 
+def plot_text_gap(t, labels=("GE", "CD", "LT", "US", "CA")):
+    t = t[~t["low_n"]]
+    plt.figure(figsize=(6, 6))
+    for on, color, name in [(True, "tab:blue", "on training list"), (False, "tab:orange", "not on list")]:
+        s = t[t["on_list"] == on]
+        plt.scatter(s["zeroshot_street"], s["knn_street"], color=color, alpha=0.7, label=name)
+    plt.plot([0, 1], [0, 1], color="gray", lw=1, ls="--")
+    for c in labels:
+        plt.annotate(c, (t.loc[c, "zeroshot_street"], t.loc[c, "knn_street"]),
+                     xytext=(4, 4), textcoords="offset points")
+    plt.xlabel("zero-shot accuracy (prompts)")
+    plt.ylabel("kNN accuracy (image neighbours)")
+    plt.title("Above the line: the images know more than the prompts")
+    plt.legend()
+    plt.show()
+
+
 # --- Q2.3 -------------------------------------------------------------------
 
 class Scorer(torch.nn.Module):
@@ -161,18 +219,21 @@ def make_cam(geo):
     return GradCAM(model=Scorer(geo), target_layers=[layer], reshape_transform=vit_reshape)
 
 
-def heat_per_element(cam, geo, segmenter, dataset, rows, crop_mode, batch=4):
-    """Share of the Grad-CAM heat and of the area for each element, one row per image."""
+def heat_per_element(cam, geo, segmenter, dataset, rows, crop_mode, target="pred_1", text=None, batch=4):
+    """Share of the Grad-CAM heat and of the area for each element, one row per image.
+    target: column with the country Grad-CAM explains. text: a TextDetector adds a "text" element."""
     out = []
     for start in range(0, len(rows), batch):
         part = rows.iloc[start:start + batch]
         images = [dataset.get_image(i) for i in part["id"]]
         x = geo.prepare(images).to(geo.device, geo.dtype)
-        targets = [ClassifierOutputTarget(geo.labels.index(c)) for c in part["pred_1"]]
+        targets = [ClassifierOutputTarget(geo.labels.index(c)) for c in part[target]]
         heats = cam(input_tensor=x, targets=targets)
         for img, image_id, heat in zip(images, part["id"], heats):
             row = {"id": image_id}
             masks = segmenter.element_masks(img, image_id)
+            if text is not None:
+                masks["text"] = text.text_mask(img, image_id)
             for element, mask in masks.items():
                 m = fit_mask(mask, crop_mode)
                 row[f"heat_{element}"] = heat[m].sum() / heat.sum()
@@ -202,5 +263,49 @@ def plot_elements(t):
     plt.ylabel("share of Grad-CAM heat")
     plt.title("Where does the model look for the predicted country?")
     plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+def mean_heatmap(cam, geo, dataset, rows, target="pred_1", batch=2):
+    """Average Grad-CAM map over all images in rows."""
+    total = 0
+    for start in range(0, len(rows), batch):
+        part = rows.iloc[start:start + batch]
+        x = geo.prepare([dataset.get_image(i) for i in part["id"]]).to(geo.device, geo.dtype)
+        targets = [ClassifierOutputTarget(geo.labels.index(c)) for c in part[target]]
+        total = total + cam(input_tensor=x, targets=targets).sum(axis=0)
+    return total / len(rows)
+
+
+def plot_mean_maps(a, b, name_a, name_b):
+    diff = b - a
+    lim = np.abs(diff).max()
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4.5))
+    for ax, m, title in [(axes[0], a, name_a), (axes[1], b, name_b)]:
+        im = ax.imshow(m, cmap="jet", vmin=0, vmax=max(a.max(), b.max()))
+        ax.set_title(title)
+    fig.colorbar(im, ax=axes[:2], shrink=0.8, label="mean Grad-CAM")
+    im = axes[2].imshow(diff, cmap="RdBu_r", vmin=-lim, vmax=lim)
+    axes[2].set_title(f"{name_b}\nminus {name_a}")
+    fig.colorbar(im, ax=axes[2], shrink=0.8)
+    for ax in axes:
+        ax.axis("off")
+    plt.show()
+
+
+def plot_examples(cam, geo, dataset, rows, crop_mode, n=4, target="pred_1"):
+    """n random images per group with their Grad-CAM map on top."""
+    groups = rows["group"].unique()
+    fig, axes = plt.subplots(len(groups), n, figsize=(3.2 * n, 3.4 * len(groups)))
+    for r, g in enumerate(groups):
+        for c, (_, row) in enumerate(rows[rows["group"] == g].head(n).iterrows()):
+            img = dataset.get_image(row["id"])
+            x = geo.prepare([img]).to(geo.device, geo.dtype)
+            heat = cam(input_tensor=x, targets=[ClassifierOutputTarget(geo.labels.index(row[target]))])[0]
+            axes[r, c].imshow(fit_image(img, crop_mode))
+            axes[r, c].imshow(heat, cmap="jet", alpha=0.45)
+            axes[r, c].set_title(f"{g} ({row['prob_1']:.2f})", fontsize=9)
+            axes[r, c].axis("off")
     plt.tight_layout()
     plt.show()
