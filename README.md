@@ -5,10 +5,11 @@ using the [OpenStreetView-5M](https://huggingface.co/datasets/osv5m/osv5m) (OSV-
 
 | Phase | Question | Approach | Status |
 | --- | --- | --- | --- |
-| **Phase I** | How does the model behave? | Black box: only inputs and outputs (maps, confusions, confidence, hiding image parts) | **Current** |
-| Phase II | What did the model learn? | Open the box: gradient heatmaps, image embeddings | Later |
+| Phase I | How does the model behave? | Black box: only inputs and outputs (maps, confusions, confidence, hiding image parts) | Finished (midpoint 11 Nov 2026) |
+| **Phase II** | What did the model learn? | Open the box: image embeddings (kNN, PCA), Grad-CAM heatmaps | **Current** (deadline 9 Dec 2026) |
 
-**This README describes Phase I.** Everything below (questions, setup, rules) applies to Phase I unless stated otherwise.
+**Most of this README describes Phase I.** Questions, setup and rules still apply in Phase II unless stated otherwise.
+Everything new for Phase II is in the section [Phase II](#phase-ii) at the end.
 
 ## Link to Phase 1 Presentation can be found [here](https://drive.google.com/file/d/1ZOneTfTiHEHJhox5lmwiccnPlwCOUIjy/view?usp=sharing).
 
@@ -43,6 +44,7 @@ shared/                 used by both pairs; changed only by agreement
   masking.py            MaskApplier
   add_country_attributes.py   adds region, neighbour, language and driving-side columns to country_aliases.csv
 pair_a/                 pair A's own .py files (analysis, visualization)
+  q2_confidence_phase2.py, q4_environment_phase2.py   Phase II files end with _phase2
 pair_b/                 pair B's own .py files
 resources/
   country_aliases.csv   country ids, prompt names, territories, candidate + training-list flags, country attributes
@@ -51,13 +53,14 @@ notebooks/
   setup_and_test.ipynb  loads everything and checks every part (PASS / WARN / FAIL)
   phase1_AI.ipynb       Phase I analysis of the AI-aided pair
   phase1_Human_florian.ipynb, phase1_Human_max.ipynb   Phase I analysis of the human-only pair
+  phase2_Human.ipynb    Phase II analysis of the human-only pair (pair A, one shared notebook)
 ai-interactions/
   phase1_ai_log.md      AI interaction record for Phase I (required deliverable)
 ai_reflection_midpoint.md   reflection on GenAI use in Phase I (required deliverable)
 data/                   created by the setup notebook, not in git
 results/                created by the notebooks, not in git
   shared/               shared baseline runs - read-only once written
-  pair_a/               pair A's own results
+  pair_a/               pair A's own results (Phase II in pair_a/phase2/)
   pair_b/               pair B's own results
 ```
 
@@ -80,6 +83,8 @@ so the two approaches can differ.
    on an RTX 5070). Using the settings in `Config`, it computes StreetCLIP's prediction for every test image and
    saves them in `results/shared/` (e.g. `streetclip_v1_center_crop/`). Each person runs this on their own machine;
    results are not uploaded to GitHub.
+6. **PNG copies of Plotly figures** (so they show on GitHub): kaleido needs Chrome. Run `plotly_get_chrome -y` once.
+   On Linux / WSL, Chrome also needs `sudo apt install libnss3`. Without it, the figures still show in Jupyter.
 
 Downloads: OSV-5M `test.csv` 116 MB + 5 zips 9.43 GB (extraction briefly needs ~19 GB free), StreetCLIP ~1.7 GB,
 Mask2Former ~1 GB, EasyOCR ~0.1 GB; optional CLIP ~1.7 GB and LaMa ~0.2 GB. Everything is downloaded only once.
@@ -216,3 +221,65 @@ The AI-aided pair built the shared setup (`shared/`, country table, setup notebo
 infrastructure only and contains no analysis or visualization. `shared/add_country_attributes.py` was written by
 pair B with AI assistance before its human-only analysis started; it only collects country attributes from public
 sources. This is recorded in `ai-interactions/phase1_ai_log.md` (row #38).
+
+## Phase II
+
+**Question:** What did the model learn? We open the box and look at the image embeddings and at gradient heatmaps.
+
+- Each pair uses at least two techniques and compares or combines them.
+- Hypotheses are tested across groups (correct vs. wrong, built-up vs. rural, ...), not on single images.
+- The questions continue from the Phase I findings.
+- Roles are swapped: pair A is human-only, pair B is AI-aided (see "Pairs").
+- Notebooks: `phase2_Human.ipynb` (pair A, one shared notebook) and `phase2_AI.ipynb` (pair B).
+  New `.py` files end with `_phase2` (e.g. `pair_a/q2_confidence_phase2.py`).
+- The Phase I rule "black box only" no longer applies. The reporting rules still do.
+
+### Pair A: questions and techniques
+
+| ID | Phase II question | Technique |
+| --- | --- | --- |
+| Q1 | (to be added) | |
+| Q2.1 | Where do confident errors lie in the embedding space? | kNN, PCA (US and Canada) |
+| Q2.2 | Training coverage: are list countries better separated after fine-tuning (CLIP vs. StreetCLIP)? | kNN on both models |
+| Q2.3 | Where does the model look in confident US -> Canada errors? | Grad-CAM + Mask2Former segments |
+| Q3 | (to be added) | |
+| Q4.1 | Are built-up images more typical for their country? | kNN, world maps |
+| Q4.2 | Do climate and land cover move the embeddings? | kNN, within-country difference |
+| Q4.3 | Where does the model look in built-up vs. rural images? | Grad-CAM + Mask2Former + EasyOCR text |
+
+### Settings (pair A, Q2 and Q4)
+
+The values are constants or function arguments in `pair_a/q2_confidence_phase2.py` and `pair_a/q4_environment_phase2.py`.
+
+| Setting | Value | Meaning |
+| --- | --- | --- |
+| `K` | 10 | Number of nearest neighbours (cosine similarity of the cached image embeddings) |
+| `min_km` | 50 | Neighbours closer than this, or from the same camera sequence, are skipped |
+| References | max. 300 per country | Images the neighbours come from (`random_state=1`) |
+| Usable references | min. 10 | Queries with fewer own-country references are dropped (`keep_reachable`) |
+| Queries | 50 per country and group (Q2.1, Q4.2), 100 per country (Q2.2, Q4.1) | Images that get a kNN vote (`random_state=42`) |
+| Confident | top-1 probability >= 0.8 | Same as Phase I (`CONF_HIGH`) |
+| `MIN_CELL` | 20 | A country needs this many images in a category for the within-country comparison |
+| Grad-CAM layer | `layer_norm1` of the last vision layer | Standard choice for ViT models |
+| Grad-CAM target | predicted country (Q2.3), true country (Q4.3) | Class the heatmap explains |
+| Grad-CAM precision | float32, batch 4 (2 for mean maps) | Peak GPU memory about 12 GB with batch 4, 7.5 GB with batch 2 |
+
+### Fixed decisions (Phase II, pair A)
+
+- **Same place is not the same country:** without the 50 km rule, kNN finds other photos of the same street.
+  Macro kNN accuracy then drops from 64 % to 36 %.
+- **Balanced references:** with all images as references, big countries win the vote by size.
+- **Small countries:** with the 50 km rule, 23 countries (e.g. Bermuda, Tonga, Kuwait) have no usable references
+  and are dropped. kNN is still hard on small countries, so a low kNN value there is weak evidence.
+- **Grad-CAM per element:** the heatmap is split by the Mask2Former segments after the center crop, so it matches
+  what the model sees. "Extra heat" = heat share minus area share.
+- **Only groups:** single confused pairs change with the reference set, so they are not reported as results.
+- **Caches:** Grad-CAM results are saved in `results/pair_a/phase2/q2/` and `q4/` (`.parquet`, `.npz`).
+  Delete them to recompute (about 2 to 3 minutes each on an RTX 4070 Ti SUPER).
+
+### Running the Phase II notebook
+
+1. `grad-cam` (pytorch-grad-cam) is in `requirements.txt` and `pyproject.toml`. Install again or run `uv sync`.
+2. Q2.2 needs the original CLIP run (`results/shared/clip_v1_center_crop/`, see `use_clip_baseline`).
+3. Close other notebook kernels that use the GPU. On WSL, a full GPU spills into normal memory and Grad-CAM
+   becomes very slow.

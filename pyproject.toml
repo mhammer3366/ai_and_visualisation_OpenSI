@@ -5,6 +5,7 @@ requires-python = ">=3.12"
 dependencies = [
     "dash>=2.11",
     "easyocr>=1.7",
+    "grad-cam>=1.5.7",
     "huggingface-hub>=0.25",
     "ipykernel>=7.4.0",
     "jupyterlab>=4.6.5",

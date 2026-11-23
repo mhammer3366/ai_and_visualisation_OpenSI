@@ -7,6 +7,7 @@ torchvision>=0.22
 transformers>=4.45
 huggingface_hub>=0.25
 easyocr>=1.7
+grad-cam>=1.5             # Phase II saliency (pytorch-grad-cam)
 
 # Data handling and images
 numpy
