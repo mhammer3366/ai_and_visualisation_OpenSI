@@ -10,3 +10,7 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 venv/
+
+# Local AI agent notes (not shared)
+CLAUDE.md
+AGENTS.md
