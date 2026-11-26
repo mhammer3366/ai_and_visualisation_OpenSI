@@ -230,7 +230,8 @@ sources. This is recorded in `ai-interactions/phase1_ai_log.md` (row #38).
 - Hypotheses are tested across groups (correct vs. wrong, built-up vs. rural, ...), not on single images.
 - The questions continue from the Phase I findings.
 - Roles are swapped: pair A is human-only, pair B is AI-aided (see "Pairs").
-- Notebooks: `phase2_Human.ipynb` (pair A, one shared notebook) and `phase2_AI.ipynb` (pair B).
+- Notebooks: `phase2_Human.ipynb` (pair A, one shared notebook), `phase2_AI_max.ipynb` (pair B, Q2 and Q3) and
+  `phase2_AI_florian.ipynb` (pair B, Q1 and Q4).
   New `.py` files end with `_phase2` (e.g. `pair_a/q2_confidence_phase2.py`).
 - The Phase I rule "black box only" no longer applies. The reporting rules still do.
 
@@ -283,3 +284,23 @@ The values are constants or function arguments in `pair_a/q2_confidence_phase2.p
 2. Q2.2 needs the original CLIP run (`results/shared/clip_v1_center_crop/`, see `use_clip_baseline`).
 3. Close other notebook kernels that use the GPU. On WSL, a full GPU spills into normal memory and Grad-CAM
    becomes very slow.
+
+### Pair B: questions and techniques
+
+Pair B is AI-aided in Phase II; the AI use is recorded in `ai-interactions/phase2_ai_log.md`.
+All pair B runs use the paper's prompt (`A Street View photo in {country}.`), the same as pair B's Phase I runs.
+
+| ID | Phase II question | Technique |
+| --- | --- | --- |
+| Q1 | (to be added) | |
+| Q2.1 | Where in the US do images "look like Georgia", and does the image encoder know US states? | Cached logits on a map (every US image), state prompts |
+| Q2.2 | Image side vs. text side: do Georgia photos look like the Caucasus while the word "Georgia" looks like the US? | Image embeddings (country centroids) + text embeddings |
+| Q2.3 | Which words free "Georgia" from the US state? | Prompt variants rescored on cached image embeddings |
+| Q3.1 | Does the model look where hiding hurts? Grad-CAM vs. the Phase I masking on the same 3,660 images and segments | Grad-CAM + masking (Phase I) |
+| Q3.2 | Same image, two explanations: where do the two techniques agree and disagree? | Grad-CAM + masking examples |
+| Q3.3 | Heat budget: where does the attention go in confident errors vs. confident correct images? | Grad-CAM + segments |
+| Q3.4 | Which scenes help or hurt inside a country? | Concept probing with the text encoder (AI-suggested concepts), within-country comparison |
+| Q4 | (to be added) | |
+
+Grad-CAM (pair B): last vision layer (`layer_norm1`), float32, target = true country, heat per element from the
+cached Mask2Former segments and EasyOCR text masks. Results in `results/pair_b/phase2/`.
